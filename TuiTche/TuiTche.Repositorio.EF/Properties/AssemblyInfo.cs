@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TwiTche.Repositorio.EF")]
+[assembly: AssemblyTitle("TuiTche.Repositorio.EF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TwiTche.Repositorio.EF")]
+[assembly: AssemblyProduct("TuiTche.Repositorio.EF")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("285c8730-a471-48c4-b057-d96df255633b")]
+[assembly: Guid("bf15e4ba-b203-4314-a7ec-b8b197f037db")]
 
 // Version information for an assembly consists of the following four values:
 //
