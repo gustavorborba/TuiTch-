@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TuiTche.Dominio
 {
-    public class EntidadeBase
+    public abstract class EntidadeBase
     {
-        public int Id { get; set; }
-
+        public int Id { get; protected set; }
     }
 }
