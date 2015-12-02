@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using TuiTche.Dominio;
+using TwiTche.Repositorio.EF.Mapping;
 
 namespace TwiTche.Repositorio.EF
 {
@@ -26,22 +27,5 @@ namespace TwiTche.Repositorio.EF
 
             base.OnModelCreating(modelBuilder);
         }
-    }
-
-    class UsuarioMap : EntityTypeConfiguration<Usuario>
-    {
-        public UsuarioMap()
-        {
-            ToTable("Usuario");
-
-            HasKey(u => u.Id);
-
-            Property(u => u.NomeCompleto).IsRequired().HasMaxLength(128).HasColumnName("Nome_Completo");
-            Property(u => u.Username).IsRequired().HasMaxLength(50).HasColumnName("Username");
-            Property(u => u.Senha).IsRequired().HasMaxLength(64).HasColumnName("Senha");
-            Property(u => u.Email).IsRequired().HasMaxLength(128).HasColumnName("Email");
-            Property(u => u.Foto).IsOptional().HasMaxLength(128).HasColumnName("Foto");
-            Property(u => u.SexoUsuario).IsRequired().HasColumnName("IdSexoUsuario");
-        }
-    }
+    }    
 }

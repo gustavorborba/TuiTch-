@@ -49,9 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201512022140178_usuario.cs" />
     <Compile Include="Migrations\201512022140178_usuario.Designer.cs">
       <DependentUpon>201512022140178_usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512022326265_usuario-seguidores.cs" />
+    <Compile Include="Migrations\201512022326265_usuario-seguidores.Designer.cs">
+      <DependentUpon>201512022326265_usuario-seguidores.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512022140178_usuario.resx">
       <DependentUpon>201512022140178_usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512022326265_usuario-seguidores.resx">
+      <DependentUpon>201512022326265_usuario-seguidores.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
