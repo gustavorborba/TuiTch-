@@ -15,6 +15,10 @@ namespace TuiTche.Dominio
         public Sexo SexoUsuario { get; set; }
         public string Foto { get; set; }
 
+        public virtual ICollection<Usuario> Seguindo { get; set; }
+
+        public virtual ICollection<Usuario> Seguidores { get; set; }
+
         public enum Sexo
         {
             MASCULINO = 1,
