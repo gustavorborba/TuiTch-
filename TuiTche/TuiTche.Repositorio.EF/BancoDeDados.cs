@@ -7,11 +7,10 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF.Mapping;
-using TwiTche.Repositorio.EF.Mapping;
 
-namespace TwiTche.Repositorio.EF
+namespace TuiTche.Repositorio.EF
 {
-    class BancoDeDados : DbContext
+    public class BancoDeDados : DbContext
     {
         public BancoDeDados()
             : base("TUITCHE")
