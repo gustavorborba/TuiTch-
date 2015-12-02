@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A88F3C2B-4429-470B-A8C1-37B1BBE3474E}</ProjectGuid>
+    <ProjectGuid>{15149AE2-BCFA-4885-AEAB-82CB4AE3AABA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TuiTche.Dominio</RootNamespace>
