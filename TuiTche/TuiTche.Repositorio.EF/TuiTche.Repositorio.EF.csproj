@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="Mapping\HashtagMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201512022140178_usuario.cs" />
     <Compile Include="Migrations\201512022140178_usuario.Designer.cs">

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using TuiTche.Dominio;
-using TwiTche.Repositorio.EF.Mapping;
 using TuiTche.Repositorio.EF.Mapping;
+using TwiTche.Repositorio.EF.Mapping;
 
 namespace TwiTche.Repositorio.EF
 {
