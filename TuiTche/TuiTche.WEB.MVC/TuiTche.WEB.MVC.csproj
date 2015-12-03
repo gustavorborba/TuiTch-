@@ -119,10 +119,6 @@
       <Project>{15149ae2-bcfa-4885-aeab-82cb4ae3aaba}</Project>
       <Name>TuiTche.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TuiTche.Repositorio.EF\TuiTche.Repositorio.EF.csproj">
-      <Project>{285c8730-a471-48c4-b057-d96df255633b}</Project>
-      <Name>TuiTche.Repositorio.EF</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
