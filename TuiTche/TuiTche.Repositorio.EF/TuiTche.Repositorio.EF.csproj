@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201512030224306_initial.Designer.cs">
       <DependentUpon>201512030224306_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512030236077_rename_columns.cs" />
+    <Compile Include="Migrations\201512030236077_rename_columns.Designer.cs">
+      <DependentUpon>201512030236077_rename_columns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +80,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512030224306_initial.resx">
       <DependentUpon>201512030224306_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512030236077_rename_columns.resx">
+      <DependentUpon>201512030236077_rename_columns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
