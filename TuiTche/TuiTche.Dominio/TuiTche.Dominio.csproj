@@ -44,6 +44,7 @@
     <Compile Include="Curtir.cs" />
     <Compile Include="EntidadeBase.cs" />
     <Compile Include="Hashtag.cs" />
+    <Compile Include="PalavraGauderia.cs" />
     <Compile Include="Pontuacao.cs" />
     <Compile Include="Publicacao.cs" />
     <Compile Include="Usuario.cs" />

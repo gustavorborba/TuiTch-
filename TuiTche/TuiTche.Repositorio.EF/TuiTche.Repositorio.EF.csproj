@@ -54,12 +54,17 @@
     <Compile Include="Mapping\CompartilharMap.cs" />
     <Compile Include="Mapping\CurtirMap.cs" />
     <Compile Include="Mapping\HashtagMap.cs" />
+    <Compile Include="Mapping\PalavraGauderiaMap.cs" />
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201512030253119_first-migration2.cs" />
     <Compile Include="Migrations\201512030253119_first-migration2.Designer.cs">
       <DependentUpon>201512030253119_first-migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512030302441_palavra-gauderia.cs" />
+    <Compile Include="Migrations\201512030302441_palavra-gauderia.Designer.cs">
+      <DependentUpon>201512030302441_palavra-gauderia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512030253119_first-migration2.resx">
       <DependentUpon>201512030253119_first-migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512030302441_palavra-gauderia.resx">
+      <DependentUpon>201512030302441_palavra-gauderia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
