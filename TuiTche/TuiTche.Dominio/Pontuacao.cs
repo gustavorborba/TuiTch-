@@ -10,5 +10,15 @@ namespace TuiTche.Dominio
     {
         public int PontuacaoTotal { get; set; }
         public Usuario UsuarioPontuacao { get; set; }
+
+        public Pontuacao()
+        {
+
+        }
+
+        public Pontuacao(int id)
+        {
+            this.Id = id;
+        }
     }
 }
