@@ -18,7 +18,7 @@ namespace TwiTche.Repositorio.EF.Mapping
 
             Property(m => m.Descricao).IsRequired().HasMaxLength(288).HasColumnName("Descricao");
             Property(m => m.DataPublicacao).IsRequired().HasColumnName("DataPublicacao");
-            HasRequired(m => m.UsuarioPublicacao).WithMany().HasForeignKey(m => m.Id);
+            HasRequired(m => m.Usuario).WithMany(c => c.Publicacao).HasForeignKey(m => m.IDUsuario);
         }
 
     }
