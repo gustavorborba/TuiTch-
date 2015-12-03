@@ -15,8 +15,8 @@ namespace TwiTche.Repositorio.EF.Mapping
 
             HasKey(m => m.Id);
 
-            HasRequired(m => m.Publicacao).WithMany(c => c.Compartilhar).HasForeignKey(m => m.IdPublicacao);
-            HasRequired(m => m.Usuario).WithMany(c => c.Compartilhar).HasForeignKey(m => m.IdUsuario).WillCascadeOnDelete(false);
+            HasRequired(m => m.Publicacao).WithMany().HasForeignKey(m => m.IdPublicacao);
+            HasRequired(m => m.Usuario).WithMany().HasForeignKey(m => m.IdUsuario).WillCascadeOnDelete(false);
         }
     }
 }

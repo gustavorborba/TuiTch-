@@ -15,8 +15,10 @@ namespace TuiTche.Repositorio.EF.Test
         public void CompartilharBuscarPorId()
         {
             CompartilharRepositorio repositorio = new CompartilharRepositorio();
+            PublicacaoRepositorio repoPublicacao = new PublicacaoRepositorio();
             var compartilhar = repositorio.BuscarPorId(1);
-            Assert.AreEqual(compartilhar.Publicacao.Id, 1);
+            var publicacao = repoPublicacao.BuscarPorPorId(1);
+            Assert.AreEqual(compartilhar.Usuario.Username, "test");
         }
     }
 }

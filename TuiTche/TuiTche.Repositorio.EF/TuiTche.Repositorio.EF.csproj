@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201512030516042_Correcoes.Designer.cs">
       <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512031159312_teste.cs" />
+    <Compile Include="Migrations\201512031159312_teste.Designer.cs">
+      <DependentUpon>201512031159312_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Publicacao.Repostiorio.EF.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512030516042_Correcoes.resx">
       <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512031159312_teste.resx">
+      <DependentUpon>201512031159312_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
