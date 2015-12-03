@@ -32,10 +32,11 @@ namespace TuiTche.Dominio
 
         public Usuario()
         {
-
+            Seguindo = new List<Usuario>();
+            Seguidores = new List<Usuario>();
         }
 
-        public Usuario(int id, string username)
+        public Usuario(string username, int id = 0) : this()
         {
             Id = id;
             Username = username;
@@ -54,6 +55,11 @@ namespace TuiTche.Dominio
         {
             return string.Format("Id: {0}, Username: {1}, Nome: {2}, Email: {3}, Senha: {4}, Sexo: {5}, Foto: {6}", this.Id, this.Username, this.NomeCompleto,
                 this.Email, this.Senha, this.SexoUsuario.ToString(), this.Foto);
+        }
+
+        public void SeguirUsuario(Usuario seguir)
+        {            
+            Seguindo.Add(seguir);
         }
 
     }

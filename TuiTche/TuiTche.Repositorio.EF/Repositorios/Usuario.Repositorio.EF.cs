@@ -10,6 +10,15 @@ namespace TwiTche.Repositorio.EF
 {
     public class RepositorioUsuario
     {
+        public int Salvar(Usuario usuario)
+        {
+            using (var db = new BancoDeDados())
+            {
+                db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
+            }
+        }
+
         public Usuario BuscarPorId(int id)
         {
             using (var db = new BancoDeDados())
