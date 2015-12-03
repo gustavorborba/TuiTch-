@@ -10,7 +10,6 @@ using TuiTche.Repositorio.EF;
 namespace TwiTche.Repositorio.EF
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
-    public class UsuarioRepositorio
     {
         public int Salvar(Usuario usuario)
         {

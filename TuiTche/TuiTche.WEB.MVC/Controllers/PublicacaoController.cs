@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF;
 using TuiTche.WEB.MVC.Models;
+using TuiTche.WEB.MVC.Seguranca;
 using TwiTche.Repositorio.EF;
 
 namespace TuiTche.WEB.MVC.Controllers
@@ -26,9 +27,10 @@ namespace TuiTche.WEB.MVC.Controllers
             {
                 Descricao = publicar.Conteudo,
                 DataPublicacao = DateTime.Now,
-                Usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioLogado.Username)
-        });
+                Usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username)
+            });
+            return null;
         }
         }
-    }
 }
+

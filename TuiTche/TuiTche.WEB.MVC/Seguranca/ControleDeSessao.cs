@@ -10,8 +10,7 @@ namespace TuiTche.WEB.MVC.Seguranca
 {
     public class ControleDeSessao
     {
-        const string USUARIOATUAL = "USUARIO_AUTENTICADO";
-
+        private const string USUARIOATUAL = "USUARIO_AUTENTICADO";
         public static UsuarioAutenticadoModel UsuarioAtual
         {
             get
