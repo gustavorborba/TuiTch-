@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
 
-namespace TwiTche.Repositorio.EF.Mapping
+namespace TuiTche.Repositorio.EF.Mapping
 {
     class PublicacaoMap : EntityTypeConfiguration<Publicacao>
     {
