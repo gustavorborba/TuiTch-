@@ -58,13 +58,9 @@
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201512030516042_Correcoes.cs" />
-    <Compile Include="Migrations\201512030516042_Correcoes.Designer.cs">
-      <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512031159312_teste.cs" />
-    <Compile Include="Migrations\201512031159312_teste.Designer.cs">
-      <DependentUpon>201512031159312_teste.cs</DependentUpon>
+    <Compile Include="Migrations\201512031522061_initial.cs" />
+    <Compile Include="Migrations\201512031522061_initial.Designer.cs">
+      <DependentUpon>201512031522061_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
@@ -82,17 +78,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030516042_Correcoes.resx">
-      <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512031159312_teste.resx">
-      <DependentUpon>201512031159312_teste.cs</DependentUpon>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512031522061_initial.resx">
+      <DependentUpon>201512031522061_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
