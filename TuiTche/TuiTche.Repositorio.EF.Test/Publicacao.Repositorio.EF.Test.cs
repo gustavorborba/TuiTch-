@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
-using TuiTche.Repositorio.EF.Repositorios;
+using TuiTche.Repositorio.EF;
 
 namespace TuiTche.Repositorio.EF.Test
 {
@@ -16,6 +16,7 @@ namespace TuiTche.Repositorio.EF.Test
         public void BuscarPorIdTest()
         {
             PublicacaoRepositorio repositorio = new PublicacaoRepositorio();
+           
             Publicacao publicacao = repositorio.BuscarPorPorId(1);
 
             Assert.AreEqual(publicacao.Descricao, "Odin master of the gods");

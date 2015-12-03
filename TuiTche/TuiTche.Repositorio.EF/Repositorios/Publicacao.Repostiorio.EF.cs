@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
-using TuiTche.Repositorio.EF;
 
-namespace TuiTche.Repositorio.EF.Repositorios
+namespace TuiTche.Repositorio.EF
 {
     public class PublicacaoRepositorio
     {
