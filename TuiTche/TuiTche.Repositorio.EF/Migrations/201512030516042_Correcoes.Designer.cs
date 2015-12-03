@@ -7,13 +7,13 @@ namespace TwiTche.Repositorio.EF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class NewMigration : IMigrationMetadata
+    public sealed partial class Correcoes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NewMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Correcoes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512030419440_New-Migration"; }
+            get { return "201512030516042_Correcoes"; }
         }
         
         string IMigrationMetadata.Source

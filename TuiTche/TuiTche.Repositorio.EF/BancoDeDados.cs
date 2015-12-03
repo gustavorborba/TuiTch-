@@ -25,6 +25,7 @@ namespace TuiTche.Repositorio.EF
         public DbSet<Pontuacao> Pontuacao { get; set; }
         public DbSet<Curtir> Curtir { get; set; }
         public DbSet<PalavraGauderia> PalavraGauderia { get; set; }
+        public DbSet<Compartilhar> Compartilhar { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

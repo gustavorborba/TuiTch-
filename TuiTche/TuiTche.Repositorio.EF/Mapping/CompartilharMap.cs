@@ -13,6 +13,8 @@ namespace TwiTche.Repositorio.EF.Mapping
         {
             ToTable("Compartilhar");
 
+            HasKey(m => m.Id);
+
             HasRequired(m => m.Publicacao).WithMany(c => c.Compartilhar).HasForeignKey(m => m.IdPublicacao);
             HasRequired(m => m.Usuario).WithMany(c => c.Compartilhar).HasForeignKey(m => m.IdUsuario).WillCascadeOnDelete(false);
         }

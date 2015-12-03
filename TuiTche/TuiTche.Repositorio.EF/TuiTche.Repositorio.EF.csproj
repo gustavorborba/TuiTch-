@@ -58,19 +58,13 @@
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201512030302441_palavra-gauderia.cs" />
-    <Compile Include="Migrations\201512030302441_palavra-gauderia.Designer.cs">
-      <DependentUpon>201512030302441_palavra-gauderia.cs</DependentUpon>
+    <Compile Include="Migrations\201512030516042_Correcoes.cs" />
+    <Compile Include="Migrations\201512030516042_Correcoes.Designer.cs">
+      <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512030419440_New-Migration.cs" />
-    <Compile Include="Migrations\201512030419440_New-Migration.Designer.cs">
-      <DependentUpon>201512030419440_New-Migration.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Publicacao.Repostiorio.EF.cs" />
-    <Compile Include="Migrations\201512030357549_update.cs" />
-    <Compile Include="Migrations\201512030357549_update.Designer.cs">
-      <DependentUpon>201512030357549_update.cs</DependentUpon>
-    </Compile>
     <Compile Include="RepositorioUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,18 +81,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030302441_palavra-gauderia.resx">
-      <DependentUpon>201512030302441_palavra-gauderia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512030419440_New-Migration.resx">
-      <DependentUpon>201512030419440_New-Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512030357549_update.resx">
-      <DependentUpon>201512030357549_update.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <EmbeddedResource Include="Migrations\201512030516042_Correcoes.resx">
+      <DependentUpon>201512030516042_Correcoes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
