@@ -11,7 +11,7 @@ namespace TuiTche.Dominio
         public string Descricao { get; set; }
         public DateTime DataPublicacao { get; set; }
         public Usuario Usuario { get; set; }
-        public int IDUsuario { get; set; }
+        public int IdUsuario { get; set; }
 
         public ICollection<Compartilhar> Compartilhar { get; set; }
 
