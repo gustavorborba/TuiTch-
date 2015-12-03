@@ -22,6 +22,7 @@ namespace TuiTche.Repositorio.EF
         public DbSet<Hashtag> Hashtag { get; set; }
         public DbSet<Publicacao> Publicacao{ get; set; }
         public DbSet<Pontuacao> Pontuacao { get; set; }
+        public DbSet<Curtir> Curtir { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace TuiTche.Repositorio.EF
             modelBuilder.Configurations.Add(new HashtagMap());
             modelBuilder.Configurations.Add(new PublicacaoMap());
             modelBuilder.Configurations.Add(new PontuacaoMap());
+            modelBuilder.Configurations.Add(new CurtirMap());
             base.OnModelCreating(modelBuilder);
         }
     }
