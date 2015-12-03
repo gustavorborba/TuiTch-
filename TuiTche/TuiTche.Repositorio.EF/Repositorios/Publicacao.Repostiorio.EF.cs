@@ -17,7 +17,14 @@ namespace TuiTche.Repositorio.EF
             {
                  return banco.Publicacao.Find(id);
             }
-               
+        }
+        public int Criar(Publicacao publicacao)
+        {
+            using(BancoDeDados bd = new BancoDeDados())
+            {
+                bd.Entry(publicacao).State = System.Data.Entity.EntityState.Added;
+                return bd.SaveChanges();
+            }
         }
     }
 }

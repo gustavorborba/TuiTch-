@@ -11,7 +11,7 @@ namespace ServicesTest
     public class CriptografiaTest
     {
         [TestMethod]
-        public void gerarSenhaCriptografada()
+        public void GerarSenhaCriptografada()
         {
             CriptografiaService service = new CriptografiaService();
             string hash = service.Criptografar("senha");

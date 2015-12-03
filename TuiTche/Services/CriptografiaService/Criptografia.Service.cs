@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TuiTche.Dominio.Services;
 
 namespace Services.CriptografiaService
 {
-    public class CriptografiaService
+    public class CriptografiaService : IServicoCriptografia
     {
         public string Criptografar(string senha)
         {
