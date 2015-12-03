@@ -13,7 +13,7 @@ namespace TuiTche.Repositorio.EF.Test
     [TestClass]
     public class UsuarioEFTest
     {
-        Usuario usuario1 = new Usuario("Usuari1o1", -1000)
+        Usuario usuario1 = new Usuario("Usuari1o1")
         {
             NomeCompleto = "Joao",
             Email = "mail@mail.com",
@@ -54,16 +54,16 @@ namespace TuiTche.Repositorio.EF.Test
                         db.Entry(usuario1).State = System.Data.Entity.EntityState.Added;
                         db.Entry(usuario2).State = System.Data.Entity.EntityState.Added;
                         db.Entry(usuario3).State = System.Data.Entity.EntityState.Added;
-                        usuario1.Seguidores.Add(usuario3);
 
-                        Usuario teste = db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Id == -1000);
+                        Usuario teste = db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Username == usuario1.Username);
 
-                        foreach (Usuario usuario in teste.Seguidores)
+
+                        foreach (Usuario usuario in teste.Seguindo)
                         {
                             Assert.AreEqual(usuario2.NomeCompleto, usuario.NomeCompleto);
                         }
 
-                        foreach (Usuario usuario in teste.Seguindo)
+                        foreach (Usuario usuario in teste.Seguidores)
                         {
                             Assert.AreEqual(usuario3.NomeCompleto, usuario.NomeCompleto);
                         }

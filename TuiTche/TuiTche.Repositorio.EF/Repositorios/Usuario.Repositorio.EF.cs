@@ -26,5 +26,13 @@ namespace TwiTche.Repositorio.EF
                 return db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Id == id);
             }
         }
+
+        public Usuario BuscarPorUsername(string username)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Username == username);
+            }
+        }
     }
 }
