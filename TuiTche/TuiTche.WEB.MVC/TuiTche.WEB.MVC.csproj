@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguranca\ControleDeSessao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -141,6 +142,10 @@
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{13f9a96c-2fea-4a90-8b1e-e7182846f0f2}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TuiTche.Dominio\TuiTche.Dominio.csproj">
       <Project>{15149ae2-bcfa-4885-aeab-82cb4ae3aaba}</Project>
       <Name>TuiTche.Dominio</Name>
