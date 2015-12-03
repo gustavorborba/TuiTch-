@@ -94,8 +94,9 @@
     <EmbeddedResource Include="Migrations\201512030302441_palavra-gauderia.resx">
       <DependentUpon>201512030302441_palavra-gauderia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512030419440_New-Migration.resx">
+    <EmbeddedResource Include="Migrations\201512030419440_New-Migration.resx" >
       <DependentUpon>201512030419440_New-Migration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512030357549_update.resx">
       <DependentUpon>201512030357549_update.cs</DependentUpon>
     </EmbeddedResource>
