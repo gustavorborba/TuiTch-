@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
-namespace TwiTche.Repositorio.EF.Mapping
+namespace TuiTche.Repositorio.EF.Mapping
 {
     class PontuacaoMap : EntityTypeConfiguration<Pontuacao>
     {
