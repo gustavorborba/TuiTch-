@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiTche.Repositorio.EF", "TuiTche.Repositorio.EF\TuiTche.Repositorio.EF.csproj", "{285C8730-A471-48C4-B057-D96DF255633B}"
 EndProject
@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiTche.WEB.MVC", "TuiTche.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiTche.Dominio", "TuiTche.Dominio\TuiTche.Dominio.csproj", "{15149AE2-BCFA-4885-AEAB-82CB4AE3AABA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{6A48AAEA-B59F-4F47-94F9-C74EA6A39F58}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiTche.DominioTests", "TuiTche.DominioTests\TuiTche.DominioTests.csproj", "{4721F7A2-91F8-4D49-95A7-69178B3D0C65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{1F96B0C0-D1DC-4EBA-A206-D185A2ED74FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestrutura", "Infraestrutura", "{5A53D10B-C523-41AE-8CF5-CF194BBBFDCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{C8787658-1CE8-430A-8450-A28CB43824D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,7 +44,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{15149AE2-BCFA-4885-AEAB-82CB4AE3AABA} = {6A48AAEA-B59F-4F47-94F9-C74EA6A39F58}
-		{4721F7A2-91F8-4D49-95A7-69178B3D0C65} = {6A48AAEA-B59F-4F47-94F9-C74EA6A39F58}
+		{285C8730-A471-48C4-B057-D96DF255633B} = {5A53D10B-C523-41AE-8CF5-CF194BBBFDCF}
+		{05857E3F-1922-4D5C-8376-2A702DFA2BC2} = {C8787658-1CE8-430A-8450-A28CB43824D1}
+		{15149AE2-BCFA-4885-AEAB-82CB4AE3AABA} = {1F96B0C0-D1DC-4EBA-A206-D185A2ED74FA}
+		{4721F7A2-91F8-4D49-95A7-69178B3D0C65} = {1F96B0C0-D1DC-4EBA-A206-D185A2ED74FA}
 	EndGlobalSection
 EndGlobal

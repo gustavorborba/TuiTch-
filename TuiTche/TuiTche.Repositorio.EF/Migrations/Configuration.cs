@@ -5,14 +5,14 @@ namespace TwiTche.Repositorio.EF.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TwiTche.Repositorio.EF.BancoDeDados>
+    internal sealed class Configuration : DbMigrationsConfiguration<TuiTche.Repositorio.EF.BancoDeDados>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TwiTche.Repositorio.EF.BancoDeDados context)
+        protected override void Seed(TuiTche.Repositorio.EF.BancoDeDados context)
         {
             //  This method will be called after migrating to the latest version.
 

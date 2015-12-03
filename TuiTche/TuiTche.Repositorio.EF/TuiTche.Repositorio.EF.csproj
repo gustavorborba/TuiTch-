@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="Mapping\HashtagMap.cs" />
+    <Compile Include="Mapping\PontuacaoMap.cs" />
+    <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201512030044496_initial.cs" />
     <Compile Include="Migrations\201512030044496_initial.Designer.cs">
@@ -64,6 +66,10 @@
     <ProjectReference Include="..\TuiTche.Dominio\TuiTche.Dominio.csproj">
       <Project>{a88f3c2b-4429-470b-a8c1-37b1bbe3474e}</Project>
       <Name>TuiTche.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TuiTche.WEB.MVC\TuiTche.WEB.MVC.csproj">
+      <Project>{05857e3f-1922-4d5c-8376-2a702dfa2bc2}</Project>
+      <Name>TuiTche.WEB.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
