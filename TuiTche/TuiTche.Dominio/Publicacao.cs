@@ -8,17 +8,16 @@ namespace TuiTche.Dominio
 {
     public class Publicacao : EntidadeBase
     {
-        public string Descricao { get; private set; }
-        public DateTime DataPublicacao { get; private set; }
-
+        public string Descricao { get; set; }
+        public DateTime DataPublicacao { get; set; }
+        public Usuario UsuarioPublicacao;
         public Publicacao()
         {
              
         }
-        public Publicacao(string descricao, DateTime data)
+        public Publicacao(int id)
         {
-            this.Descricao = descricao;
-            this.DataPublicacao = data;
+            this.Id = id;
         }
 
     }
