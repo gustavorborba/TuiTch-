@@ -51,11 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Mapping\HashtagMap.cs" />
-=======
     <Compile Include="HashtagMap.cs" />
->>>>>>> Stashed changes
     <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201512022140178_usuario.cs" />
     <Compile Include="Migrations\201512022140178_usuario.Designer.cs">
