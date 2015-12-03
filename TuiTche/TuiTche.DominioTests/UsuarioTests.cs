@@ -2,13 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TuiTche.Dominio;
 using TwiTche.Repositorio.EF;
+using TuiTche.Repositorio.EF;
 
 namespace TuiTche.DominioTests
 {
     [TestClass]
     public class UsuarioTests
     {
-        Usuario usuario1 = new Usuario(1, "Usuario")
+        Usuario usuario1 = new Usuario("Usuario", 1)
         {
             NomeCompleto = "Nome",
             Email = "mail@mail.com",
@@ -18,9 +19,9 @@ namespace TuiTche.DominioTests
         };
 
         [TestMethod]
-        public void usuarioEqualsTeste()
+        public void UsuarioEqualsTeste()
         {
-            Usuario usuario2 = new Usuario(1, "Usuario")
+            Usuario usuario2 = new Usuario("Usuario", 1)
             {
                 NomeCompleto = "Nome",
                 Email = "mail@mail.com",
@@ -33,20 +34,30 @@ namespace TuiTche.DominioTests
         }
 
         [TestMethod]
-        public void BuscarComSeguidoresESeguindo()
+        public void UsuarioSegueUsuario2()
+        {
+            Usuario usuario2 = new Usuario("Usuario2")
+            {
+                NomeCompleto = "João",
+                Email = "mail@mail.com",
+                Senha = "senha",
+                SexoUsuario = Usuario.Sexo.MASCULINO,
+                Foto = "link"
+            };
+
+            usuario1.SeguirUsuario(usuario2);
+            foreach (Usuario usuario in usuario1.Seguindo) {
+                Assert.AreEqual(usuario2, usuario);
+            }
+            
+        }
+
+        [TestMethod]
+        public void UsuarioToStringTeste()
         {
             string espearado = "Id: 1, Username: Usuario, Nome: Nome, Email: mail@mail.com, Senha: senha, Sexo: MASCULINO, Foto: link";
 
             Assert.AreEqual(espearado, usuario1.ToString());
-        }
-
-        [TestMethod]
-        public void usuarioToStringTeste()
-        {
-            RepositorioUsuario repo = new RepositorioUsuario();
-            Usuario user = repo.BuscarPorId(1);
-            Assert.AreEqual(1, user.Seguidores.Count);
-            Assert.AreEqual(3, user.Seguindo.Count);
         }
     }
 }
