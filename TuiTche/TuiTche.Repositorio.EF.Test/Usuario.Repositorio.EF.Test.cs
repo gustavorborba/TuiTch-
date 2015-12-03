@@ -58,12 +58,12 @@ namespace TuiTche.Repositorio.EF.Test
 
                         Usuario teste = db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Id == -1000);
 
-                        foreach (Usuario usuario in usuario1.Seguidores)
+                        foreach (Usuario usuario in teste.Seguidores)
                         {
                             Assert.AreEqual(usuario2.NomeCompleto, usuario.NomeCompleto);
                         }
 
-                        foreach (Usuario usuario in usuario1.Seguindo)
+                        foreach (Usuario usuario in teste.Seguindo)
                         {
                             Assert.AreEqual(usuario3.NomeCompleto, usuario.NomeCompleto);
                         }
