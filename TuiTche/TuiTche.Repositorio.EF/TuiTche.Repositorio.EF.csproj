@@ -57,9 +57,9 @@
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201512030205518_testeRelacionamentos.cs" />
-    <Compile Include="Migrations\201512030205518_testeRelacionamentos.Designer.cs">
-      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
+    <Compile Include="Migrations\201512030224306_initial.cs" />
+    <Compile Include="Migrations\201512030224306_initial.Designer.cs">
+      <DependentUpon>201512030224306_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,17 +69,13 @@
       <Project>{a88f3c2b-4429-470b-a8c1-37b1bbe3474e}</Project>
       <Name>TuiTche.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TuiTche.WEB.MVC\TuiTche.WEB.MVC.csproj">
-      <Project>{05857e3f-1922-4d5c-8376-2a702dfa2bc2}</Project>
-      <Name>TuiTche.WEB.MVC</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030205518_testeRelacionamentos.resx">
-      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512030224306_initial.resx">
+      <DependentUpon>201512030224306_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
