@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TuiTche.Dominio;W
+using TuiTche.Dominio;
 using TuiTche.Dominio.Interfaces;
 using TuiTche.Repositorio.EF;
 
 namespace TwiTche.Repositorio.EF
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
+    public class UsuarioRepositorio
     {
         public int Salvar(Usuario usuario)
         {
