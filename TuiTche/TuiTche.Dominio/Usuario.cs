@@ -14,10 +14,15 @@ namespace TuiTche.Dominio
         public string Senha { get; set; }
         public Sexo SexoUsuario { get; set; }
         public string Foto { get; set; }
+        public Pontuacao Pontuacao { get; set; }
 
         public virtual ICollection<Usuario> Seguindo { get; set; }
 
         public virtual ICollection<Usuario> Seguidores { get; set; }
+
+        public virtual ICollection<Publicacao> Publicacao { get; set; }
+
+        public virtual ICollection<Compartilhar> Compartilhar { get; set; }
 
         public enum Sexo
         {

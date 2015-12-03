@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compartilhar.cs" />
     <Compile Include="Curtir.cs" />
     <Compile Include="EntidadeBase.cs" />
     <Compile Include="Hashtag.cs" />

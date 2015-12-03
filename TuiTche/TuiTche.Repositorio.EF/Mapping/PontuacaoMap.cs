@@ -16,7 +16,7 @@ namespace TwiTche.Repositorio.EF.Mapping
             HasKey(m => m.Id);
 
             Property(m => m.PontuacaoTotal).IsRequired().HasColumnName("PontuacaoTotal");
-            HasRequired(m => m.UsuarioPontuacao).WithMany().HasForeignKey(m => m.Id);
+            HasRequired(m => m.UsuarioPontuacao).WithRequiredDependent(u => u.Pontuacao);
         }
     }
 }

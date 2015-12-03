@@ -51,18 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="Mapping\CompartilharMap.cs" />
     <Compile Include="Mapping\CurtirMap.cs" />
     <Compile Include="Mapping\HashtagMap.cs" />
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201512030044496_initial.cs" />
-    <Compile Include="Migrations\201512030044496_initial.Designer.cs">
-      <DependentUpon>201512030044496_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512030107272_curtir.cs" />
-    <Compile Include="Migrations\201512030107272_curtir.Designer.cs">
-      <DependentUpon>201512030107272_curtir.cs</DependentUpon>
+    <Compile Include="Migrations\201512030205518_testeRelacionamentos.cs" />
+    <Compile Include="Migrations\201512030205518_testeRelacionamentos.Designer.cs">
+      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,22 +78,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030044496_initial.resx">
-      <DependentUpon>201512030044496_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512030205518_testeRelacionamentos.resx">
+      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512022140178_usuario.resx">
-      <DependentUpon>201512022140178_usuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512022326265_usuario-seguidores.resx">
-      <DependentUpon>201512022326265_usuario-seguidores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512030107272_curtir.resx">
-      <DependentUpon>201512030107272_curtir.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

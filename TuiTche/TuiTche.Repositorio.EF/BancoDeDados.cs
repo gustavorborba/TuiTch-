@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF.Mapping;
+using TwiTche.Repositorio.EF.Mapping;
 
 namespace TuiTche.Repositorio.EF
 {
@@ -31,6 +32,7 @@ namespace TuiTche.Repositorio.EF
             modelBuilder.Configurations.Add(new PublicacaoMap());
             modelBuilder.Configurations.Add(new PontuacaoMap());
             modelBuilder.Configurations.Add(new CurtirMap());
+            modelBuilder.Configurations.Add(new CompartilharMap());
             base.OnModelCreating(modelBuilder);
         }
     }
