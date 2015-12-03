@@ -22,12 +22,14 @@ namespace TuiTche.Repositorio.EF
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Hashtag> Hashtag { get; set; }
         public DbSet<Publicacao> Publicacao{ get; set; }
+        public DbSet<Pontuacao> Pontuacao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new HashtagMap());
             modelBuilder.Configurations.Add(new PublicacaoMap());
+            modelBuilder.Configurations.Add(new PontuacaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }
