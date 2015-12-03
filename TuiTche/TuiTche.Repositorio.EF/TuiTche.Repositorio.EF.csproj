@@ -57,10 +57,6 @@
     <Compile Include="Mapping\PontuacaoMap.cs" />
     <Compile Include="Mapping\PublicacaoMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201512030205518_testeRelacionamentos.cs" />
-    <Compile Include="Migrations\201512030205518_testeRelacionamentos.Designer.cs">
-      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,11 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030205518_testeRelacionamentos.resx">
-      <DependentUpon>201512030205518_testeRelacionamentos.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

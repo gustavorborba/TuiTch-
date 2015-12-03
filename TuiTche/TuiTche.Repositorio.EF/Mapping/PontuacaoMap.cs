@@ -16,7 +16,7 @@ namespace TuiTche.Repositorio.EF.Mapping
             HasKey(m => m.Id);
 
             Property(m => m.PontuacaoTotal).IsRequired().HasColumnName("PontuacaoTotal");
-            HasRequired(m => m.UsuarioPontuacao).WithRequiredDependent(u => u.Pontuacao);
+            HasRequired(m => m.Usuario).WithRequiredDependent(u => u.Pontuacao);
         }
     }
 }

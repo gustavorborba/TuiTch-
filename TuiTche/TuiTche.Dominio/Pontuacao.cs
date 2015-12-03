@@ -9,7 +9,7 @@ namespace TuiTche.Dominio
     public class Pontuacao : EntidadeBase
     {
         public int PontuacaoTotal { get; set; }
-        public Usuario UsuarioPontuacao { get; set; }
+        public Usuario Usuario { get; set; }
 
         public Pontuacao()
         {
