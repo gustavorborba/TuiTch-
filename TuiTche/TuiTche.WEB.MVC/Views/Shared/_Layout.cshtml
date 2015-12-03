@@ -9,30 +9,28 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+    <header class="navbar-fixed-top meuHeader">
+        <div class="container clearfix">
+            <img src="~/Content/img/logo.png" class="foto-logo" />
+            @Html.ActionLink("TuiTche", "Index", "Home", new { area = "" }, new { @class = "texto-logo" })
+
+            <input type="text" id="buscaUsuario" class="campo-busca-usuario pull-left" placeholder="Buscar usuarios..." ></input>
+        
+            <div id="usuario-info" class="pull-left" >
+                <img src="~/Content/img/logo.png" class="foto-perfil" />
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container body-content">
+    <div class="container body-content marginTop">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        
     </div>
+
+    <footer class="navbar-fixed-bottom container">
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
