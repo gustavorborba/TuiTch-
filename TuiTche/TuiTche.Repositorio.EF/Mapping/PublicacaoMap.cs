@@ -8,7 +8,7 @@ using TuiTche.Dominio;
 
 namespace TwiTche.Repositorio.EF.Mapping
 {
-    class PublicacaoMap : EntityTypeConfiguration<Publicacao>
+    public class PublicacaoMap : EntityTypeConfiguration<Publicacao>
     {
         PublicacaoMap()
         {
