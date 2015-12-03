@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
 
-namespace TwiTche.Repositorio.EF.Mapping
+namespace TuiTche.Repositorio.EF.Mapping
 {
     class PublicacaoMap : EntityTypeConfiguration<Publicacao>
     {
@@ -18,7 +18,9 @@ namespace TwiTche.Repositorio.EF.Mapping
 
             Property(m => m.Descricao).IsRequired().HasMaxLength(288).HasColumnName("Descricao");
             Property(m => m.DataPublicacao).IsRequired().HasColumnName("DataPublicacao");
-            HasRequired(m => m.UsuarioPublicacao).WithMany().HasForeignKey(m => m.Id);
+            HasRequired(m => m.UsuarioPublicacao).WithMany(c => c.Publicacoes)
+                .Map(cs => cs.MapKey("IdUsuario"));
+
         }
 
     }
