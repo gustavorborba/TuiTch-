@@ -16,7 +16,7 @@ namespace TwiTche.Repositorio.EF
         {   
             using (banco = new BancoDeDados())
             {
-                return banco.Compartilhar.Where(m => m.Id == id).FirstOrDefault();
+                return banco.Compartilhar.Find(id);
             }
         }
     }
