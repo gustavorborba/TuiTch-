@@ -8,7 +8,7 @@ using TuiTche.Dominio;
 
 namespace TuiTche.Repositorio.EF.Mapping
 {
-    class HashtagMap : EntityTypeConfiguration<Hashtag>
+    public class HashtagMap : EntityTypeConfiguration<Hashtag>
     {
         public HashtagMap()
         {
