@@ -10,7 +10,7 @@ namespace TwiTche.Repositorio.EF.Mapping
 {
     public class PublicacaoMap : EntityTypeConfiguration<Publicacao>
     {
-        PublicacaoMap()
+        public PublicacaoMap()
         {
             ToTable("Publicacao");
 
