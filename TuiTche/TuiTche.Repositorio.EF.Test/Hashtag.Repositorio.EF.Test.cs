@@ -9,7 +9,7 @@ namespace TuiTche.Repositorio.EF.Test
         public void VerificaSeTagGauderiaRetorna()
         {
             HashtagRepositorio rep = new HashtagRepositorio();
-           // Assert.AreEqual(true, rep.VerificaSeTagEGauderia("123asd"));
+           // Assert.AreEqual(true, rep.VerificaSeTagEGauderia("Patrão"));
         }
     }
 }

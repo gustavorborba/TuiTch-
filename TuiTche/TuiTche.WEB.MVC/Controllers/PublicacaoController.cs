@@ -19,7 +19,7 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             return View();
         }
-        public ActionResult Publicar(String hashTag, String user, String conteudo)
+        public ActionResult Publicar(String hashtag, String user, String conteudo)
         {
             var usuarioRepositorio = new UsuarioRepositorio();
 
@@ -32,8 +32,16 @@ namespace TuiTche.WEB.MVC.Controllers
                 DataPublicacao = DateTime.Now,
                 IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id               
             };
+            var hashtagGauderia = hashtagRepositorio.VerificaSeTagEGauderia(hashtag);
+            if (hashtagGauderia != null)
+            {
+                //hashtagGauderia.Publicacoes.Add(publicacao);
+                hashtagRepositorio.Salvar(hashtagGauderia);
+                int i = hashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
+            }
+            publicacao.Hashtags.Add(hashtagGauderia);
             publicacaoRepositorio.Criar(publicacao);
-            return PartialView();
+            return PartialView("_Publicar");
         }
         public ActionResult ListarPublicacoes()
         {
