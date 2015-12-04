@@ -12,7 +12,7 @@ namespace TuiTche.Dominio
 
         public Hashtag Hashtag { get; set; }
 
-        public int QtdUtilizacao { get; set; }
+        public int? QtdUtilizacao { get; set; }
 
     }
 }
