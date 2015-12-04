@@ -13,6 +13,7 @@ namespace TuiTche.WEB.MVC.Controllers
 {
     public class PublicacaoController : Controller
     {
+        PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
         // GET: Publicacao
         public ActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult Publicar(String hashTag, String user, String conteudo)
         {
             var usuarioRepositorio = new UsuarioRepositorio();
-            var publicacaoRepositorio = new PublicacaoRepositorio();
+
 
             Publicacao publicacao = new Publicacao()
             {
@@ -31,6 +32,10 @@ namespace TuiTche.WEB.MVC.Controllers
             };
             publicacaoRepositorio.Criar(publicacao);
             return PartialView();
+        }
+        public ActionResult LisatPublicacoes()
+        {
+            return null;
         }
     }
 }
