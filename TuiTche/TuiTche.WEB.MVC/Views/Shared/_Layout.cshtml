@@ -8,8 +8,11 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body class="sky-background">
+<body class="sky-background">    
     <header class="navbar-fixed-top meuHeader">
+        <div style="position: fixed; top: 0; right: 0">
+            <img src="~/Content/img/quero-quero.png" class="quero-quero-background" />
+        </div>
         <div class="container clearfix">
             <img src="~/Content/img/logo.png" class="foto-logo" />
             @Html.ActionLink("TuiTchê", "Index", "Home", new { area = "" }, new { @class = "texto-logo" })
@@ -35,7 +38,7 @@
     </div>
 
     <footer class="navbar-fixed-bottom container">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <p>&copy; TuiTchê @DateTime.Now.Year - Alguns direitos reservados.</p>
     </footer>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

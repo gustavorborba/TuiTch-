@@ -78,3 +78,9 @@ textarea {
     background: linear-gradient(to bottom,  #ffffff 0%,#f2fdff 52%,#ffffff 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
+
+.quero-quero-background {
+    position: relative;
+    top: 100px;
+    right: 200px;
+}
