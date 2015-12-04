@@ -9,5 +9,11 @@ namespace TuiTche.Dominio
     public class Hashtag : EntidadeBase
     {
         public String Palavra { get; set; }
+        public virtual ICollection<Publicacao> Publicacoes { get; set; }
+
+        public Hashtag()
+        {
+            Publicacoes = new List<Publicacao>();
+        }
     }
 }

@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TuiTche.WEB.MVC</RootNamespace>
     <AssemblyName>TuiTche.WEB.MVC</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,22 +57,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -104,6 +106,24 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
+    <EntityDeploy Include="ModeloER.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloER.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ModeloER.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloER.edmx</DependentUpon>
+      <LastGenOutput>ModeloER.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeloER.edmx.diagram">
+      <DependentUpon>ModeloER.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModeloER.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloER.edmx</DependentUpon>
+      <LastGenOutput>ModeloER.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -112,15 +132,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Compartilhar.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TimelineController.cs" />
+    <Compile Include="Curtir.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hashtag.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloER.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloER.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloER.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloER.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloER.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListaDeMensagensModel.cs" />
+    <Compile Include="Models\MensagemModel.cs" />
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
     <Compile Include="Controllers\PublicacaoController.cs" />
     <Compile Include="Models\PublicarModel.cs" />
+    <Compile Include="PalavraGauderia.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pontuacao.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publicacao.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
     <Compile Include="Seguranca\ControleDeSessao.cs" />
+    <Compile Include="Sexo.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>ModeloER.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -134,6 +197,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Publicacao\Index.cshtml" />
     <Content Include="Views\Publicacao\_Publicar.cshtml" />
+    <Content Include="Views\Timeline\BuscarPorHash.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +221,9 @@
       <Project>{285c8730-a471-48c4-b057-d96df255633b}</Project>
       <Name>TuiTche.Repositorio.EF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

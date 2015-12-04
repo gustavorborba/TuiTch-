@@ -15,6 +15,13 @@ namespace TuiTche.Repositorio.EF.Mapping
             ToTable("Hashtag");
             HasKey(h => h.Id);
             Property(h => h.Palavra).IsRequired().HasColumnName("Palavra");
+            HasMany<Publicacao>(s => s.Publicacoes).WithMany(c => c.Hashtags)
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("IdHashtag");
+                    cs.MapRightKey("IdPublicacao");
+                    cs.ToTable("PublicacaoHashtags");
+                });   
         }
 
     }

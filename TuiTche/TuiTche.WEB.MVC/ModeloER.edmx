@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TuiTcheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Compartilhar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataCompartilhamento" Type="datetime" Nullable="false" />
+          <Property Name="IdPublicacao" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curtir">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPublicacao" Type="int" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hashtag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Palavra" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PalavraGauderia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDHashtag" Type="int" Nullable="false" />
+          <Property Name="QtdUtilizacao" Type="int" />
+        </EntityType>
+        <EntityType Name="Pontuacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PontuacaoTotal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publicacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="288" Nullable="false" />
+          <Property Name="DataPublicacao" Type="datetime" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublicacaoHashtags">
+          <Key>
+            <PropertyRef Name="IdHashtag" />
+            <PropertyRef Name="IdPublicacao" />
+          </Key>
+          <Property Name="IdHashtag" Type="int" Nullable="false" />
+          <Property Name="IdPublicacao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seguidores">
+          <Key>
+            <PropertyRef Name="IdSeguidores" />
+          </Key>
+          <Property Name="IdSeguidores" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSeguidor" Type="int" Nullable="false" />
+          <Property Name="IdSeguindo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomeCompleto" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Senha" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="IdSexoUsuario" Type="int" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao">
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Compartilhar" Type="Self.Compartilhar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicacao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compartilhar">
+              <PropertyRef Name="IdPublicacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Compartilhar_dbo_Usuario_IdUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Compartilhar" Type="Self.Compartilhar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compartilhar">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Curtir_dbo_Publicacao_IDPublicacao">
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Curtir" Type="Self.Curtir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicacao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Curtir">
+              <PropertyRef Name="IDPublicacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Curtir_dbo_Usuario_IDUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Curtir" Type="Self.Curtir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Curtir">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag">
+          <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PalavraGauderia" Type="Self.PalavraGauderia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hashtag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PalavraGauderia">
+              <PropertyRef Name="IDHashtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pontuacao_dbo_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Pontuacao" Type="Self.Pontuacao" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pontuacao">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publicacao_dbo_Usuario_IdUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publicacao">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PublicacaoHashtags_dbo_Hashtag_IdHashtag">
+          <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PublicacaoHashtags" Type="Self.PublicacaoHashtags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hashtag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicacaoHashtags">
+              <PropertyRef Name="IdHashtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PublicacaoHashtags_dbo_Publicacao_IdPublicacao">
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PublicacaoHashtags" Type="Self.PublicacaoHashtags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicacao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicacaoHashtags">
+              <PropertyRef Name="IdPublicacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Seguidores_dbo_Usuario_IdSeguidor">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidores" Type="Self.Seguidores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidores">
+              <PropertyRef Name="IdSeguidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Seguidores_dbo_Usuario_IdSeguindo">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidores" Type="Self.Seguidores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidores">
+              <PropertyRef Name="IdSeguindo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdSexoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TuiTcheModelStoreContainer">
+          <EntitySet Name="Compartilhar" EntityType="Self.Compartilhar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curtir" EntityType="Self.Curtir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hashtag" EntityType="Self.Hashtag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PalavraGauderia" EntityType="Self.PalavraGauderia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pontuacao" EntityType="Self.Pontuacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicacao" EntityType="Self.Publicacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicacaoHashtags" EntityType="Self.PublicacaoHashtags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seguidores" EntityType="Self.Seguidores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao" Association="Self.FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao">
+            <End Role="Publicacao" EntitySet="Publicacao" />
+            <End Role="Compartilhar" EntitySet="Compartilhar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Compartilhar_dbo_Usuario_IdUsuario" Association="Self.FK_dbo_Compartilhar_dbo_Usuario_IdUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Compartilhar" EntitySet="Compartilhar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Curtir_dbo_Publicacao_IDPublicacao" Association="Self.FK_dbo_Curtir_dbo_Publicacao_IDPublicacao">
+            <End Role="Publicacao" EntitySet="Publicacao" />
+            <End Role="Curtir" EntitySet="Curtir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Curtir_dbo_Usuario_IDUsuario" Association="Self.FK_dbo_Curtir_dbo_Usuario_IDUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Curtir" EntitySet="Curtir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag" Association="Self.FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag">
+            <End Role="Hashtag" EntitySet="Hashtag" />
+            <End Role="PalavraGauderia" EntitySet="PalavraGauderia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pontuacao_dbo_Usuario_Id" Association="Self.FK_dbo_Pontuacao_dbo_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pontuacao" EntitySet="Pontuacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publicacao_dbo_Usuario_IdUsuario" Association="Self.FK_dbo_Publicacao_dbo_Usuario_IdUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Publicacao" EntitySet="Publicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PublicacaoHashtags_dbo_Hashtag_IdHashtag" Association="Self.FK_dbo_PublicacaoHashtags_dbo_Hashtag_IdHashtag">
+            <End Role="Hashtag" EntitySet="Hashtag" />
+            <End Role="PublicacaoHashtags" EntitySet="PublicacaoHashtags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PublicacaoHashtags_dbo_Publicacao_IdPublicacao" Association="Self.FK_dbo_PublicacaoHashtags_dbo_Publicacao_IdPublicacao">
+            <End Role="Publicacao" EntitySet="Publicacao" />
+            <End Role="PublicacaoHashtags" EntitySet="PublicacaoHashtags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Seguidores_dbo_Usuario_IdSeguidor" Association="Self.FK_dbo_Seguidores_dbo_Usuario_IdSeguidor">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguidores" EntitySet="Seguidores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Seguidores_dbo_Usuario_IdSeguindo" Association="Self.FK_dbo_Seguidores_dbo_Usuario_IdSeguindo">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguidores" EntitySet="Seguidores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario" Association="Self.FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TuiTcheModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Compartilhar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataCompartilhamento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdPublicacao" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Publicacao" Relationship="Self.FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao" FromRole="Compartilhar" ToRole="Publicacao" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Compartilhar_dbo_Usuario_IdUsuario" FromRole="Compartilhar" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Curtir">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPublicacao" Type="Int32" Nullable="false" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Publicacao" Relationship="Self.FK_dbo_Curtir_dbo_Publicacao_IDPublicacao" FromRole="Curtir" ToRole="Publicacao" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Curtir_dbo_Usuario_IDUsuario" FromRole="Curtir" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Hashtag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Palavra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PalavraGauderia" Relationship="Self.FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag" FromRole="Hashtag" ToRole="PalavraGauderia" />
+          <NavigationProperty Name="Publicacao" Relationship="TuiTcheModel.PublicacaoHashtags" FromRole="Hashtag" ToRole="Publicacao" />
+        </EntityType>
+        <EntityType Name="PalavraGauderia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDHashtag" Type="Int32" Nullable="false" />
+          <Property Name="QtdUtilizacao" Type="Int32" />
+          <NavigationProperty Name="Hashtag" Relationship="Self.FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag" FromRole="PalavraGauderia" ToRole="Hashtag" />
+        </EntityType>
+        <EntityType Name="Pontuacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PontuacaoTotal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Pontuacao_dbo_Usuario_Id" FromRole="Pontuacao" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Publicacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="288" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataPublicacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compartilhar" Relationship="Self.FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao" FromRole="Publicacao" ToRole="Compartilhar" />
+          <NavigationProperty Name="Curtir" Relationship="Self.FK_dbo_Curtir_dbo_Publicacao_IDPublicacao" FromRole="Publicacao" ToRole="Curtir" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Publicacao_dbo_Usuario_IdUsuario" FromRole="Publicacao" ToRole="Usuario" />
+          <NavigationProperty Name="Hashtag" Relationship="TuiTcheModel.PublicacaoHashtags" FromRole="Publicacao" ToRole="Hashtag" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Sexo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario" FromRole="Sexo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeCompleto" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSexoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Compartilhar" Relationship="Self.FK_dbo_Compartilhar_dbo_Usuario_IdUsuario" FromRole="Usuario" ToRole="Compartilhar" />
+          <NavigationProperty Name="Curtir" Relationship="Self.FK_dbo_Curtir_dbo_Usuario_IDUsuario" FromRole="Usuario" ToRole="Curtir" />
+          <NavigationProperty Name="Pontuacao" Relationship="Self.FK_dbo_Pontuacao_dbo_Usuario_Id" FromRole="Usuario" ToRole="Pontuacao" />
+          <NavigationProperty Name="Publicacao" Relationship="Self.FK_dbo_Publicacao_dbo_Usuario_IdUsuario" FromRole="Usuario" ToRole="Publicacao" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario" FromRole="Usuario" ToRole="Sexo" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.Seguidores" FromRole="Usuario" ToRole="Usuario1" />
+          <NavigationProperty Name="Usuario2" Relationship="Self.Seguidores" FromRole="Usuario1" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao">
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Compartilhar" Type="Self.Compartilhar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicacao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compartilhar">
+              <PropertyRef Name="IdPublicacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Compartilhar_dbo_Usuario_IdUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Compartilhar" Type="Self.Compartilhar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compartilhar">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Curtir_dbo_Publicacao_IDPublicacao">
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Curtir" Type="Self.Curtir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicacao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Curtir">
+              <PropertyRef Name="IDPublicacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Curtir_dbo_Usuario_IDUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Curtir" Type="Self.Curtir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Curtir">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag">
+          <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PalavraGauderia" Type="Self.PalavraGauderia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hashtag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PalavraGauderia">
+              <PropertyRef Name="IDHashtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pontuacao_dbo_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Pontuacao" Type="Self.Pontuacao" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pontuacao">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publicacao_dbo_Usuario_IdUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Publicacao" Type="Self.Publicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publicacao">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdSexoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Seguidores">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TuiTcheEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Compartilhar" EntityType="Self.Compartilhar" />
+          <EntitySet Name="Curtir" EntityType="Self.Curtir" />
+          <EntitySet Name="Hashtag" EntityType="Self.Hashtag" />
+          <EntitySet Name="PalavraGauderia" EntityType="Self.PalavraGauderia" />
+          <EntitySet Name="Pontuacao" EntityType="Self.Pontuacao" />
+          <EntitySet Name="Publicacao" EntityType="Self.Publicacao" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao" Association="Self.FK_dbo_Compartilhar_dbo_Publicacao_IdPublicacao">
+            <End Role="Publicacao" EntitySet="Publicacao" />
+            <End Role="Compartilhar" EntitySet="Compartilhar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Compartilhar_dbo_Usuario_IdUsuario" Association="Self.FK_dbo_Compartilhar_dbo_Usuario_IdUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Compartilhar" EntitySet="Compartilhar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Curtir_dbo_Publicacao_IDPublicacao" Association="Self.FK_dbo_Curtir_dbo_Publicacao_IDPublicacao">
+            <End Role="Publicacao" EntitySet="Publicacao" />
+            <End Role="Curtir" EntitySet="Curtir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Curtir_dbo_Usuario_IDUsuario" Association="Self.FK_dbo_Curtir_dbo_Usuario_IDUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Curtir" EntitySet="Curtir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag" Association="Self.FK_dbo_PalavraGauderia_dbo_Hashtag_IDHashtag">
+            <End Role="Hashtag" EntitySet="Hashtag" />
+            <End Role="PalavraGauderia" EntitySet="PalavraGauderia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pontuacao_dbo_Usuario_Id" Association="Self.FK_dbo_Pontuacao_dbo_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pontuacao" EntitySet="Pontuacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publicacao_dbo_Usuario_IdUsuario" Association="Self.FK_dbo_Publicacao_dbo_Usuario_IdUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Publicacao" EntitySet="Publicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario" Association="Self.FK_dbo_Usuario_dbo_Sexo_IdSexoUsuario">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="Seguidores" Association="Self.Seguidores">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Usuario1" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="PublicacaoHashtags" Association="TuiTcheModel.PublicacaoHashtags">
+            <End Role="Hashtag" EntitySet="Hashtag" />
+            <End Role="Publicacao" EntitySet="Publicacao" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="PublicacaoHashtags">
+          <End Type="TuiTcheModel.Hashtag" Role="Hashtag" Multiplicity="*" />
+          <End Type="TuiTcheModel.Publicacao" Role="Publicacao" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TuiTcheModelStoreContainer" CdmEntityContainer="TuiTcheEntities">
+          <EntitySetMapping Name="Compartilhar">
+            <EntityTypeMapping TypeName="TuiTcheModel.Compartilhar">
+              <MappingFragment StoreEntitySet="Compartilhar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataCompartilhamento" ColumnName="DataCompartilhamento" />
+                <ScalarProperty Name="IdPublicacao" ColumnName="IdPublicacao" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curtir">
+            <EntityTypeMapping TypeName="TuiTcheModel.Curtir">
+              <MappingFragment StoreEntitySet="Curtir">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IDPublicacao" ColumnName="IDPublicacao" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hashtag">
+            <EntityTypeMapping TypeName="TuiTcheModel.Hashtag">
+              <MappingFragment StoreEntitySet="Hashtag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Palavra" ColumnName="Palavra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PalavraGauderia">
+            <EntityTypeMapping TypeName="TuiTcheModel.PalavraGauderia">
+              <MappingFragment StoreEntitySet="PalavraGauderia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IDHashtag" ColumnName="IDHashtag" />
+                <ScalarProperty Name="QtdUtilizacao" ColumnName="QtdUtilizacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pontuacao">
+            <EntityTypeMapping TypeName="TuiTcheModel.Pontuacao">
+              <MappingFragment StoreEntitySet="Pontuacao">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PontuacaoTotal" ColumnName="PontuacaoTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publicacao">
+            <EntityTypeMapping TypeName="TuiTcheModel.Publicacao">
+              <MappingFragment StoreEntitySet="Publicacao">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="DataPublicacao" ColumnName="DataPublicacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexo">
+            <EntityTypeMapping TypeName="TuiTcheModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sexo1" ColumnName="Sexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="TuiTcheModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="IdSexoUsuario" ColumnName="IdSexoUsuario" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Seguidores" TypeName="TuiTcheModel.Seguidores" StoreEntitySet="Seguidores">
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="Id" ColumnName="IdSeguidor" />
+            </EndProperty>
+            <EndProperty Name="Usuario1">
+              <ScalarProperty Name="Id" ColumnName="IdSeguindo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PublicacaoHashtags" TypeName="TuiTcheModel.PublicacaoHashtags" StoreEntitySet="PublicacaoHashtags">
+            <EndProperty Name="Publicacao">
+              <ScalarProperty Name="Id" ColumnName="IdPublicacao" />
+            </EndProperty>
+            <EndProperty Name="Hashtag">
+              <ScalarProperty Name="Id" ColumnName="IdHashtag" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
