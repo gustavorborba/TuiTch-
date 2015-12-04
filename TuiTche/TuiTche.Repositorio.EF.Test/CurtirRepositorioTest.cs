@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
-using TwiTche.Repositorio.EF.Repositorios;
+using TuiTche.Repositorio.EF.Repositorios;
 
 namespace TuiTche.Repositorio.EF.Test
 {

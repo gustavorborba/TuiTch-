@@ -1,6 +1,6 @@
 ﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-    <textarea class="form-control row" style="margin-left:435px;" name="comment" placeholder="Fala Tchê!?"></textarea>
+    <textarea class="form-control row" id="textoPublicacao" style="margin-left:435px;" name="comment" placeholder="Fala Tchê!?"></textarea>
 
         <input id="btnPublicar" class="btn-default btn" type="button" value="Publicar" />
 
@@ -20,9 +20,10 @@
                 tag = match.slice(0, 1);
                 textoTag = match.slice(1);
             })
-            else if(matchesUser) matchesUser.forEach(function (match){
+            if(matchesUser) matchesUser.forEach(function (match){
                 arroba = match.slice(0, 1);
                 textoUsuario = match.slice(1);
+                console.log(textoUsuario);
             });
 
 
@@ -34,7 +35,7 @@
                 'user': textoUsuario,
                 'conteudo': text
             });
-
+            ($('textarea').val(''))
             $.ajax({
                 url: '/Publicacao/Publicar',
                 type: 'POST',

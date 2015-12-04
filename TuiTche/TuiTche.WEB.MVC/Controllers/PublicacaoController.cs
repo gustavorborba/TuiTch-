@@ -23,6 +23,8 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             var usuarioRepositorio = new UsuarioRepositorio();
 
+            var publicacaoRepositorio = new PublicacaoRepositorio();
+            var hashtagRepositorio = new HashtagRepositorio();
 
             Publicacao publicacao = new Publicacao()
             {

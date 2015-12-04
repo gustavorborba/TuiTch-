@@ -36,5 +36,6 @@ namespace TuiTche.Repositorio.EF
                     //select* from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguidores where s.IdSeguidor = 5
             }
         }
+
     }
 }

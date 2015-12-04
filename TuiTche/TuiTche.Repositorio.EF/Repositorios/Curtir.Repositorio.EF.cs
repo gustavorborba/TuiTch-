@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TuiTche.Repositorio.EF;
 using TuiTche.Dominio;
 
-namespace TwiTche.Repositorio.EF.Repositorios
+namespace TuiTche.Repositorio.EF.Repositorios
 {
     public class CurtirRepositorio
     {

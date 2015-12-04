@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF;
 
-namespace TwiTche.Repositorio.EF
+namespace TuiTche.Repositorio.EF
 {
     public class CompartilharRepositorio
     {

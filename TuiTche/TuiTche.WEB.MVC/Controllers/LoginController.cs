@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TuiTche.Dominio.Services.Criptografia;
+using TuiTche.Repositorio.EF;
 using TuiTche.WEB.MVC.Models;
 using TuiTche.WEB.MVC.Seguranca;
-using TwiTche.Repositorio.EF;
 
 namespace TuiTche.WEB.MVC.Controllers
 {

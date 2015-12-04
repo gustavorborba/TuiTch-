@@ -7,7 +7,7 @@ using TuiTche.Dominio;
 using TuiTche.Dominio.Interfaces;
 using TuiTche.Repositorio.EF;
 
-namespace TwiTche.Repositorio.EF
+namespace TuiTche.Repositorio.EF
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
