@@ -3,21 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - TwiTchê</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
+<body class="sky-background">
     <header class="navbar-fixed-top meuHeader">
         <div class="container clearfix">
             <img src="~/Content/img/logo.png" class="foto-logo" />
-            @Html.ActionLink("TuiTche", "Index", "Home", new { area = "" }, new { @class = "texto-logo" })
+            @Html.ActionLink("TuiTchê", "Index", "Home", new { area = "" }, new { @class = "texto-logo" })
 
-            <input type="text" id="buscaUsuario" class="campo-busca-usuario pull-left" placeholder="Buscar usuarios..." ></input>
-        
-            <div id="usuario-info" class="pull-left" >
+            <input type="text" id="buscaUsuario" class="campo-busca-usuario pull-left" placeholder="Buscar usuarios..."></input>
+
+            <div id="usuario-info" class="pull-right">
                 <img src="~/Content/img/logo.png" class="foto-perfil" />
+                <div class="pull-left info-usuario">
+                    <ul style="list-style-type:none">
+                        <li class="nome-usuario">Usuario</li>
+                        <li class="classiicacao">Ranking</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -25,7 +31,7 @@
     <div class="container body-content marginTop">
         @RenderBody()
         <hr />
-        
+
     </div>
 
     <footer class="navbar-fixed-bottom container">

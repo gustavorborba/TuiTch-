@@ -55,4 +55,26 @@ textarea {
 .campo-busca-usuario {
     margin: 27px 0 0 70px;
     width: 240px;
+    border-radius: 10px;
+}
+
+.info-usuario {
+    padding-top: 25px;
+    margin-left: -25px;
+}
+
+.nome-usuario {
+    font-weight: bold;
+}
+
+.classiicacao {
+    font-size: 10px;
+  line-height: 14px;
+}
+
+.sky-background {
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f2fdff 52%, #ffffff 100%); 
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f2fdff 52%,#ffffff 100%); 
+    background: linear-gradient(to bottom,  #ffffff 0%,#f2fdff 52%,#ffffff 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
