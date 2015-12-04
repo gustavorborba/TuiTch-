@@ -54,7 +54,7 @@ namespace TuiTche.Repositorio.EF.Test
                         db.Entry(usuario1).State = System.Data.Entity.EntityState.Added;
                         db.Entry(usuario2).State = System.Data.Entity.EntityState.Added;
                         db.Entry(usuario3).State = System.Data.Entity.EntityState.Added;
-
+                        db.SaveChanges();
                         Usuario teste = db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Username == usuario1.Username);
 
 

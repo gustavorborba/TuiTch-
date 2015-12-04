@@ -106,24 +106,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ClassDiagram1.cd" />
-    <EntityDeploy Include="ModeloER.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloER.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ModeloER.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloER.edmx</DependentUpon>
-      <LastGenOutput>ModeloER.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModeloER.edmx.diagram">
-      <DependentUpon>ModeloER.edmx</DependentUpon>
-    </Content>
-    <Content Include="ModeloER.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloER.edmx</DependentUpon>
-      <LastGenOutput>ModeloER.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -132,58 +114,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Compartilhar.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\TimelineController.cs" />
-    <Compile Include="Curtir.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Hashtag.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloER.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloER.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloER.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloER.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloER.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ListaDeMensagensModel.cs" />
     <Compile Include="Models\MensagemModel.cs" />
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
     <Compile Include="Controllers\PublicacaoController.cs" />
     <Compile Include="Models\PublicarModel.cs" />
-    <Compile Include="PalavraGauderia.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pontuacao.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Publicacao.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
     <Compile Include="Seguranca\ControleDeSessao.cs" />
-    <Compile Include="Sexo.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>ModeloER.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

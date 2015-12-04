@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201512031522061_initial.Designer.cs">
       <DependentUpon>201512031522061_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512041311107_update-publicacao-hashtag.cs" />
+    <Compile Include="Migrations\201512041311107_update-publicacao-hashtag.Designer.cs">
+      <DependentUpon>201512041311107_update-publicacao-hashtag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Curtir.Repositorio.EF.cs" />
@@ -83,6 +87,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512031522061_initial.resx">
       <DependentUpon>201512031522061_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512041311107_update-publicacao-hashtag.resx">
+      <DependentUpon>201512041311107_update-publicacao-hashtag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
