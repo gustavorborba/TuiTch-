@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace TuiTche.Repositorio.EF
         {
             using(BancoDeDados bd = new BancoDeDados())
             {
-                bd.Entry(publicacao).State = System.Data.Entity.EntityState.Added;
+                bd.Publicacao.Add(publicacao);
                 return bd.SaveChanges();
             }
         }

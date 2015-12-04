@@ -18,19 +18,19 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             return View();
         }
-        public ActionResult Publicar(PublicarModel publicar)
+        public ActionResult Publicar(String hashTag, String user, String conteudo)
         {
             var usuarioRepositorio = new UsuarioRepositorio();
             var publicacaoRepositorio = new PublicacaoRepositorio();
 
-            publicacaoRepositorio.Criar(new Publicacao()
+            Publicacao publicacao = new Publicacao()
             {
-                Descricao = publicar.Conteudo,
+                Descricao = conteudo,
                 DataPublicacao = DateTime.Now,
-                Usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username)
-            });
-            return null;
+                IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id               
+            };
+            publicacaoRepositorio.Criar(publicacao);
+            return PartialView();
         }
-        }
+    }
 }
-

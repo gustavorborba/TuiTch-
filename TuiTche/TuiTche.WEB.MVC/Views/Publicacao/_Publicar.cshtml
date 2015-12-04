@@ -1,0 +1,45 @@
+﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <textarea class="form-control row" style="margin-left:435px;" name="comment" placeholder="Fala Tchê!?"></textarea>
+
+        <input id="btnPublicar" class="btn-default btn" type="button" value="Publicar" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        var tag;
+        var text;
+        var textoTag;
+        var textoUsuario;
+        var arroba;
+        var textarea = document.querySelector('textarea');
+        textarea.addEventListener('keyup', function () {
+            text = this.value;
+            var matchesTag = text.match(/([#][^\s]+)/g);
+            var matchesUser = text.match(/([@@][^\s]+)/g);
+            if (matchesTag) matchesTag.forEach(function (match) {
+                tag = match.slice(0, 1);
+                textoTag = match.slice(1);
+            })
+            else if(matchesUser) matchesUser.forEach(function (match){
+                arroba = match.slice(0, 1);
+                textoUsuario = match.slice(1);
+            });
+
+
+        });
+        $("#btnPublicar").click(function () {
+
+            var dataObject = JSON.stringify({
+                'hashTag': textoTag,
+                'user': textoUsuario,
+                'conteudo': text
+            });
+
+            $.ajax({
+                url: '/Publicacao/Publicar',
+                type: 'POST',
+                contentType: 'application/json',
+                data: dataObject
+            });
+        });
+    </script>
