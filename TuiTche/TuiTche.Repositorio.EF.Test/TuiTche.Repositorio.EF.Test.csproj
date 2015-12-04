@@ -63,6 +63,7 @@
     <Compile Include="Compartilhar.Repositorio.EF.Test.cs" />
     <Compile Include="CurtirRepositorioTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Comentario.Repositorio.EF.Test.cs" />
     <Compile Include="Usuario.Repositorio.EF.Test.cs" />
     <Compile Include="Publicacao.Repositorio.EF.Test.cs" />
   </ItemGroup>

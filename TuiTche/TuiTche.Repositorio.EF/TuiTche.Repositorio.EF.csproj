@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="Mapping\CompartilharMap.cs" />
+    <Compile Include="Mapping\ComentarioMap .cs" />
     <Compile Include="Mapping\CurtirMap.cs" />
     <Compile Include="Mapping\HashtagMap.cs" />
     <Compile Include="Mapping\PalavraGauderiaMap.cs" />
@@ -66,10 +67,15 @@
     <Compile Include="Migrations\201512041311107_update-publicacao-hashtag.Designer.cs">
       <DependentUpon>201512041311107_update-publicacao-hashtag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512041616506_Comentario.cs" />
+    <Compile Include="Migrations\201512041616506_Comentario.Designer.cs">
+      <DependentUpon>201512041616506_Comentario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Curtir.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Publicacao.Repostiorio.EF.cs" />
+    <Compile Include="Repositorios\Comentario.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Usuario.Repositorio.EF.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512041311107_update-publicacao-hashtag.resx">
       <DependentUpon>201512041311107_update-publicacao-hashtag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512041616506_Comentario.resx">
+      <DependentUpon>201512041616506_Comentario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

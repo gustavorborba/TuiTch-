@@ -26,6 +26,7 @@ namespace TuiTche.Repositorio.EF
         public DbSet<Curtir> Curtir { get; set; }
         public DbSet<PalavraGauderia> PalavraGauderia { get; set; }
         public DbSet<Compartilhar> Compartilhar { get; set; }
+        public DbSet<Comentario> Comentario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,6 +37,7 @@ namespace TuiTche.Repositorio.EF
             modelBuilder.Configurations.Add(new CurtirMap());
             modelBuilder.Configurations.Add(new CompartilharMap());
             modelBuilder.Configurations.Add(new PalavraGauderiaMap());
+            modelBuilder.Configurations.Add(new ComentarioMap());
             base.OnModelCreating(modelBuilder);
         }
     }

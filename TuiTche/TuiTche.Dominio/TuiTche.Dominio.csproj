@@ -49,10 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comentario.cs" />
     <Compile Include="Compartilhar.cs" />
     <Compile Include="Curtir.cs" />
     <Compile Include="EntidadeBase.cs" />
     <Compile Include="Hashtag.cs" />
+    <Compile Include="Interfaces\IComentarioRepositorio.cs" />
     <Compile Include="Interfaces\IUsuarioRepositorio.cs" />
     <Compile Include="PalavraGauderia.cs" />
     <Compile Include="Pontuacao.cs" />
