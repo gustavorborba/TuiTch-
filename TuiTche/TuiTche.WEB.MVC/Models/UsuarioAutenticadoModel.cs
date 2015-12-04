@@ -13,11 +13,13 @@ namespace TuiTche.WEB.MVC.Models
         public string Username { get;  set; }
         [Required(ErrorMessage = "Campo Obrigatorio")]
         public string Senha { get;  set; }
+        public int IdUsuario { get; set; }
 
         public UsuarioAutenticadoModel(Usuario usuario)
         {
             this.Username = usuario.Username;
             this.Senha = usuario.Senha;
+            this.IdUsuario = usuario.Id;
         }
 
         public UsuarioAutenticadoModel()

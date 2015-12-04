@@ -1,0 +1,8 @@
+﻿@model TuiTche.WEB.MVC.Models.ListaDePublicacaoModel
+
+@foreach (var publicacao in Model.ListaPublicacoes)
+{
+    <div>
+        <p>@publicacao.Mensagem</p>
+    </div>
+}

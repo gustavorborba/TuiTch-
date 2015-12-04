@@ -140,6 +140,7 @@
     <Content Include="Views\Publicacao\Index.cshtml" />
     <Content Include="Views\Publicacao\_Publicar.cshtml" />
     <Content Include="Views\Timeline\BuscarPorHash.cshtml" />
+    <Content Include="Views\Publicacao\_ListarPublicacoes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
