@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,18 @@ namespace TuiTche.Repositorio.EF
         }
         public int Criar(Publicacao publicacao)
         {
-            using(BancoDeDados bd = new BancoDeDados())
+            using(banco = new BancoDeDados())
             {
-                bd.Publicacao.Add(publicacao);
-                return bd.SaveChanges();
+                banco.Publicacao.Add(publicacao);
+                return banco.SaveChanges();
+            }
+        }
+        public IList<Publicacao> ListarPublicacoesDeUsuario(int id)
+        {
+            using (banco = new BancoDeDados())
+            {
+                 return banco.Publicacao.SqlQuery("select * from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguidores where s.IdSeguidor = @param",new SqlParameter("param",id)).ToList();
+                    //select* from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguidores where s.IdSeguidor = 5
             }
         }
     }

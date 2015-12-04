@@ -21,5 +21,12 @@ namespace TuiTche.Repositorio.EF.Test
 
             Assert.AreEqual(publicacao.Descricao, "Odin master of the gods");
         }
+        [TestMethod]
+        public void BuscarPublicacoesDeSeguidores()
+        {
+            PublicacaoRepositorio repositorio = new PublicacaoRepositorio();
+            var teste = repositorio.ListarPublicacoesDeUsuario(4);
+            Assert.AreEqual("aaa222a", teste.FirstOrDefault().Descricao);
+        }
     }
 }
