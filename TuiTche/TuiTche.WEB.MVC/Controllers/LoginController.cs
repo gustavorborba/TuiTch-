@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TuiTche.Dominio.Services.Criptografia;
 using TuiTche.WEB.MVC.Models;
+using TuiTche.WEB.MVC.Seguranca;
 using TwiTche.Repositorio.EF;
 
 namespace TuiTche.WEB.MVC.Controllers
@@ -16,6 +17,7 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LoginUsuario(UsuarioAutenticadoModel usuario)
@@ -26,11 +28,11 @@ namespace TuiTche.WEB.MVC.Controllers
                 var usuarioAutenticado = autenticar.validarUsuario(usuario.Username, usuario.Senha);
                 if(usuarioAutenticado != null)
                 {
-                    
+                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
+                    return RedirectToAction("Index", "Publicacao");
                 }
-
             }
-            return null;
+            return View("Index", usuario);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TuiTche.WEB.MVC.Seguranca
         public static void CriarSessaoDeUsuario(Usuario usuario)
         {
             var usuarioLogado = new UsuarioAutenticadoModel(usuario);
-            FormsAuthentication.SetAuthCookie(usuarioLogado.Username, true);
+            FormsAuthentication.SetAuthCookie(usuarioLogado.Username,true);
             HttpContext.Current.Session[USUARIOATUAL] = usuarioLogado;
         }
 
