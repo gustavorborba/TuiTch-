@@ -32,38 +32,39 @@ namespace TuiTche.Repositorio.EF.Test
         {
             Texto = "Teste"
         };
+        /* 
+       [TestMethod]
+       public void TestarIntegracaoDeComentario()
+       {
+           using (var db = new BancoDeDados())
+           {
+               using (var dbContextTransaction = db.Database.BeginTransaction())
+               {
+                   try
+                   {
+                       publiccao.Usuario = usuario;
+                       comentario.Usuario = usuario;
+                       comentario.Publicacao = publiccao;
 
-        [TestMethod]
-        public void TestarIntegracaoDeComentario()
-        {
-            using (var db = new BancoDeDados())
-            {
-                using (var dbContextTransaction = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        publiccao.Usuario = usuario;
-                        comentario.Usuario = usuario;
-                        comentario.Publicacao = publiccao;
+                       db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                       db.Entry(publiccao).State = System.Data.Entity.EntityState.Added;
+                       db.Entry(comentario).State = System.Data.Entity.EntityState.Added;
+                       db.SaveChanges();
 
-                        db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
-                        db.Entry(publiccao).State = System.Data.Entity.EntityState.Added;
-                        db.Entry(comentario).State = System.Data.Entity.EntityState.Added;
-                        db.SaveChanges();
+                       Comentario teste = db.Comentario.Where(c => c.Usuario.Username == usuario.Username).FirstOrDefault();
 
-                        Comentario teste = db.Comentario.Where(c => c.Usuario.Username == usuario.Username).FirstOrDefault();
 
-                        Assert.IsTrue(comentario.Texto.Equals(teste.Texto));
-                        Assert.AreEqual(comentario.Usuario.NomeCompleto, teste.Usuario.NomeCompleto);
-                        Assert.AreEqual(publiccao.Descricao, teste.Publicacao.Descricao);
-                    }
+                       Assert.IsTrue(comentario.Texto.Equals(teste.Texto));
+                       Assert.AreEqual(comentario.Usuario.NomeCompleto, teste.Usuario.NomeCompleto);
+                       Assert.AreEqual(publiccao.Descricao, teste.Publicacao.Descricao);
+    }
                     finally
                     {
                         dbContextTransaction.Rollback();
                     }                    
                 }
             }
-        }
+        }*/
 
     }
 }
