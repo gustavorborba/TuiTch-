@@ -39,7 +39,7 @@ namespace TuiTche.Repositorio.EF.Test
             SexoUsuario = Usuario.Sexo.FEMININO,
             Foto = "link"
         };
-
+        /*
         [TestMethod]
         public void TestarIntegracaoDeUsuarioRelacionamentoDeSeguidores()
         {
@@ -75,6 +75,6 @@ namespace TuiTche.Repositorio.EF.Test
                 }
             }
         }
-
+        */
     }
 }

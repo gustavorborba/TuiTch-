@@ -16,9 +16,10 @@ namespace TuiTche.Repositorio.EF.Test
         {
             CompartilharRepositorio repositorio = new CompartilharRepositorio();
             PublicacaoRepositorio repoPublicacao = new PublicacaoRepositorio();
-            var compartilhar = repositorio.BuscarPorId(1);
-            var publicacao = repoPublicacao.BuscarPorPorId(1);
+
             /*
+             var compartilhar = repositorio.BuscarPorId(1);
+            var publicacao = repoPublicacao.BuscarPorPorId(1);
             Assert.IsNotNull(compartilhar);
             Assert.AreEqual("Oden", compartilhar.Usuario.NomeCompleto);
             Assert.AreEqual(1, compartilhar.Publicacao.Id);

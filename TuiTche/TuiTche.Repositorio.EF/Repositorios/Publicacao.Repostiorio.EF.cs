@@ -32,7 +32,7 @@ namespace TuiTche.Repositorio.EF
         {
             using (banco = new BancoDeDados())
             {
-                 return banco.Publicacao.SqlQuery("select * from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguidores where s.IdSeguidor = @param",new SqlParameter("param",id)).ToList();
+                 return banco.Publicacao.SqlQuery("select * from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo where s.IdSeguidor = @param", new SqlParameter("param",id)).ToList();
                     //select* from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguidores where s.IdSeguidor = 5
             }
         }

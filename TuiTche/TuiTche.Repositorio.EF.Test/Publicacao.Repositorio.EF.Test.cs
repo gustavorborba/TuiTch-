@@ -12,6 +12,7 @@ namespace TuiTche.Repositorio.EF.Test
     [TestClass]
     public class PublicacaoTest
     {
+        /*
         [TestMethod]
         public void BuscarPorIdTest()
         {
@@ -19,14 +20,14 @@ namespace TuiTche.Repositorio.EF.Test
            
             Publicacao publicacao = repositorio.BuscarPorPorId(1);
 
-         //   Assert.AreEqual(publicacao.Descricao, "Odin master of the gods");
+           Assert.AreEqual(publicacao.Descricao, "Odin master of the gods");
         }
         [TestMethod]
         public void BuscarPublicacoesDeSeguidores()
         {
             PublicacaoRepositorio repositorio = new PublicacaoRepositorio();
             var teste = repositorio.ListarPublicacoesDeUsuario(4);
-           // Assert.AreEqual("aaa222a", teste.FirstOrDefault().Descricao);
-        }
+            Assert.AreEqual("aaa222a", teste.FirstOrDefault().Descricao);
+        }*/
     }
 }
