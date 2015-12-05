@@ -59,6 +59,7 @@
     <Compile Include="PalavraGauderia.cs" />
     <Compile Include="Pontuacao.cs" />
     <Compile Include="Publicacao.cs" />
+    <Compile Include="Ranking.cs" />
     <Compile Include="Services\Criptografia\AutenticarUsuario.cs" />
     <Compile Include="Services\IServicoCriptografia.cs" />
     <Compile Include="Usuario.cs" />
