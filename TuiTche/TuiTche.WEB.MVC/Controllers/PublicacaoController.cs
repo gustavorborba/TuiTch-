@@ -43,7 +43,7 @@ namespace TuiTche.WEB.MVC.Controllers
             publicacaoRepositorio.Criar(publicacao);
             return PartialView("_Publicar");
         }
-        public ActionResult ListarPublicacoes()
+        public ActionResult _ListarPublicacoes()
         {
             int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
             var listaDePublicacoes = publicacaoRepositorio.ListarPublicacoesDeUsuario(usuarioAtual);
