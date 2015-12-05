@@ -3,6 +3,10 @@
     ViewBag.Title = "Index";
 }
 
+<span>Seguidores: </span>
+<p id="seguidores"></p>
+<span>Seguindo: </span>
+<p id="seguindo" ></p>
 <h2 class="text-center">Linha do Tempo</h2>
 <body>
     <div class="text-center">
@@ -12,5 +16,17 @@
     <div class="text-center">
         @{Html.RenderAction("_ListarPublicacoes", "Publicacao");}
     </div>
+    <script>
+        var value;
+        $.get("Publicacao/NumeroDeSeguidores", function (data) {
+            value = data;
+            $("#seguidores").html(value);
+
+        });
+        $.get("Publicacao/NumeroDeSeguindo", function (data) {
+            $("#seguindo").html(data);
+        })
+
+    </script>
 </body>
 

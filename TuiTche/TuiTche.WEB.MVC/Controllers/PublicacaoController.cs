@@ -70,5 +70,17 @@ namespace TuiTche.WEB.MVC.Controllers
 
             return PartialView();
         }
+
+        public int NumeroDeSeguidores()
+        {
+            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
+            return usuario.Seguidores.Count;
+        }
+
+        public int NumeroDeSeguindo()
+        {
+            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
+            return usuario.Seguindo.Count;
+        }
     }
 }
