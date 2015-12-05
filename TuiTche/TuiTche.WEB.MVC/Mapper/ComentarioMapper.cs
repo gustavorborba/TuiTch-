@@ -13,8 +13,9 @@ namespace TuiTche.WEB.MVC.Mapper
         {
             ComentarioModel model = new ComentarioModel();
             model.Texto = comentario.Texto;
-            model.Publicacao = comentario.Publicacao;
-            model.Usuario = comentario.Usuario;
+            model.IdPublicacao = comentario.IdPublicacao;
+            model.IdUsuario = comentario.IdUsuario;
+            model.DataComentario = comentario.DataComentario;
 
             return model;
         }
@@ -23,8 +24,9 @@ namespace TuiTche.WEB.MVC.Mapper
         {
             Comentario comentario = new Comentario();
             comentario.Texto = model.Texto;
-            comentario.Publicacao = model.Publicacao;
-            comentario.Usuario = model.Usuario;
+            comentario.IdPublicacao = model.IdPublicacao;
+            comentario.IdUsuario = model.IdUsuario;
+            comentario.DataComentario = model.DataComentario;
 
             return comentario;
         }

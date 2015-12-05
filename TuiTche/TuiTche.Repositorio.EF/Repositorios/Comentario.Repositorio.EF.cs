@@ -13,9 +13,10 @@ namespace TuiTche.Repositorio.EF
     {
         public int Salvar(Comentario comentario)
         {
-            using (var db = new BancoDeDados())
-            {
-                db.Entry(comentario).State = System.Data.Entity.EntityState.Added;
+            using (var db = new BancoDeDados())            
+            {                
+                db.Comentario.Add(comentario);
+
                 return db.SaveChanges();
             }
         }

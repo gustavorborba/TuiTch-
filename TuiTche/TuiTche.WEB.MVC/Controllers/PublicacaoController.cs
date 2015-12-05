@@ -6,8 +6,10 @@ using System.Web.Mvc;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF;
 using TuiTche.Repositorio.EF.Repositorios;
+using TuiTche.WEB.MVC.Mapper;
 using TuiTche.WEB.MVC.Models;
 using TuiTche.WEB.MVC.Seguranca;
+using TuiTche.WEB.MVC.Services;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
@@ -17,6 +19,11 @@ namespace TuiTche.WEB.MVC.Controllers
         HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
+
+        ComentarioService comentarioService = new ComentarioService();
+        UsuarioService usuarioService = new UsuarioService();
+        PublicacaoService publicacaoService = new PublicacaoService();
+
         // GET: Publicacao
         public ActionResult Index()
         {
@@ -69,6 +76,25 @@ namespace TuiTche.WEB.MVC.Controllers
             curtirRepositorio.CurtirPublicacao(idPublicacao, ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
+        }
+
+        public ActionResult _Comentar(int IdPublicacao)
+        {
+            ComentarioModel model = new ComentarioModel()
+            {
+                IdPublicacao = IdPublicacao,
+                IdUsuario = ControleDeSessao.UsuarioAtual.IdUsuario
+            };
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult SalvarComentario(ComentarioModel model)
+        {
+            model.DataComentario = DateTime.Now;
+            comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+
+            return View("Index");
         }
     }
 }

@@ -17,8 +17,11 @@ namespace TuiTche.Repositorio.EF.Mapping
             HasKey(c => c.Id);
             Property(p => p.Texto).IsRequired().HasMaxLength(288).HasColumnName("Texto");
             Property(p => p.DataComentario).IsRequired().HasColumnName("DataComentario");
-            HasRequired(p => p.Usuario).WithMany().Map(c => c.MapKey("IdUsuario"));
-            HasRequired(p => p.Publicacao).WithMany().Map(c => c.MapKey("IdPublicacao"));
+            Property(p => p.IdUsuario).IsRequired().HasColumnName("IdUsuario");
+            Property(p => p.IdPublicacao).IsRequired().HasColumnName("IdPublicacao");
+
+            HasRequired(p => p.Usuario).WithMany().HasForeignKey(p => p.IdUsuario);
+            HasRequired(p => p.Publicacao).WithMany().HasForeignKey(p => p.IdPublicacao);
         }
 
     

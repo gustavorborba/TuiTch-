@@ -8,8 +8,9 @@ namespace TuiTche.WEB.MVC.Models
 {
     public class ComentarioModel
     {
-        public Publicacao Publicacao { get; set; }
+        public int IdPublicacao { get; set; }
         public string Texto { get; set; }
-        public Usuario Usuario { get; set; }
+        public int IdUsuario { get; set; }
+        public DateTime DataComentario { get; set; }
     }
 }
