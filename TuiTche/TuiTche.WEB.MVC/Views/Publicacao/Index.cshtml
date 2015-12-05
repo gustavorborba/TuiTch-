@@ -9,8 +9,8 @@
         @Html.Partial("_Publicar")
     </div>
 
-    <div>
-        @Html.Partial("_ListarPublicacoes")
+    <div class="text-center">
+        @{Html.RenderAction("_ListarPublicacoes", "Publicacao");}
     </div>
 </body>
 
