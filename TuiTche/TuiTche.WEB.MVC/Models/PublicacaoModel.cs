@@ -17,8 +17,8 @@ namespace TuiTche.WEB.MVC.Models
         {
             this.IdPublicacao = publicacao.Id;
             this.Mensagem = publicacao.Descricao;
-            this.NomeUsuario = publicacao.Usuario.NomeCompleto;
             this.IdUsuario = publicacao.IdUsuario;
+            this.NomeUsuario = publicacao.Usuario.NomeCompleto;
         }
     }
 }
