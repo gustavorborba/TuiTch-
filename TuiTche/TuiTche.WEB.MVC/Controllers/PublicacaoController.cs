@@ -64,9 +64,9 @@ namespace TuiTche.WEB.MVC.Controllers
             }
             return publicacao;
         }
-        private ActionResult CurtirPublicacao(int idPublicacao)
+        private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
-            curtirRepositorio.CurtirPublicacao(idPublicacao, ControleDeSessao.UsuarioAtual.IdUsuario);
+            curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
         }
