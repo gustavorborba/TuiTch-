@@ -35,5 +35,21 @@ namespace TuiTche.Repositorio.EF
                 return db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Username == username);
             }
         }
+
+        public IList<Usuario> BuscarTodos()
+        {
+            using(var db = new BancoDeDados())
+            {
+                return db.Usuario.Where(u => u.Username != null).ToList();
+            }
+        }
+
+        public IList<Usuario> BuscarPorUsernameAutocomplete(string term)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Usuario.Where(u => u.Username.Contains(term)).ToList();
+            }
+        }
     }
 }

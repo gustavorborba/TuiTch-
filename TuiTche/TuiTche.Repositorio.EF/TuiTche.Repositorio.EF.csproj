@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -78,10 +80,6 @@
     <Compile Include="Migrations\201512042208411_alter_table_PalavraGauderia.Designer.cs">
       <DependentUpon>201512042208411_alter_table_PalavraGauderia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512050338103_Refatorado Comentario.cs" />
-    <Compile Include="Migrations\201512050338103_Refatorado Comentario.Designer.cs">
-      <DependentUpon>201512050338103_Refatorado Comentario.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Curtir.Repositorio.EF.cs" />
@@ -115,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512042208411_alter_table_PalavraGauderia.resx">
       <DependentUpon>201512042208411_alter_table_PalavraGauderia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512050338103_Refatorado Comentario.resx">
-      <DependentUpon>201512050338103_Refatorado Comentario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
