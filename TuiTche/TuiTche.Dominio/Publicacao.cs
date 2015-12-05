@@ -24,6 +24,5 @@ namespace TuiTche.Dominio
         {
             this.Id = id;
         }
-
     }
 }
