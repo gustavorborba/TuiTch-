@@ -19,21 +19,14 @@ namespace TuiTche.Repositorio.EF
             using (db = new BancoDeDados())
             {
                 hashtag = db.Hashtag.FirstOrDefault(h => h.Palavra == palavra);
-                var hashtagEReservada = db.PalavraGauderia.Where(p => p.IDHashtag == hashtag.Id).ToList().FirstOrDefault();
-                if (hashtagEReservada != null)
-                {
-                    return hashtag;
-                }
+                if(hashtag != null) {
+                    var hashtagEReservada = db.PalavraGauderia.Where(p => p.IDHashtag == hashtag.Id).ToList().FirstOrDefault();
+                    if (hashtagEReservada != null)
+                    {
+                        return hashtag;
+                    }
+                    }
                 return null;
-            }
-        }
-
-        public int Salvar(Hashtag hashtag)
-        {
-            using(db = new BancoDeDados())
-            {
-                db.Entry(hashtag).State = System.Data.Entity.EntityState.Modified;
-                return db.SaveChanges();
             }
         }
 

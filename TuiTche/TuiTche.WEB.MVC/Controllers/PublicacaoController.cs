@@ -14,32 +14,26 @@ namespace TuiTche.WEB.MVC.Controllers
     public class PublicacaoController : Controller
     {
         PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
+        HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
+        UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         // GET: Publicacao
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Publicar(String hashtag, String user, String conteudo)
+        public ActionResult Publicar(String[] hashtags, String[] users, String conteudo)
         {
-            var usuarioRepositorio = new UsuarioRepositorio();
-
-            var publicacaoRepositorio = new PublicacaoRepositorio();
-            var hashtagRepositorio = new HashtagRepositorio();
-
             Publicacao publicacao = new Publicacao()
             {
                 Descricao = conteudo,
                 DataPublicacao = DateTime.Now,
-                IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id               
+                IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
             };
-            var hashtagGauderia = hashtagRepositorio.VerificaSeTagEGauderia(hashtag);
-            if (hashtagGauderia != null)
-            {
-                //hashtagGauderia.Publicacoes.Add(publicacao);
-                hashtagRepositorio.Salvar(hashtagGauderia);
-                int i = hashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
+
+            if (hashtags != null)
+            { 
+                publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
             }
-            publicacao.Hashtags.Add(hashtagGauderia);
             publicacaoRepositorio.Criar(publicacao);
             return PartialView("_Publicar");
         }
@@ -53,6 +47,21 @@ namespace TuiTche.WEB.MVC.Controllers
                 model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
             }
             return PartialView(model);
+        }
+
+        private Publicacao UpdateNasUtilizacoesDasTagsGauderias(String[] hashtags, Publicacao publicacao)
+        {
+            foreach (var tag in hashtags)
+            {
+                var hashtagGauderia = hashtagRepositorio.VerificaSeTagEGauderia(tag);
+                if (hashtagGauderia != null)
+                {
+                    //hashtagGauderia.Publicacoes.Add(publicacao);
+                    int i = hashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
+                }
+                publicacao.Hashtags.Add(hashtagGauderia);
+            }
+            return publicacao;
         }
     }
 }

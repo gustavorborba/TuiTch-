@@ -11,16 +11,19 @@
         var textoTag;
         var textoUsuario;
         var arroba;
+        var tags = [];
+        var usuarios = [];
+        var matchesTags;
+        var matchesUsers;
         var textarea = document.querySelector('textarea');
         textarea.addEventListener('keyup', function () {
             text = this.value;
-            var matchesTag = text.match(/([#][^\s]+)/g);
-            var matchesUser = text.match(/([@@][^\s]+)/g);
-            if (matchesTag) matchesTag.forEach(function (match) {
-                tag = match.slice(0, 1);
+            matchesTags = text.match(/([#][^\s]+)/g);
+            matchesUsers = text.match(/([@@][^\s]+)/g);
+            if (matchesTags) matchesTags.forEach(function (match) {
                 textoTag = match.slice(1);
             })
-            if(matchesUser) matchesUser.forEach(function (match){
+            if (matchesUsers) matchesUsers.forEach(function (match) {
                 arroba = match.slice(0, 1);
                 textoUsuario = match.slice(1);
                 console.log(textoUsuario);
@@ -29,10 +32,19 @@
 
         });
         $("#btnPublicar").click(function () {
-
+            if (matchesTags != null) {
+                matchesTags.forEach(function (value) {
+                    tags.push(value.slice(1));
+                });
+            }
+            if (matchesUsers != null) {
+                matchesUsers.forEach(function (value) {
+                    usuarios.push(value.slice(1));
+                });
+            }
             var dataObject = JSON.stringify({
-                'hashTag': textoTag,
-                'user': textoUsuario,
+                'hashtags': tags,
+                'users': textoUsuario,
                 'conteudo': text
             });
             ($('textarea').val(''))
@@ -42,5 +54,9 @@
                 contentType: 'application/json',
                 data: dataObject
             });
+            matchesTags = [];
+            matchesUsers = [];
+            tags = [];
+            usuarios = [];
         });
     </script>
