@@ -11,7 +11,7 @@ namespace TuiTche.Dominio
         public Publicacao Publicacao { get; set; }
         public string Texto { get; set; }
         public Usuario Usuario { get; set; }
-
+        public DateTime DataComentario { get; set; }
         public Comentario()
         {
 
