@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF;
+using TuiTche.Repositorio.EF.Repositorios;
 using TuiTche.WEB.MVC.Models;
 using TuiTche.WEB.MVC.Seguranca;
-using TwiTche.Repositorio.EF;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
@@ -16,6 +16,7 @@ namespace TuiTche.WEB.MVC.Controllers
         PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
         HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
+        CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
         // GET: Publicacao
         public ActionResult Index()
         {
@@ -62,6 +63,12 @@ namespace TuiTche.WEB.MVC.Controllers
                 publicacao.Hashtags.Add(hashtagGauderia);
             }
             return publicacao;
+        }
+        private ActionResult CurtirPublicacao(int idPublicacao)
+        {
+            curtirRepositorio.CurtirPublicacao(idPublicacao, ControleDeSessao.UsuarioAtual.IdUsuario);
+
+            return PartialView();
         }
     }
 }

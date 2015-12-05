@@ -17,5 +17,17 @@ namespace TuiTche.Repositorio.EF.Repositorios
                 return db.Curtir.Include("Publicacao").Include("Usuario").Where(c => c.Id == id).FirstOrDefault();
             }
         }
+
+        public int CurtirPublicacao(int idPublicacao,int idUsuario)
+        {
+            using(BancoDeDados db = new BancoDeDados())
+            {
+                Curtir curtir = new Curtir();
+                curtir.IDPublicacao = idPublicacao;
+                curtir.IDUsuario = idUsuario;
+                db.Curtir.Add(curtir);
+                return db.SaveChanges();
+            }
+        }
     }
 }
