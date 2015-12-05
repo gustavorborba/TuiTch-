@@ -41,7 +41,7 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult _ListarPublicacoes()
         {
             int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-            var listaDePublicacoes = publicacaoRepositorio.ListarPublicacoesDeUsuario(usuarioAtual);
+            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual);
             var model = new ListaDePublicacaoModel();
             foreach (var publicacao in listaDePublicacoes)
             {

@@ -31,15 +31,26 @@ namespace TuiTche.Repositorio.EF
                 return banco.SaveChanges();
             }
         }
-        public IList<Publicacao> ListarPublicacoesDeUsuario(int id)
+
+        public IList<Publicacao> GerarTimeLine(int id)
+        {
+            IList<Publicacao> PublicacoesPessoais = this.BuscarPublicacoesDeUsuario(id);
+            List<Publicacao> PublicacoesTimeLine = PublicacoesPessoais.Union(ListarPublicacoesDeSeguidores(id)).ToList();
+            return PublicacoesTimeLine.OrderByDescending(p => p.DataPublicacao).ToList();
+        }
+ 
+        private IList<Publicacao> ListarPublicacoesDeSeguidores(int id)
         {
             List<Publicacao> listaPublicacoes = new List<Publicacao>();
+
+            StringBuilder query = new StringBuilder();
+            query.Append("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario, u.NomeCompleto from Publicacao as p ");
+            query.Append(" inner join Seguidores as s on p.IdUsuario = s.IdSeguindo inner join Usuario as u on p.IdUsuario = u.Id ");
+            query.Append(" where s.IdSeguidor = @param or p.IdUsuario = @param order by p.DataPublicacao desc");
+
             string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                StringBuilder query = new StringBuilder();
-                query.Append("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario, u.NomeCompleto from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo inner join Usuario as u on p.IdUsuario = u.Id where s.IdSeguidor = @param order by p.DataPublicacao desc");
-
                 IDbCommand comando = connection.CreateCommand();
                 comando.CommandText = query.ToString();
 
@@ -61,6 +72,13 @@ namespace TuiTche.Repositorio.EF
                 }
                 return listaPublicacoes;
                 //banco.Publicacao.SqlQuery("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo where s.IdSeguidor = @param order by p.DataPublicacao desc", new SqlParameter("param", id));
+            }
+        }
+        private IList<Publicacao> BuscarPublicacoesDeUsuario(int id)
+        {
+            using (banco = new BancoDeDados())
+            {
+                return banco.Publicacao.Include("Usuario").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).ToList();
             }
         }
 
