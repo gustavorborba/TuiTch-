@@ -11,6 +11,14 @@ namespace TuiTche.Repositorio.EF
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
+        public int CadastrarUsuario(Usuario usuario)
+        {
+            using (var db = new BancoDeDados())
+            {
+              db.Usuario.Add(usuario);
+                return db.SaveChanges();
+            }
+        }
         public int Salvar(Usuario usuario)
         {
             using (var db = new BancoDeDados())
@@ -36,6 +44,13 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
+        public bool VerificarEmailEUsernameRepetido(string email,string username)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Usuario.Where(m => m.Email == email || m.Username == username).FirstOrDefault() == null;
+            }
+        }
         public IList<Usuario> BuscarTodos()
         {
             using(var db = new BancoDeDados())
