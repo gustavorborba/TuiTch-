@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using TuiTche.Dominio;
 using TuiTche.Dominio.Interfaces;
+using TuiTche.Repositorio.EF;
 using TwiTche.Repositorio.EF;
 
 namespace TuiTche.WEB.MVC.Services

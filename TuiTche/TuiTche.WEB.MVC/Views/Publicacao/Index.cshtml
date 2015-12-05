@@ -1,16 +1,53 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
+<div class="pull-left">
+    <span>Seguidores:</span>
+    <span id="seguidores"> </span>
 
+    <div style="margin-top = 20px;">
+        <span>Seguindo: </span>
+        <span id="seguindo"></span>
+    </div>
+</div>
 <h2 class="text-center">Linha do Tempo</h2>
-<body>
-    <div class="text-center">
-        @Html.Partial("_Publicar")
-    </div>
+<div class="pull-left" id="mais-usadas">
+    <h3>Top 10 Tags Gauderias</h3>
 
-    <div class="text-center">
-        @{Html.RenderAction("_ListarPublicacoes", "Publicacao");}
-    </div>
+</div>
+<body>
+        <div class="text-center">
+            @Html.Partial("_Publicar")
+        </div>
+
+        <div class="text-center" style="margin-left:400px;">
+            @{Html.RenderAction("_ListarPublicacoes", "Publicacao");}
+        </div>
+        <script>
+            var value;
+            var maisUsadas = [];
+            var valTeste;
+            $.get("Timeline/NumeroDeSeguidores", function (data) {
+                value = data;
+                $("#seguidores").html(value);
+
+            });
+            $.get("Timeline/NumeroDeSeguindo", function (data) {
+                $("#seguindo").html(data);
+            });
+
+            $.get("Timeline/PalavrasMaisUtilizadas", function (data) {
+                maisUsadas = data;
+                var cont = 1;
+                maisUsadas.forEach(function (val) {
+                    valTeste = val;
+                    $("#mais-usadas").append("<p>"+cont+" - #" + val.label + "</p>");
+                    cont++;
+                });
+            });
+            
+
+
+        </script>
 </body>
 

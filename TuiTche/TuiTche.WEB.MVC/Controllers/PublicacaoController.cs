@@ -48,7 +48,7 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult _ListarPublicacoes()
         {
             int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-            var listaDePublicacoes = publicacaoRepositorio.ListarPublicacoesDeUsuario(usuarioAtual);
+            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual);
             var model = new ListaDePublicacaoModel();
             foreach (var publicacao in listaDePublicacoes)
             {
@@ -71,12 +71,13 @@ namespace TuiTche.WEB.MVC.Controllers
             }
             return publicacao;
         }
-        private ActionResult CurtirPublicacao(int idPublicacao)
+        private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
-            curtirRepositorio.CurtirPublicacao(idPublicacao, ControleDeSessao.UsuarioAtual.IdUsuario);
+            curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
         }
+
 
         public ActionResult _Comentar(int IdPublicacao)
         {
@@ -95,6 +96,19 @@ namespace TuiTche.WEB.MVC.Controllers
             comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
 
             return View("Index");
+        }
+
+        public int NumeroDeSeguidores()
+        {
+            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
+            return usuario.Seguidores.Count;
+        }
+
+        public int NumeroDeSeguindo()
+        {
+            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
+            return usuario.Seguindo.Count;
+
         }
     }
 }

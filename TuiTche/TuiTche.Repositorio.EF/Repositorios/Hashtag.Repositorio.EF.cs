@@ -30,6 +30,29 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
+        public List<Hashtag> PalavrasMaisUsadas()
+        {
+            var gauderias = new List<PalavraGauderia>();
+            using (db = new BancoDeDados())
+            {
+                gauderias = db.PalavraGauderia.SqlQuery("select top 10 * from PalavraGauderia order by  QtdUtilizacao desc;").ToList();
+            }
+            return ParaHashtag(gauderias);
+        }
+
+        private List<Hashtag> ParaHashtag(List<PalavraGauderia> gauderias)
+        {
+            List < Hashtag > hashtags= new List<Hashtag>();
+            using(db = new BancoDeDados())
+            {
+                foreach(var p in gauderias)
+                {
+                    hashtags.Add(db.Hashtag.FirstOrDefault(h => h.Id == p.IDHashtag));
+                }
+                return hashtags;
+            }
+        }
+
         public int UpdatePontuacao(int idHashtag)
         {
             using (db = new BancoDeDados())

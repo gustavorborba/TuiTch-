@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -82,6 +84,7 @@
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Curtir.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Hashtag.Repositorio.EF.cs" />
+    <Compile Include="Repositorios\PontuacaoRepositorio.cs" />
     <Compile Include="Repositorios\Publicacao.Repostiorio.EF.cs" />
     <Compile Include="Repositorios\Comentario.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Usuario.Repositorio.EF.cs" />

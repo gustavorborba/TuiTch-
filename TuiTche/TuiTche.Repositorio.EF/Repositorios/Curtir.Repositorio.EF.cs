@@ -10,6 +10,7 @@ namespace TuiTche.Repositorio.EF.Repositorios
 {
     public class CurtirRepositorio
     {
+        const int PontosPorTri = 3;
         public Curtir FindById(int id)
         {
             using(BancoDeDados db = new BancoDeDados())
@@ -18,14 +19,17 @@ namespace TuiTche.Repositorio.EF.Repositorios
             }
         }
 
-        public int CurtirPublicacao(int idPublicacao,int idUsuario)
+        public int CurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
         {
-            using(BancoDeDados db = new BancoDeDados())
+            PontuacaoRepositorio repoTri = new PontuacaoRepositorio();
+            Pontuacao pontuacao = repoTri.BuscarPontos(IdPublicacaoUsuario);
+            using (BancoDeDados db = new BancoDeDados())
             {
                 Curtir curtir = new Curtir();
                 curtir.IDPublicacao = idPublicacao;
                 curtir.IDUsuario = idUsuario;
                 db.Curtir.Add(curtir);
+                repoTri.SomarPontos(pontuacao, PontosPorTri);
                 return db.SaveChanges();
             }
         }
