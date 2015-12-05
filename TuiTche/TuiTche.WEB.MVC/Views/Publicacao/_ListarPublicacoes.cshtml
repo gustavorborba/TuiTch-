@@ -2,7 +2,8 @@
 
 @foreach (var publicacao in Model.ListaPublicacoes)
 {
-    <div>
+    <div class="form-control" style="height:150px;width:350px">
+        <p>Publicado por: @publicacao.NomeUsuario</p>
         <p>@publicacao.Mensagem</p>
     </div>
 }
