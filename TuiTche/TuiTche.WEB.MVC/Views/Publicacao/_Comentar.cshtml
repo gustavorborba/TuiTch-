@@ -1,0 +1,18 @@
+﻿@model ComentarioModel
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+@using (Ajax.BeginForm("SalvarComentario", new {}, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "post",
+}))
+{
+    @Html.AntiForgeryToken()
+    <input id="texto" name="texto" />
+    <input type="submit" value="Comentar" id="Enviar" />
+    <input type="hidden" id="IdPublicacao" name="IdPublicacao" value="@Model.IdPublicacao" />
+    <input type="hidden" id="IdUsuario" name="IdUsuario" value="@Model.IdUsuario" />
+}
+
