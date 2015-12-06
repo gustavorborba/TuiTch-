@@ -5,7 +5,7 @@
     <span>Seguidores:</span>
     <span id="seguidores"> </span>
 
-    <div style="margin-top = 20px;">
+    <div style="margin-top: 20px;">
         <span>Seguindo: </span>
         <span id="seguindo"></span>
     </div>
@@ -27,16 +27,16 @@
             var value;
             var maisUsadas = [];
             var valTeste;
-            $.get("Timeline/NumeroDeSeguidores", function (data) {
+            $.get("../Timeline/NumeroDeSeguidores", function (data) {
                 value = data;
                 $("#seguidores").html(value);
 
             });
-            $.get("Timeline/NumeroDeSeguindo", function (data) {
+            $.get("../Timeline/NumeroDeSeguindo", function (data) {
                 $("#seguindo").html(data);
             });
 
-            $.get("Timeline/PalavrasMaisUtilizadas", function (data) {
+            $.get("../Timeline/PalavrasMaisUtilizadas", function (data) {
                 maisUsadas = data;
                 var cont = 1;
                 maisUsadas.forEach(function (val) {

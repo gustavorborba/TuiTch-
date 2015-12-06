@@ -19,10 +19,7 @@ namespace TuiTche.WEB.MVC.Controllers
         HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
-
         ComentarioService comentarioService = new ComentarioService();
-        UsuarioService usuarioService = new UsuarioService();
-        PublicacaoService publicacaoService = new PublicacaoService();
 
         // GET: Publicacao
         public ActionResult Index()
@@ -37,24 +34,15 @@ namespace TuiTche.WEB.MVC.Controllers
                 DataPublicacao = DateTime.Now,
                 IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
             };
-
+            publicacaoRepositorio.Criar(publicacao);
             if (hashtags != null)
-            { 
+            {
                 publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
             }
-            publicacaoRepositorio.Criar(publicacao);
+            int x = publicacaoRepositorio.PublicacaoTagInsert(publicacao);
+            publicacao.Hashtags = null;
+            
             return PartialView("_Publicar");
-        }
-        public ActionResult _ListarPublicacoes()
-        {
-            int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual);
-            var model = new ListaDePublicacaoModel();
-            foreach (var publicacao in listaDePublicacoes)
-            {
-                model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
-            }
-            return PartialView(model);
         }
 
         private Publicacao UpdateNasUtilizacoesDasTagsGauderias(String[] hashtags, Publicacao publicacao)
@@ -66,17 +54,39 @@ namespace TuiTche.WEB.MVC.Controllers
                 {
                     //hashtagGauderia.Publicacoes.Add(publicacao);
                     int i = hashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
+                    publicacao.Hashtags.Add(hashtagGauderia);
                 }
-                publicacao.Hashtags.Add(hashtagGauderia);
+                else
+                {
+                    Hashtag hashtag = hashtagRepositorio.Criar(tag);
+                    publicacao.Hashtags.Add(hashtag);
+                }
+                
             }
             return publicacao;
         }
+
+        public ActionResult _ListarPublicacoes()
+        {
+            int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
+            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual);
+            var model = new ListaDePublicacaoModel();
+            foreach (var publicacao in listaDePublicacoes)
+            {
+                model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
+            }
+            return PartialView("_ListarPublicacoes", model);
+        }
+
         private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
             curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
         }
+        //public Usuario[] UsuarioAutocomplete(string term)
+        //{
+        //    var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
 
 
         public ActionResult _Comentar(int IdPublicacao)
@@ -96,19 +106,6 @@ namespace TuiTche.WEB.MVC.Controllers
             comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
 
             return View("Index");
-        }
-
-        public int NumeroDeSeguidores()
-        {
-            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
-            return usuario.Seguidores.Count;
-        }
-
-        public int NumeroDeSeguindo()
-        {
-            Usuario usuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
-            return usuario.Seguindo.Count;
-
         }
     }
 }
