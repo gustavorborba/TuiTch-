@@ -38,13 +38,14 @@
 
             $.get("../Timeline/PalavrasMaisUtilizadas", function (data) {
                 maisUsadas = data;
+            }).done(function (data) {
                 var cont = 1;
                 maisUsadas.forEach(function (val) {
                     valTeste = val;
                     $("#mais-usadas").append("<p>"+cont+" - #" + val.label + "</p>");
                     cont++;
                 });
-            });
+            })
             
 
 

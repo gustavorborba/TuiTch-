@@ -6,6 +6,7 @@
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.textcomplete.min.js"></script>
 <script>
         var text;
         var textoTag;
@@ -14,26 +15,47 @@
         var usuarios = [];
         var matchesTags;
         var matchesUsers;
+        var dataObject;
         var mentions = [];
+        var tagsTextComplete = [];
         var cache = false;
-    //$.get( "Publicacao/UsuarioAutocomplete", function( data ) {
-    //    mentions = data;
 
-    //});
-    //    $('textarea').textcomplete([
-    //        { // mention strategy
-    //            match: /(^|\s)@@(\w*)$/,
-    //            search: function (term, callback) {
-    //                callback(cache[term], true);
-    //                $.getJSON('/Publicacao/UsuarioAutocomplete', { q: term })
-    //                  .done(function (resp) { callback(resp); })
-    //                  .fail(function ()     { callback([]);   });
-    //            },
-    //            replace: function (value) {
-    //                return '$1@@' + value + ' ';
-    //            },
-    //            cache: true
-    //        }], { maxCount: 20, debounce: 500 });
+        $.get('Publicacao/HashtagAutocomplete', function (data) {
+            dataObject = data;
+            tagsTextComplete = $.map(dataObject, function (el) { return el.label });
+        });
+        $.get( "Publicacao/UsuarioAutocomplete", function( data ) {
+            dataObject = (data);
+            mentions = $.map(dataObject, function (el) { return el.label });
+        });
+
+        $('textarea').textcomplete([
+            { // mention strategy
+                match: /(^|\s)#(\w*)$/,
+                search: function (term, callback) {
+                    callback($.map(tagsTextComplete, function (mention) {
+                        return mention.indexOf(term) === 0 ? mention : null;
+                    }))
+                },
+                replace: function (value) {
+                    return '$1#' + value + ' ';
+                },
+                cache: true
+            }], { maxCount: 10, debounce: 500 });
+
+        $('textarea').textcomplete([
+                { // mention strategy
+                    match: /(^|\s)@@(\w*)$/,
+                    search: function (term, callback) {
+                        callback($.map(mentions, function (mention) {
+                            return mention.indexOf(term) === 0 ? mention : null;
+                        }))
+                    },
+                    replace: function (value) {
+                        return '$1@@' + value + ' ';
+                    },
+                    cache: true
+                }], { maxCount: 10, debounce: 500 });
 
         var textarea = document.querySelector('textarea');
         textarea.addEventListener('keyup', function () {
@@ -71,10 +93,34 @@
                 type: 'POST',
                 contentType: 'application/json',
                 data: dataObject
+            }).done(function () {
+                matchesTags = [];
+                matchesUsers = [];
+                tags = [];
+                usuarios = [];
+                (function notifyMe() {
+                    if (!("Notification" in window)) {
+                        alert("This browser does not support desktop notification");
+                    }
+
+                    else if (Notification.permission === "granted") {
+                        var notification = new Notification("Publicação postada!");
+                    }
+
+                    else if (Notification.permission !== 'denied') {
+                        Notification.requestPermission(function (permission) {
+
+                            if (!('permission' in Notification)) {
+                                Notification.permission = permission;
+                            }
+                            if (permission === "granted") {
+                                var notification = new Notification("Publicação postada!");
+                            }
+                        });
+                    }
+                }
+            )()
             });
-            matchesTags = [];
-            matchesUsers = [];
-            tags = [];
-            usuarios = [];
+           
         });
 </script>

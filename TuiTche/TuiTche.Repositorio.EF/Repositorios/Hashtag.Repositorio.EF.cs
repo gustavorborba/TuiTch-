@@ -73,5 +73,21 @@ namespace TuiTche.Repositorio.EF
                 return db.SaveChanges();
             }
         }
+
+        public IList<Hashtag> BuscarTodos()
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Hashtag.Where(u => u.Palavra != null).ToList();
+            }
+        }
+
+        public IList<Hashtag> BuscarPorPalavra(string term)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Hashtag.Where(t => t.Palavra.Contains(term)).ToList();
+            }
+        }
     }
 }

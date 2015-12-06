@@ -83,10 +83,21 @@ namespace TuiTche.WEB.MVC.Controllers
 
             return PartialView();
         }
-        //public Usuario[] UsuarioAutocomplete(string term)
-        //{
-        //    var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
+        public JsonResult UsuarioAutocomplete(string term)
+        {
+            var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
+            var json = usuariosEncontrados.Select(x => new { label= x.Username });
 
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult HashtagAutocomplete(string term)
+        {
+            var tagsEncontradas = term == null ? hashtagRepositorio.BuscarTodos() : hashtagRepositorio.BuscarPorPalavra(term);
+            var json = tagsEncontradas.Select(x => new { label = x.Palavra });
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult _Comentar(int IdPublicacao)
         {
