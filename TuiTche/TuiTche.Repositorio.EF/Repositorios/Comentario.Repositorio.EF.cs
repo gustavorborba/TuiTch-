@@ -39,10 +39,10 @@ namespace TuiTche.Repositorio.EF
 
         public IList<Comentario> BuscarProximosComIdPublicacao(int idPublicacao, int? contador)
         {
-            if (contador == null) { contador = 2; }
+            if (contador == null) { contador = 0; }
             using (var db = new BancoDeDados())
             {
-                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).Skip((int)contador-2).Take(2).ToList();
+                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).Skip((int)contador).Take(2).ToList();
             } 
         }
     }

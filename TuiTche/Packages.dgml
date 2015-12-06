@@ -1,23 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="TuiTche.MVC" Label="TuiTche.MVC" Category="Project" />
+    <Node Id="UI\TuiTche.WEB.MVC" Label="TuiTche.WEB.MVC" Category="Project" />
+    <Node Id="bootstrap 3.0.0" Label="bootstrap 3.0.0" Category="Package" />
     <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="Package" />
-    <Node Id="Microsoft.AspNet.Mvc 5.2.2" Label="Microsoft.AspNet.Mvc 5.2.2" Category="Package" />
-    <Node Id="Microsoft.AspNet.Razor 3.2.2" Label="Microsoft.AspNet.Razor 3.2.2" Category="Package" />
-    <Node Id="Microsoft.AspNet.WebPages 3.2.2" Label="Microsoft.AspNet.WebPages 3.2.2" Category="Package" />
+    <Node Id="jQuery 1.10.2" Label="jQuery 1.10.2" Category="Package" />
+    <Node Id="Microsoft.AspNet.Mvc 5.2.3" Label="Microsoft.AspNet.Mvc 5.2.3" Category="Package" />
+    <Node Id="Microsoft.AspNet.Razor 3.2.3" Label="Microsoft.AspNet.Razor 3.2.3" Category="Package" />
+    <Node Id="Microsoft.AspNet.WebPages 3.2.3" Label="Microsoft.AspNet.WebPages 3.2.3" Category="Package" />
+    <Node Id="Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.1" Label="Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.1" Category="Package" />
+    <Node Id="Microsoft.Net.Compilers 1.0.0" Label="Microsoft.Net.Compilers 1.0.0" Category="Package" />
     <Node Id="Microsoft.Web.Infrastructure 1.0.0.0" Label="Microsoft.Web.Infrastructure 1.0.0.0" Category="Package" />
-    <Node Id="TwiTche.Repositorio.EF" Label="TwiTche.Repositorio.EF" Category="Project" />
+    <Node Id="Modernizr 2.6.2" Label="Modernizr 2.6.2" Category="Package" />
+    <Node Id="Infraestrutura\TuiTche.Repositorio.EF.Test" Label="TuiTche.Repositorio.EF.Test" Category="Project" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="Package" />
+    <Node Id="Infraestrutura\TuiTche.Repositorio.EF" Label="TuiTche.Repositorio.EF" Category="Project" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="Package" />
+    <Node Id="Dominio\TuiTche.Dominio" Label="TuiTche.Dominio" Category="Project" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="Package" />
+    <Node Id="Dominio\TuiTche.DominioTests" Label="TuiTche.DominioTests" Category="Project" />
     <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="Package" />
   </Nodes>
   <Links>
-    <Link Source="Microsoft.AspNet.Mvc 5.2.2" Target="Microsoft.AspNet.WebPages 3.2.2" Category="Package Dependency" />
-    <Link Source="Microsoft.AspNet.Mvc 5.2.2" Target="Microsoft.AspNet.Razor 3.2.2" Category="Package Dependency" />
-    <Link Source="Microsoft.AspNet.WebPages 3.2.2" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="Package Dependency" />
-    <Link Source="Microsoft.AspNet.WebPages 3.2.2" Target="Microsoft.AspNet.Razor 3.2.2" Category="Package Dependency" />
-    <Link Source="TuiTche.MVC" Target="EntityFramework 6.1.3" Category="Installed Package" />
-    <Link Source="TuiTche.MVC" Target="Microsoft.AspNet.Mvc 5.2.2" Category="Installed Package" />
-    <Link Source="TwiTche.Repositorio.EF" Target="EntityFramework 6.1.3" Category="Installed Package" />
+    <Link Source="Microsoft.AspNet.Mvc 5.2.3" Target="Microsoft.AspNet.WebPages 3.2.3" Category="Package Dependency" />
+    <Link Source="Microsoft.AspNet.Mvc 5.2.3" Target="Microsoft.AspNet.Razor 3.2.3" Category="Package Dependency" />
+    <Link Source="Microsoft.AspNet.WebPages 3.2.3" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="Package Dependency" />
+    <Link Source="Microsoft.AspNet.WebPages 3.2.3" Target="Microsoft.AspNet.Razor 3.2.3" Category="Package Dependency" />
+    <Link Source="Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.1" Target="Microsoft.Net.Compilers 1.0.0" Category="Package Dependency" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="bootstrap 3.0.0" Category="Installed Package" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="EntityFramework 6.1.3" Category="Installed Package" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="jQuery 1.10.2" Category="Installed Package" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="Microsoft.AspNet.Mvc 5.2.3" Category="Installed Package" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.1" Category="Installed Package" />
+    <Link Source="UI\TuiTche.WEB.MVC" Target="Modernizr 2.6.2" Category="Installed Package" />
+    <Link Source="Infraestrutura\TuiTche.Repositorio.EF.Test" Target="EntityFramework 6.1.3" Category="Installed Package" />
+    <Link Source="Infraestrutura\TuiTche.Repositorio.EF" Target="EntityFramework 6.1.3" Category="Installed Package" />
+    <Link Source="Dominio\TuiTche.Dominio" Target="EntityFramework 6.1.3" Category="Installed Package" />
+    <Link Source="Dominio\TuiTche.DominioTests" Target="EntityFramework 6.1.3" Category="Installed Package" />
   </Links>
   <Categories>
     <Category Id="Project" />

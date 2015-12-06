@@ -1,21 +1,41 @@
-﻿@model IEnumerable<TuiTche.WEB.MVC.Models.ComentarioVisualizarModel>
-@foreach (var comentario in Model)
-{
-    <div id="comentarios" class="form-control" style="height:70px;width:330px; margin-left : 10px">
-        <p>Comentario de: @comentario.Username - @comentario.DataComentario</p>
-        <p>@comentario.Texto</p>
+﻿@model ListaComentarioVisualizarModel
+@if(Model.Comentarios.Count > 0) {
+    <div id="comentarios">
+    @foreach (var comentario in Model.Comentarios)
+    {
+        <div id="comentario" class="form-control" style="height:70px;width:330px; margin-left : 10px">
+            <p>Comentario de: @comentario.Username - @comentario.DataComentario</p>
+            <p>@comentario.Texto</p>
+        </div>
+    }
     </div>
 }
-<input type="button" value="Carregar mais" id="carregarMais" />
-<!--<script>
-    $('#carregarMais').on("click", function () {
-        $.getJSON("/Publicacao/CarregarMaisComentarios")
-        .done(function (data) {
-            $.each( data, function( i, item ) {
-                $('#comentarios').append('<p>Comentario de: '+item.Username+' - '+item.DataComentario+'</p>'+
-                    '<p>'+item.Texto+'</p>').html();
-            })
+
+@using (Ajax.BeginForm("CarregarMaisComentarios", new AjaxOptions
+{
+    Url = @Url.Action("CarregarMaisComentarios", "Publicacao"),
+    HttpMethod = "POST",
+    UpdateTargetId = "comentarios",
+    InsertionMode = InsertionMode.InsertAfter,
+    OnSuccess = "escreverComentarios"
+}))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Carregar mais" id="Carregar" />
+    <input type="hidden" id="IdPublicacao" name="IdPublicacao" value="@Model.IdPublicacao" />
+    <input type="hidden" id="Contador" name="Contador" value="@Model.Contador" />
+}
+<script>
+    var escreverComentarios =  function () {
+        $.getJSON( @Url.Action("CarregarMaisComentarios", "Publicacao"), {
+            'data': form.serialize(),
+             'sucess': function (data) {
+                    $.each( data, function( i, item ) {
+                        $('#comentarios').append('<p>Comentario de: '+item.Username+' - '+item.DataComentario+'</p>'+
+                            '<p>' + item.Texto + '</p>');
+                    })
+            }
         });
         return false;
-    });
-</script-->
+    };
+</script>

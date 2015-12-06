@@ -98,31 +98,39 @@ namespace TuiTche.WEB.MVC.Controllers
             return PartialView(model);
         }
 
-        public ActionResult _CarregarComentarios(int IdPublicacao)
+        public ActionResult _CarregarComentarios(int idPublicacao)
         {
-            IList<ComentarioVisualizarModel> model = new List<ComentarioVisualizarModel>();
-            IList<Comentario> comentarios = comentarioService.BuscarProximos(IdPublicacao, null);
+            ListaComentarioVisualizarModel model = new ListaComentarioVisualizarModel()
+            {
+                Contador = 0,
+                IdPublicacao = idPublicacao
+            };
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, null);
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
             
             return PartialView(model);
         }
 
-        public JsonResult CarregarMaisComentarios(int IdPublicacao, int? contador)
+        public JsonResult CarregarMaisComentarios(int idPublicacao, int? contador)
         {
             contador += 2;
-            IList<Comentario> comentarios = comentarioService.BuscarProximos(IdPublicacao, contador);
-            IList<ComentarioVisualizarModel> model = new List<ComentarioVisualizarModel>();
+            ListaComentarioVisualizarModel model = new ListaComentarioVisualizarModel() {
+                Contador = (int)contador,
+                IdPublicacao = idPublicacao
+            };
+
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, contador);
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
 
-            return Json(model);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

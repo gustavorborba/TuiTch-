@@ -119,8 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ComentarioModel.cs" />
-    <Compile Include="Controllers\ComentarioVisualizarModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
@@ -131,6 +129,8 @@
     <Compile Include="Mapper\ComentarioMapper.cs" />
     <Compile Include="Mapper\ComentarioVisualizarMapper.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
+    <Compile Include="Models\ListaComentarioVisualizarModel.cs" />
+    <Compile Include="Models\ComentarioVisualizarModel.cs" />
     <Compile Include="Models\ListaDePublicacaoModel.cs" />
     <Compile Include="Models\PublicacaoModel.cs" />
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
@@ -157,6 +157,10 @@
     <Content Include="Views\Publicacao\_Publicar.cshtml" />
     <Content Include="Views\Publicacao\_ListarPublicacoes.cshtml" />
     <Content Include="Views\Usuario\CadastrarUsuario.cshtml" />
+    <Content Include="Views\Publicacao\_CarregarComentarios.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Publicacao\_Comentar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

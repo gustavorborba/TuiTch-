@@ -6,11 +6,10 @@ using TuiTche.Dominio;
 
 namespace TuiTche.WEB.MVC.Models
 {
-    public class ComentarioVisualizarModel
+    public class ListaComentarioVisualizarModel
     {
+        public IList<ComentarioVisualizarModel> Comentarios = new List<ComentarioVisualizarModel>();
         public int IdPublicacao { get; set; }
-        public string Texto { get; set; }
-        public string Username { get; set; }
-        public DateTime DataComentario { get; set; }
+        public int Contador { get; set; }
     }
 }
