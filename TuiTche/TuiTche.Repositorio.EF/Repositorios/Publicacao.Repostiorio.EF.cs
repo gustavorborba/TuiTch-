@@ -23,6 +23,7 @@ namespace TuiTche.Repositorio.EF
                  return banco.Publicacao.Find(id);
             }
         }
+
         public int Criar(Publicacao publicacao)
         {
             using(banco = new BancoDeDados())
