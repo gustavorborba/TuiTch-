@@ -29,7 +29,8 @@ namespace TuiTche.Repositorio.EF.Repositorios
                 curtir.IDPublicacao = idPublicacao;
                 curtir.IDUsuario = idUsuario;
                 db.Curtir.Add(curtir);
-                repoTri.SomarPontos(pontuacao, PontosPorTri);
+                pontuacao.PontuacaoTotal += PontosPorTri;
+                repoTri.SomarPontos(pontuacao);
                 return db.SaveChanges();
             }
         }

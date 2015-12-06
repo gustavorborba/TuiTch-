@@ -55,6 +55,7 @@
     <Compile Include="EntidadeBase.cs" />
     <Compile Include="Hashtag.cs" />
     <Compile Include="Interfaces\IComentarioRepositorio.cs" />
+    <Compile Include="Interfaces\IPontuacaoRepositorio.cs" />
     <Compile Include="Interfaces\IUsuarioRepositorio.cs" />
     <Compile Include="PalavraGauderia.cs" />
     <Compile Include="Pontuacao.cs" />
