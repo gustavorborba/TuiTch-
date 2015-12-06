@@ -89,6 +89,33 @@ namespace TuiTche.WEB.MVC.Controllers
             return PartialView(model);
         }
 
+        public ActionResult _CarregarComentarios(int IdPublicacao)
+        {
+            IList<ComentarioVisualizarModel> model = new List<ComentarioVisualizarModel>();
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(IdPublicacao, null);
+
+            foreach (Comentario comentario in comentarios)
+            {
+                model.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+            }
+            
+            return PartialView(model);
+        }
+
+        public JsonResult CarregarMaisComentarios(int IdPublicacao, int? contador)
+        {
+            contador += 2;
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(IdPublicacao, contador);
+            IList<ComentarioVisualizarModel> model = new List<ComentarioVisualizarModel>();
+
+            foreach (Comentario comentario in comentarios)
+            {
+                model.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+            }
+
+            return Json(model);
+        }
+
         [HttpPost]
         public ActionResult SalvarComentario(ComentarioModel model)
         {

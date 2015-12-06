@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TuiTche.WEB.MVC.Models.ComentarioVisualizarModel>
+@foreach (var comentario in Model)
+{
+    <div id="comentarios" class="form-control" style="height:70px;width:330px; margin-left : 10px">
+        <p>Comentario de: @comentario.Username - @comentario.DataComentario</p>
+        <p>@comentario.Texto</p>
+    </div>
+}
+<input type="button" value="Carregar mais" id="carregarMais" />
+<!--<script>
+    $('#carregarMais').on("click", function () {
+        $.getJSON("/Publicacao/CarregarMaisComentarios")
+        .done(function (data) {
+            $.each( data, function( i, item ) {
+                $('#comentarios').append('<p>Comentario de: '+item.Username+' - '+item.DataComentario+'</p>'+
+                    '<p>'+item.Texto+'</p>').html();
+            })
+        });
+        return false;
+    });
+</script-->

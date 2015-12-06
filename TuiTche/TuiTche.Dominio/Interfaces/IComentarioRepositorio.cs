@@ -10,5 +10,9 @@ namespace TuiTche.Dominio.Interfaces
     {
         int Salvar(Comentario Comentario);
         Comentario BuscarPorId(int id);
+
+        IList<Comentario> BuscarListaComIdPublicacao(int idPublicacao);
+
+        IList<Comentario> BuscarProximosComIdPublicacao(int idPublicacao, int? contador = 0);
     }
 }

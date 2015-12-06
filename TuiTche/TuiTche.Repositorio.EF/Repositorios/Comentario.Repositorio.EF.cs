@@ -28,5 +28,22 @@ namespace TuiTche.Repositorio.EF
                 return db.Comentario.Include("Usuario").Include("Publicacao").FirstOrDefault(u => u.Id == id);
             }
         }
+
+        public IList<Comentario> BuscarListaComIdPublicacao(int idPublicacao)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).ToList();
+            } 
+        }
+
+        public IList<Comentario> BuscarProximosComIdPublicacao(int idPublicacao, int? contador)
+        {
+            if (contador == null) { contador = 2; }
+            using (var db = new BancoDeDados())
+            {
+                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).Skip((int)contador-2).Take(2).ToList();
+            } 
+        }
     }
 }

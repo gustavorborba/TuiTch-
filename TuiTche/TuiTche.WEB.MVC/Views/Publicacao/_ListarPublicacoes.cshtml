@@ -5,6 +5,7 @@
     <div class="form-control" style="height:150px;width:350px">
         <p>Publicado por: @publicacao.NomeUsuario</p>
         <p>@publicacao.Mensagem</p>
+        @{Html.RenderAction("_CarregarComentarios", new { idPublicacao = @publicacao.IdPublicacao });}
         <div style="position: relative; bottom: 5px;">
             @{Html.RenderAction("_Comentar", new { idPublicacao = @publicacao.IdPublicacao });}
         </div>

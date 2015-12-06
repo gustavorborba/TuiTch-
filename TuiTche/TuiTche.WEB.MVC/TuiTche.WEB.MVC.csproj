@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComentarioModel.cs" />
+    <Compile Include="Controllers\ComentarioVisualizarModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
@@ -126,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapper\ComentarioMapper.cs" />
+    <Compile Include="Mapper\ComentarioVisualizarMapper.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\ListaDePublicacaoModel.cs" />
     <Compile Include="Models\PublicacaoModel.cs" />
