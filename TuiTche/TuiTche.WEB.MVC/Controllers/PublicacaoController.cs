@@ -38,10 +38,9 @@ namespace TuiTche.WEB.MVC.Controllers
             if (hashtags != null)
             {
                 publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
+                int x = publicacaoRepositorio.PublicacaoTagInsert(publicacao);
+                publicacao.Hashtags = null;
             }
-            int x = publicacaoRepositorio.PublicacaoTagInsert(publicacao);
-            publicacao.Hashtags = null;
-            
             return PartialView("_Publicar");
         }
 
