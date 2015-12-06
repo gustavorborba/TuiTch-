@@ -17,7 +17,9 @@
             <img src="~/Content/img/logo.png" class="foto-logo" />
             @Html.ActionLink("TuiTchê", "Index", "Login", new { area = "" }, new { @class = "texto-logo" })
 
-            <input type="text" id="buscaUsuario" class="campo-busca-usuario pull-left" placeholder="Buscar usuarios..." />
+            @using (Html.BeginForm("perfil","Usuario",FormMethod.Get)) {
+                <input type="text" id="username" name="username" class="campo-busca-usuario pull-left" placeholder="Buscar usuarios..." />
+            }
 
             <div id="usuario-info" class="pull-right">
                 <img src="~/Content/img/logo.png" class="foto-perfil" />
@@ -46,6 +48,40 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.textcomplete.min.js"></script>
+    <script>
+
+        var usuarios;
+
+        $.get("Publicacao/UsuarioAutocompleteArray")
+        .done(function (data) {
+            usuarios = data;
+            $('#username').textcomplete([
+            { // tech companies
+                words: data,
+                match: /\b(\w{2,})$/,
+                search: function (term, callback) {
+                    callback($.map(this.words, function (word) {
+                        return word.indexOf(term) === 0 ? word : null;
+                    }));
+                },
+                index: 1,
+                replace: function (word) {
+                    return word + ' ';
+                }
+            }],
+            {
+                onKeydown: function (e, commands) {
+                    if (e.ctrlKey && e.keyCode === 74) { // CTRL-J
+                        return commands.KEY_ENTER;
+                    }
+                }
+            });
+        });
+
+        
+    </script>
+
     @RenderSection("Scripts", false)
 </body>
 </html>

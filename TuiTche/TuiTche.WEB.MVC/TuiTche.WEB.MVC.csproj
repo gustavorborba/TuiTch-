@@ -129,10 +129,12 @@
     </Compile>
     <Compile Include="Mapper\ComentarioMapper.cs" />
     <Compile Include="Mapper\ComentarioVisualizarMapper.cs" />
+    <Compile Include="Mapper\PerfilMapper.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\ListaComentarioVisualizarModel.cs" />
     <Compile Include="Models\ComentarioVisualizarModel.cs" />
     <Compile Include="Models\ListaDePublicacaoModel.cs" />
+    <Compile Include="Models\PerfilModel.cs" />
     <Compile Include="Models\PublicacaoModel.cs" />
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
     <Compile Include="Controllers\PublicacaoController.cs" />
@@ -162,6 +164,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Publicacao\_Comentar.cshtml" />
+    <Content Include="Views\Usuario\perfil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

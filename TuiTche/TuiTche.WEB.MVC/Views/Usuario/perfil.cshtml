@@ -1,0 +1,62 @@
+﻿@model TuiTche.WEB.MVC.Models.PerfilModel
+
+@{
+    ViewBag.Title = "perfil";
+}
+
+<h2>perfil</h2>
+
+<div>
+    <h4>Perfil de @Model.NomeCompleto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroSeguidores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSeguidores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroSeguindo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSeguindo)
+        </dd>
+
+    </dl>
+</div>

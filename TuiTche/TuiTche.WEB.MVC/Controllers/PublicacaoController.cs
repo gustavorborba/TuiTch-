@@ -91,6 +91,14 @@ namespace TuiTche.WEB.MVC.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult UsuarioAutocompleteArray(string term)
+        {
+            var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
+            string[] json = usuariosEncontrados.Select(x => x.Username).ToArray();
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult HashtagAutocomplete(string term)
         {
             var tagsEncontradas = term == null ? hashtagRepositorio.BuscarTodos() : hashtagRepositorio.BuscarPorPalavra(term);

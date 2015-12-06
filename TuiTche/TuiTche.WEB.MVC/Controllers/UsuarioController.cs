@@ -9,16 +9,25 @@ using System.Web.Mvc;
 using TuiTche.Dominio;
 using TuiTche.Repositorio.EF;
 using TuiTche.WEB.MVC.Models;
+using TuiTche.WEB.MVC.Services;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
     public class UsuarioController : Controller
     {
         UsuarioRepositorio repositorio = new UsuarioRepositorio();
+        UsuarioService usuarioService = new UsuarioService();
         // GET: Usuario
         public ActionResult index()
         {
             return View("CadastrarUsuario");
+        }
+
+        [HttpGet]
+        public ActionResult perfil(string username)
+        {
+            PerfilModel model = usuarioService.BuscarPorUsername(username);
+            return View(model);
         }
 
         public ActionResult CadastrarUsuario(UsuarioModel model)
