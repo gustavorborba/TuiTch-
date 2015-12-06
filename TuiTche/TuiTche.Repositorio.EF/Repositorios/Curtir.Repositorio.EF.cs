@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Repositorio.EF;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Interfaces;
 
 namespace TuiTche.Repositorio.EF.Repositorios
 {
-    public class CurtirRepositorio
+    public class CurtirRepositorio : ICurtirRepositorio
     {
-        const int PontosPorTri = 3;
         public Curtir FindById(int id)
         {
             using(BancoDeDados db = new BancoDeDados())
@@ -19,18 +19,12 @@ namespace TuiTche.Repositorio.EF.Repositorios
             }
         }
 
-        public int CurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
+       public int AdicionarCurtir(Curtir curtir)
         {
-            PontuacaoRepositorio repoTri = new PontuacaoRepositorio();
-            Pontuacao pontuacao = repoTri.BuscarPontos(IdPublicacaoUsuario);
             using (BancoDeDados db = new BancoDeDados())
             {
-                Curtir curtir = new Curtir();
-                curtir.IDPublicacao = idPublicacao;
-                curtir.IDUsuario = idUsuario;
                 db.Curtir.Add(curtir);
-                pontuacao.PontuacaoTotal += PontosPorTri;
-                repoTri.SomarPontos(pontuacao);
+
                 return db.SaveChanges();
             }
         }

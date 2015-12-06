@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Interfaces;
 using TuiTche.Repositorio.EF;
 
 namespace TuiTche.Repositorio.EF
 {
-    public class CompartilharRepositorio
+    public class CompartilharRepositorio : ICompartilharRepositorio
     {
         BancoDeDados banco;
 

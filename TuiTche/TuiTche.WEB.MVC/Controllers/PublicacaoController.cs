@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -67,7 +68,8 @@ namespace TuiTche.WEB.MVC.Controllers
 
         private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
-            curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
+            CurtirService service = new CurtirService(new CurtirRepositorio(),new PontuacaoRepositorio());
+            service.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
         }
