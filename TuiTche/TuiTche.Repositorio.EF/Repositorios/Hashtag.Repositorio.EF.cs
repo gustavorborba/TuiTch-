@@ -18,7 +18,7 @@ namespace TuiTche.Repositorio.EF
             Hashtag hashtag;
             using (db = new BancoDeDados())
             {
-                hashtag = db.Hashtag.FirstOrDefault(h => h.Palavra == palavra);
+                hashtag = db.Hashtag.Include("Publicacoes").FirstOrDefault(h => h.Palavra == palavra);
                 if(hashtag != null) {
                     var hashtagEReservada = db.PalavraGauderia.Where(p => p.IDHashtag == hashtag.Id).ToList().FirstOrDefault();
                     if (hashtagEReservada != null)
@@ -50,6 +50,16 @@ namespace TuiTche.Repositorio.EF
                     hashtags.Add(db.Hashtag.FirstOrDefault(h => h.Id == p.IDHashtag));
                 }
                 return hashtags;
+            }
+        }
+
+        public Hashtag Criar(String hashtag)
+        {
+            using(db = new BancoDeDados())
+            {
+                Hashtag tag = db.Hashtag.Add(new Hashtag() { Palavra = hashtag });
+                db.SaveChanges();
+                return tag;
             }
         }
 

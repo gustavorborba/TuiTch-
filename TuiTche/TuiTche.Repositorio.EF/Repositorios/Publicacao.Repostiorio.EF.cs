@@ -32,6 +32,29 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
+        public int PublicacaoTagInsert(Publicacao publicacao)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
+            StringBuilder builder = new StringBuilder();
+            if (publicacao.Hashtags != null)
+            {
+                
+                foreach (var tag in publicacao.Hashtags)
+                {
+                    builder.Append("insert into PublicacaoHashtags (IdHashtag, IdPublicacao) values(" + tag.Id + ", " + publicacao.Id + "); ");
+                }
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(builder.ToString(),connection))
+            {
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+        }
+            return 0;
+        }
+
         public IList<Publicacao> GerarTimeLine(int id)
         {
             IList<Publicacao> PublicacoesPessoais = this.BuscarPublicacoesDeUsuario(id);
