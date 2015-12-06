@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListarPublicacoesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Models\ListaDePublicacaoModel.cs" />
     <Compile Include="Models\PerfilModel.cs" />
     <Compile Include="Models\PublicacaoModel.cs" />
+    <Compile Include="Models\ScrollModel.cs" />
     <Compile Include="Models\UsuarioAutenticadoModel.cs" />
     <Compile Include="Controllers\PublicacaoController.cs" />
     <Compile Include="Models\PublicarModel.cs" />
@@ -158,7 +160,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Publicacao\Index.cshtml" />
     <Content Include="Views\Publicacao\_Publicar.cshtml" />
-    <Content Include="Views\Publicacao\_ListarPublicacoes.cshtml" />
+    <Content Include="Views\ListarPublicacoes\_ListarPublicacoes.cshtml" />
     <Content Include="Views\Usuario\CadastrarUsuario.cshtml" />
     <Content Include="Views\Publicacao\_CarregarComentarios.cshtml">
       <SubType>Code</SubType>

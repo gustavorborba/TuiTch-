@@ -65,18 +65,6 @@ namespace TuiTche.WEB.MVC.Controllers
             return publicacao;
         }
 
-        public ActionResult _ListarPublicacoes()
-        {
-            int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual);
-            var model = new ListaDePublicacaoModel();
-            foreach (var publicacao in listaDePublicacoes)
-            {
-                model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
-            }
-            return PartialView("_ListarPublicacoes", model);
-        }
-
         private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
             curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);

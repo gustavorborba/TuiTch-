@@ -56,21 +56,23 @@ namespace TuiTche.Repositorio.EF
             return 0;
         }
 
-        public IList<Publicacao> GerarTimeLine(int id)
+
+        public IList<Publicacao> GerarTimeLine(int id, int limite)
         {
-            IList<Publicacao> PublicacoesPessoais = this.BuscarPublicacoesDeUsuario(id);
-            List<Publicacao> PublicacoesTimeLine = PublicacoesPessoais.Union(ListarPublicacoesDeSeguidores(id)).ToList();
+            IList<Publicacao> PublicacoesPessoais = this.BuscarPublicacoesDeUsuario(id, limite);
+            List<Publicacao> PublicacoesTimeLine = PublicacoesPessoais.Union(ListarPublicacoesDeSeguidores(id, limite)).ToList();
             return PublicacoesTimeLine.OrderByDescending(p => p.DataPublicacao).ToList();
         }
- 
-        private IList<Publicacao> ListarPublicacoesDeSeguidores(int id)
+
+        private IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite)
         {
+            const int quantidade = 2;
             List<Publicacao> listaPublicacoes = new List<Publicacao>();
 
             StringBuilder query = new StringBuilder();
             query.Append("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario, u.NomeCompleto from Publicacao as p ");
             query.Append(" inner join Seguidores as s on p.IdUsuario = s.IdSeguindo inner join Usuario as u on p.IdUsuario = u.Id ");
-            query.Append(" where s.IdSeguidor = @param or p.IdUsuario = @param order by p.DataPublicacao desc");
+            query.Append(" where s.IdSeguidor = @param or p.IdUsuario = @param order by p.DataPublicacao desc OFFSET @limite ROWS FETCH NEXT @quantidade ROWS ONLY");
 
             string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
             using (IDbConnection connection = new SqlConnection(connectionString))
@@ -79,6 +81,8 @@ namespace TuiTche.Repositorio.EF
                 comando.CommandText = query.ToString();
 
                 comando.AddParameter("param", id);
+                comando.AddParameter("limite", limite);
+                comando.AddParameter("quantidade", quantidade);
 
                 connection.Open();
 
@@ -86,10 +90,10 @@ namespace TuiTche.Repositorio.EF
                 while (reader.Read())
                 {
                     Publicacao publicacao = new Publicacao(Convert.ToInt32(reader["Id"]));
-                    publicacao.IdUsuario =Convert.ToInt32(reader["IdUsuario"]);
+                    publicacao.IdUsuario = Convert.ToInt32(reader["IdUsuario"]);
                     publicacao.Descricao = reader["Descricao"].ToString();
                     publicacao.DataPublicacao = Convert.ToDateTime(reader["DataPublicacao"]);
-                    Usuario usuario= new Usuario();
+                    Usuario usuario = new Usuario();
                     usuario.NomeCompleto = reader["NomeCompleto"].ToString();
                     publicacao.Usuario = usuario;
                     listaPublicacoes.Add(publicacao);
@@ -98,13 +102,13 @@ namespace TuiTche.Repositorio.EF
                 //banco.Publicacao.SqlQuery("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo where s.IdSeguidor = @param order by p.DataPublicacao desc", new SqlParameter("param", id));
             }
         }
-        private IList<Publicacao> BuscarPublicacoesDeUsuario(int id)
+        private IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite)
         {
+            const int quantidade = 1;
             using (banco = new BancoDeDados())
             {
-                return banco.Publicacao.Include("Usuario").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).ToList();
+                return banco.Publicacao.Include("Usuario").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).Skip(limite).Take(quantidade).ToList();
             }
         }
-
     }
 }

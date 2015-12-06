@@ -19,10 +19,28 @@
         <div class="text-center">
             @Html.Partial("_Publicar")
         </div>
+    <div id="lista" class="text-center" style="margin-left:400px;">
+        @{Html.RenderAction("_ListarPublicacoes", "ListarPublicacoes");}
+    </div>
 
-        <div class="text-center" style="margin-left:400px;">
-            @{Html.RenderAction("_ListarPublicacoes", "Publicacao");}
-        </div>
+
+
+    <script type="text/javascript">
+
+    var next = 0;
+    var index = 2;
+
+    $(window).scroll(function () {
+
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+            $.post("@Url.Action("getData", "ListarPublicacoes")", { "next": next=next+index },
+                    function (data) {
+                        $("#lista").append(data.HTMLString);
+                    });
+        }
+    });
+    </script>
         <script>
             var value;
             var maisUsadas = [];
@@ -46,9 +64,9 @@
                     cont++;
                 });
             })
-            
 
 
-        </script>
+
+    </script>
 </body>
 
