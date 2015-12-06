@@ -8,6 +8,7 @@ namespace TuiTche.WEB.MVC.Models
 {
     public class UsuarioModel
     {
+        public int? Id { get; set; }
         [Required(ErrorMessage = "Campo Obrigatório")]
         [StringLength(128,MinimumLength =5, ErrorMessage ="O Campo deve ter entre 5 e 128 caracteres")]
         public string NomeCompleto { get; set; }
@@ -19,6 +20,11 @@ namespace TuiTche.WEB.MVC.Models
         [Required(ErrorMessage ="Campo Obrigatorio")]
         [StringLength(15,MinimumLength =7,ErrorMessage ="O campo deve ter entre 7 e 15 caracteres")]
         public string Senha { get; set; }
+
+        [Display(Name = "ConfirmarSenha")]
+        [Required(ErrorMessage = "Campo Obrigatorio")]
+        [StringLength(15, MinimumLength = 7, ErrorMessage = "O campo deve ter entre 7 e 15 caracteres")]
+        public string ConfirmarSenha { get; set; }
 
         [Display(Name ="Endereco de Email")]
         [Required(ErrorMessage = "Campo Obrigatorio")]

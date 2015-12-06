@@ -23,7 +23,7 @@ namespace TuiTche.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
             }
         }
@@ -51,6 +51,7 @@ namespace TuiTche.Repositorio.EF
                 return db.Usuario.Where(m => m.Email == email || m.Username == username).FirstOrDefault() == null;
             }
         }
+
         public IList<Usuario> BuscarTodos()
         {
             using(var db = new BancoDeDados())
@@ -66,5 +67,6 @@ namespace TuiTche.Repositorio.EF
                 return db.Usuario.Where(u => u.Username.Contains(term)).ToList();
             }
         }
+
     }
 }
