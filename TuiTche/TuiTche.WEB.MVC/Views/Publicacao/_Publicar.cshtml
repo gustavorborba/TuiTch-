@@ -83,7 +83,7 @@
                 });
             }
             var dataObject = JSON.stringify({
-                'hashtags': tags,
+                'hashtags': removeDuplicates(tags),
                 'users': textoUsuario,
                 'conteudo': text
             });
@@ -123,4 +123,12 @@
             });
            
         });
+
+        function removeDuplicates(values){
+            var uniqueNames = [];
+            $.each(values, function (i, el) {
+                if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+            });
+            return uniqueNames;
+        }
 </script>
