@@ -1,13 +1,61 @@
 ﻿@model TuiTche.WEB.MVC.Models.ListaDePublicacaoModel
 
-@foreach (var publicacao in Model.ListaPublicacoes)
-{
-    <div class="form-control" style="height:150px;width:350px">
-        <p>Publicado por: @publicacao.NomeUsuario</p>
-        <p>@publicacao.Mensagem</p>
-        @{Html.RenderAction("_CarregarComentarios","Publicacao" ,new { idPublicacao = @publicacao.IdPublicacao });}
-        <div style="position: relative; bottom: 5px;">
-            @{Html.RenderAction("_Comentar","Publicacao" ,new { idPublicacao = @publicacao.IdPublicacao });}
+<div id="pubs">
+    @foreach (var publicacao in Model.ListaPublicacoes)
+    {
+        <div class="form-control" style="height:300px;width:350px">
+            <p>Publicado por: @publicacao.NomeUsuario</p>
+            <p>@publicacao.Mensagem</p>
+            @{Html.RenderAction("_CarregarComentarios", "Publicacao" , new {idPublicacao = @publicacao.IdPublicacao });}
+            <div style="position: relative; bottom: 5px;">
+                @{Html.RenderAction("_Comentar", "Publicacao" ,new { idPublicacao = @publicacao.IdPublicacao });}
+            </div>
+            <div class="text-center">
+                <button id="compartilhar" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
+            </div>
         </div>
-    </div>
+        <script>
+            (function changeId ()
+            {
+                var e = document.getElementById("compartilhar");
+                e.id = "compartilhar"+@publicacao.IdPublicacao;
+            })();
+            function notifyMe() {
+                if (!("Notification" in window)) {
+                    alert("Este navegador não suporte notificações desktop");
+                }
+
+                else if (Notification.permission === "granted") {
+                    var notification = new Notification("Mensagem Compartilhada!");
+                }
+
+                else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission(function (permission) {
+
+                        if (!('permission' in Notification)) {
+                            Notification.permission = permission;
+                        }
+                        if (permission === "granted") {
+                            var notification = new Notification("Mensagem Compartilhada!");
+                        }
+                    });
+                }
+            }
+        </script>
 }
+</div>
+<script>
+    var id;
+    var dataObject;
+    function compartilhar(e){
+        id = e.id;
+        alert(parseInt(id.substring(12,id.length)));
+        dataObject = {'idPublicacao': id.substring(12,id.length) };
+            $.ajax({
+                url: 'Publicacao/Compartilhar',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(dataObject)
+            })
+    };
+</script>
