@@ -29,11 +29,11 @@ namespace TuiTche.WEB.MVC.Controllers
             if (model.ListaPublicacoes.Count == 0)
             {
                 int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-                var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 2);
+                var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 0);
                 foreach (var publicacao in listaDePublicacoes)
                 {
                     PublicacaoModel pub = new PublicacaoModel(publicacao);
-                    if(publicacao.Compartilhar.Count > 0)
+                    if(publicacao.Compartilhar != null)
                     {
                         pub.UsuarioCompartilhou = CompartilharRepositorio.BuscarCompartilhamento(publicacao.Id).Usuario.NomeCompleto;
                     }
