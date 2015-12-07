@@ -11,5 +11,7 @@ namespace TuiTche.Dominio.Interfaces
         int Salvar(Usuario usuario);
         Usuario BuscarPorId(int id);
         Usuario BuscarPorUsername(string username);
+        void Seguir(int idSeguidor, int idSeguido);
+        void PararDeSeguir(int idSeguidor, int idSeguido);
     }
 }

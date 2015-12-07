@@ -55,7 +55,7 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
-        public void PaarDeSeguir(int idSeguidor, int idSeguido)
+        public void PararDeSeguir(int idSeguidor, int idSeguido)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
             StringBuilder builder = new StringBuilder();

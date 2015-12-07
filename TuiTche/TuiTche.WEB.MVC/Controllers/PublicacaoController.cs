@@ -22,7 +22,8 @@ namespace TuiTche.WEB.MVC.Controllers
         HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
-        ComentarioService comentarioService = new ComentarioService();
+        ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
+        ComentarioService comentarioService = ConstrutorDeServices.ComentarioService;
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
@@ -135,7 +136,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+                model.Comentarios.Add(mapper.EntityToModel(comentario));
             }
             
             return PartialView(model);
@@ -153,7 +154,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+                model.Comentarios.Add(mapper.EntityToModel(comentario));
             }
 
             return Json(model, JsonRequestBehavior.AllowGet);

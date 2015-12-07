@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Models;
 
 namespace TuiTche.WEB.MVC.Models
 {
-    public class ComentarioVisualizarModel
+    public class ComentarioVisualizarModel : BaseComentarioVisualizarModel
     {
-        public int IdPublicacao { get; set; }
-        public string Texto { get; set; }
-        public string Username { get; set; }
-        public DateTime DataComentario { get; set; }
+        
     }
 }

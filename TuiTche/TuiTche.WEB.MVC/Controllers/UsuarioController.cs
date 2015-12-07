@@ -7,8 +7,12 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Models;
+using TuiTche.Dominio.Services;
 using TuiTche.Repositorio.EF;
+using TuiTche.WEB.MVC.Mapper;
 using TuiTche.WEB.MVC.Models;
+using TuiTche.WEB.MVC.Seguranca;
 using TuiTche.WEB.MVC.Services;
 
 namespace TuiTche.WEB.MVC.Controllers
@@ -16,7 +20,7 @@ namespace TuiTche.WEB.MVC.Controllers
     public class UsuarioController : Controller
     {
         UsuarioRepositorio repositorio = new UsuarioRepositorio();
-        UsuarioService usuarioService = new UsuarioService();
+        UsuarioService usuarioService = ConstrutorDeServices.UsuarioService;
         CriptografiaService criptografia = new CriptografiaService();
         // GET: Usuario
         public ActionResult index()
@@ -31,7 +35,7 @@ namespace TuiTche.WEB.MVC.Controllers
         [HttpGet]
         public ActionResult perfil(string username)
         {
-            PerfilModel model = usuarioService.BuscarPorUsername(username);
+            BasePerfilModel model = usuarioService.BuscarPorUsername(username);
             return View(model);
         }
 

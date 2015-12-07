@@ -64,13 +64,19 @@
     <Compile Include="Entidades\Pontuacao.cs" />
     <Compile Include="Entidades\Publicacao.cs" />
     <Compile Include="Entidades\Ranking.cs" />
+    <Compile Include="Mapper\IComentarioVisualizarMapper.cs" />
+    <Compile Include="Mapper\IPerfilMapper.cs" />
+    <Compile Include="Models\BaseComentarioVisualizarModel.cs" />
+    <Compile Include="Models\BasePerfilModel.cs" />
     <Compile Include="Services\Criptografia\AutenticarUsuario.cs" />
     <Compile Include="Services\Criptografia\IServicoCriptografia.cs" />
+    <Compile Include="Services\RegrasDeNegocio\ComentarioService.cs" />
     <Compile Include="Services\RegrasDeNegocio\CurtirService.cs" />
     <Compile Include="Services\RegrasDeNegocio\PontuacaoService.cs" />
     <Compile Include="Services\RegrasDeNegocio\PublicacaoService.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RegrasDeNegocio\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
