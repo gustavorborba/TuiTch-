@@ -139,6 +139,7 @@ namespace TuiTche.WEB.MVC.Controllers
                 Contador = 0,
                 IdPublicacao = idPublicacao
             };
+
             IList<Comentario> comentarios = comentarioActions.BuscarProximos(idPublicacao, null);
 
             foreach (Comentario comentario in comentarios)

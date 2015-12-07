@@ -29,7 +29,7 @@ namespace TuiTche.WEB.MVC.Controllers
             if (model.ListaPublicacoes.Count == 0)
             {
                 int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-                var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 0);
+                var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 2);
                 foreach (var publicacao in listaDePublicacoes)
                 {
                     PublicacaoModel pub = new PublicacaoModel(publicacao);
