@@ -62,5 +62,10 @@ namespace TuiTche.Dominio
             Seguindo.Add(seguir);
         }
 
+        public void PararDeSeguirUsuario(Usuario seguir)
+        {
+            Seguindo.Remove(seguir);
+        }
+
     }
 }
