@@ -9,10 +9,10 @@ using TuiTche.Dominio;
 using TuiTche.Dominio.Services;
 using TuiTche.Repositorio.EF;
 using TuiTche.Repositorio.EF.Repositorios;
+using TuiTche.WEB.MVC.Extensoes;
 using TuiTche.WEB.MVC.Mapper;
 using TuiTche.WEB.MVC.Models;
 using TuiTche.WEB.MVC.Seguranca;
-using TuiTche.WEB.MVC.Services;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
@@ -23,7 +23,7 @@ namespace TuiTche.WEB.MVC.Controllers
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
         ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
-        ComentarioService comentarioService = ConstrutorDeServices.ComentarioService;
+        ComentarioActions comentarioService = new ComentarioActions();
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
@@ -136,7 +136,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Comentarios.Add(mapper.EntityToModel(comentario));
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
             
             return PartialView(model);
@@ -154,19 +154,17 @@ namespace TuiTche.WEB.MVC.Controllers
 
             foreach (Comentario comentario in comentarios)
             {
-                model.Comentarios.Add(mapper.EntityToModel(comentario));
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult SalvarComentario(ComentarioModel model)
+        public void SalvarComentario(ComentarioModel model)
         {
             model.DataComentario = DateTime.Now;
             comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
-
-            return View("Index");
         }
     }
 }

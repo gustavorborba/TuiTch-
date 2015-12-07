@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201512042208411_alter_table_PalavraGauderia.Designer.cs">
       <DependentUpon>201512042208411_alter_table_PalavraGauderia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512071558566_add-migration fix.cs" />
+    <Compile Include="Migrations\201512071558566_add-migration fix.Designer.cs">
+      <DependentUpon>201512071558566_add-migration fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorios\Compartilhar.Repositorio.EF.cs" />
     <Compile Include="Repositorios\Curtir.Repositorio.EF.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512042208411_alter_table_PalavraGauderia.resx">
       <DependentUpon>201512042208411_alter_table_PalavraGauderia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512071558566_add-migration fix.resx">
+      <DependentUpon>201512071558566_add-migration fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

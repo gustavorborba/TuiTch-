@@ -1,0 +1,15 @@
+﻿Attempting to gather dependencies information for package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' with respect to project 'UI\TuiTche.WEB.MVC', targeting '.NETFramework,Version=v4.5'
+Attempting to resolve dependencies for package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3'
+Resolved actions to install package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3'
+For adding package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' to project 'TuiTche.WEB.MVC' that targets 'net45'.
+For adding package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' to project 'TuiTche.WEB.MVC' that targets 'net45'.
+Adding package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' to folder 'C:\Users\julio.oliveira\Documents\TuiTche\TuiTche\packages'
+Added package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' to folder 'C:\Users\julio.oliveira\Documents\TuiTche\TuiTche\packages'
+Added file 'jquery.unobtrusive-ajax.min.js' to folder 'Scripts'.
+Added file 'Scripts\jquery.unobtrusive-ajax.min.js' to project 'TuiTche.WEB.MVC'.
+Added file 'jquery.unobtrusive-ajax.js' to folder 'Scripts'.
+Added file 'Scripts\jquery.unobtrusive-ajax.js' to project 'TuiTche.WEB.MVC'.
+Added package 'Microsoft.jQuery.Unobtrusive.Ajax.3.2.3' to 'packages.config'
+Successfully installed 'Microsoft.jQuery.Unobtrusive.Ajax 3.2.3' to TuiTche.WEB.MVC
+========== Finished ==========

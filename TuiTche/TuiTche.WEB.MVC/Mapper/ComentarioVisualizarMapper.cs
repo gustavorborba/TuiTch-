@@ -4,14 +4,12 @@ using System.Linq;
 using System.Web;
 using TuiTche.Dominio;
 using TuiTche.WEB.MVC.Models;
-using TuiTche.Dominio.Mapper;
-using TuiTche.Dominio.Models;
 
 namespace TuiTche.WEB.MVC.Mapper
 {
-    public class ComentarioVisualizarMapper : IComentarioVisualizarMapper
+    public class ComentarioVisualizarMapper
     {
-        public BaseComentarioVisualizarModel EntityToModel(Comentario comentario)
+        public static ComentarioVisualizarModel EntityToModel(Comentario comentario)
         {
             ComentarioVisualizarModel model = new ComentarioVisualizarModel();
             model.Texto = comentario.Texto;

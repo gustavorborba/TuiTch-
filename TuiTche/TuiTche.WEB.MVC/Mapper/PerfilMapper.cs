@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TuiTche.Dominio;
-using TuiTche.Dominio.Mapper;
-using TuiTche.Dominio.Models;
 using TuiTche.WEB.MVC.Models;
 
 namespace TuiTche.WEB.MVC.Mapper
 {
-    public class PerfilMapper : IPerfilMapper
+    public class PerfilMapper
     {
-        public BasePerfilModel toModel(Usuario usuario)
+        public static PerfilModel toModel(Usuario usuario)
         {
             return new PerfilModel()
             {
