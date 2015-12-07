@@ -127,8 +127,8 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Extensoes\ComentarioService.cs" />
-    <Compile Include="Extensoes\UsuarioService.cs" />
+    <Compile Include="Extensoes\ComentarioActions.cs" />
+    <Compile Include="Extensoes\UsuarioActions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

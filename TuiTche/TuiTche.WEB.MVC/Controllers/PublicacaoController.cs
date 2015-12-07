@@ -23,8 +23,7 @@ namespace TuiTche.WEB.MVC.Controllers
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio CurtirRepositorio = new CurtirRepositorio();
         ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
-        ComentarioActions comentarioService = new ComentarioActions();
-        //ComentarioService ComentarioService = ConstrutorDeServices.ComentarioService;
+        ComentarioActions comentarioActions = new ComentarioActions();
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
@@ -140,12 +139,12 @@ namespace TuiTche.WEB.MVC.Controllers
                 Contador = 0,
                 IdPublicacao = idPublicacao
             };
-           // IList<Comentario> comentarios = ComentarioService.BuscarProximos(idPublicacao, null);
+            IList<Comentario> comentarios = comentarioActions.BuscarProximos(idPublicacao, null);
 
-            //foreach (Comentario comentario in comentarios)
-            //{
-            //    model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
-            //}
+            foreach (Comentario comentario in comentarios)
+            {
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+            }
             
             return PartialView(model);
         }
@@ -158,7 +157,7 @@ namespace TuiTche.WEB.MVC.Controllers
             };
 
 
-            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, contador + 2);
+            IList<Comentario> comentarios = comentarioActions.BuscarProximos(idPublicacao, contador + 2);
 
 
             foreach (Comentario comentario in comentarios)
@@ -170,12 +169,10 @@ namespace TuiTche.WEB.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SalvarComentario(ComentarioModel model)
+        public void SalvarComentario(ComentarioModel model)
         {
             model.DataComentario = DateTime.Now;
-            comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
-
-            return View("Index");
+            comentarioActions.SalvarComentario(ComentarioMapper.ModelToEntity(model));
         }
     }
 }
