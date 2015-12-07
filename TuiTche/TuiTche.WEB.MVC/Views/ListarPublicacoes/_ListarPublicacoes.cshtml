@@ -49,7 +49,6 @@
     var dataObject;
     function compartilhar(e){
         id = e.id;
-        alert(parseInt(id.substring(12,id.length)));
         dataObject = {'idPublicacao': id.substring(12,id.length) };
             $.ajax({
                 url: 'Publicacao/Compartilhar',

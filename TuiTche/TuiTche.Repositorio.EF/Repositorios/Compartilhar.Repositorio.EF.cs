@@ -37,7 +37,6 @@ namespace TuiTche.Repositorio.EF
         public List<Compartilhar> BuscarCompartilhamentos(Publicacao publicacao,int limite)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
-            //TODO: Debater sobre como fazer para mostrar as mensagens retwitadas/compartilhadas.
             StringBuilder query = new StringBuilder();
 
             List<Compartilhar> compartilhamentos = new List<Compartilhar>();
