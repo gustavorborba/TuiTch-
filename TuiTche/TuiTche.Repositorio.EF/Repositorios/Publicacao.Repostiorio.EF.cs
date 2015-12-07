@@ -99,7 +99,7 @@ namespace TuiTche.Repositorio.EF
         {
             const int quantidade = 1;
             using (banco = new BancoDeDados())
-            {
+           {
                 return banco.Publicacao.Include("Usuario").Include("Compartilhar").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).Skip(limite).Take(quantidade).ToList();
             }
         }
