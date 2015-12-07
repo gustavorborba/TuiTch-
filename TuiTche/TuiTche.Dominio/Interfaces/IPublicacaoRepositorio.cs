@@ -12,5 +12,6 @@ namespace TuiTche.Dominio.Interfaces
         int Criar(Publicacao publicacao);
         int PublicacaoTagInsert(Publicacao publicacao);
         IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite);
+        IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite);
     }
 }

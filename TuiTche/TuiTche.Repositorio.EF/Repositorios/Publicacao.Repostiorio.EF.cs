@@ -95,5 +95,13 @@ namespace TuiTche.Repositorio.EF
                 //banco.Publicacao.SqlQuery("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo where s.IdSeguidor = @param order by p.DataPublicacao desc", new SqlParameter("param", id));
             }
         }
+        public IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite)
+        {
+            const int quantidade = 1;
+            using (banco = new BancoDeDados())
+           {
+                return banco.Publicacao.Include("Usuario").Include("Compartilhar").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).Skip(limite).Take(quantidade).ToList();
+            }
+        }
     }
 }
