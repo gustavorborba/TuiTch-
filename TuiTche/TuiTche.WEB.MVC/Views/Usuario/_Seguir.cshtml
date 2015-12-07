@@ -1,0 +1,32 @@
+﻿@model PerfilModel
+
+@if (@Model.IdPerfil != TuiTche.WEB.MVC.Seguranca.ControleDeSessao.UsuarioAtual.IdUsuario)
+{
+    if (Model.Seguindo)
+    { 
+        using (Ajax.BeginForm("PararDeSeguir", "Usuario", new AjaxOptions
+        {
+            HttpMethod = "POST"
+        }))
+        {
+            <input type="hidden" id="idSeguidor" name="idSeguidor" value="@TuiTche.WEB.MVC.Seguranca.ControleDeSessao.UsuarioAtual.IdUsuario" />
+            <input type="hidden" id="idSeguindo" name="idSeguindo" value="@Model.IdPerfil" />
+            <input type="hidden" id="username" name="username" value="@Model.Username" />
+            <input type="submit" value="Largar" />
+        }
+
+    }
+    else
+    {
+        using (Ajax.BeginForm("Seguir", "Usuario", new AjaxOptions
+            {
+                HttpMethod = "POST"
+            }))
+        {
+            <input type="hidden" id="idSeguidor" name="idSeguidor" value="@TuiTche.WEB.MVC.Seguranca.ControleDeSessao.UsuarioAtual.IdUsuario" />
+            <input type="hidden" id="idSeguindo" name="idSeguindo" value="@Model.IdPerfil" />
+            <input type="hidden" id="username" name="username" value="@Model.Username" />
+            <input type="submit" value="Seguir" />
+        }
+    }
+}

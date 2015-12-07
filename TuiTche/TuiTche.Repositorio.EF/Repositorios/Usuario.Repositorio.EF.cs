@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +25,48 @@ namespace TuiTche.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                if (usuario.Id > 0)
+                {
+                    db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                }
+                
                 return db.SaveChanges();
+            }
+        }
+
+        public void Seguir(int idSeguidor, int idSeguido)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
+            StringBuilder builder = new StringBuilder();
+            builder.Append("INSERT INTO Seguidores (IdSeguidor, IdSeguindo) values(" + idSeguidor + ", " + idSeguido + "); ");
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(builder.ToString(), connection))
+            {
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void PaarDeSeguir(int idSeguidor, int idSeguido)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
+            StringBuilder builder = new StringBuilder();
+            builder.Append("DELETE FROM Seguidores WHERE IdSeguidor = " + idSeguidor + " and IdSeguindo = " + idSeguido + "; ");
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(builder.ToString(), connection))
+            {
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
             }
         }
 

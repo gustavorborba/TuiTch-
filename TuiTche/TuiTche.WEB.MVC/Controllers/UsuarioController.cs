@@ -61,5 +61,21 @@ namespace TuiTche.WEB.MVC.Controllers
             TempData["Mensagem"] = "Ocorreu os seguintes erros: ";
             return View("CadastrarUsuario", model);
         }
+
+        [HttpPost]
+        public ActionResult Seguir(int idSeguidor, int idSeguindo, string username)
+        {
+            usuarioService.Seguir(idSeguidor, idSeguindo);
+
+            return RedirectToAction("perfil", new { username = username });
+        }
+
+        [HttpPost]
+        public ActionResult PararDeSeguir(int idSeguidor, int idSeguindo, string username)
+        {
+            usuarioService.PararDeSeguir(idSeguidor, idSeguindo);
+
+            return RedirectToAction("perfil", new { username = username });
+        }
     }
 }

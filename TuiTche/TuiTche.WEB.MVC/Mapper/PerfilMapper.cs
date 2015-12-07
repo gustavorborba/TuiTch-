@@ -13,6 +13,7 @@ namespace TuiTche.WEB.MVC.Mapper
         {
             return new PerfilModel()
             {
+                IdPerfil = usuario.Id,
                 Username = usuario.Username,
                 Sexo = usuario.SexoUsuario,
                 NomeCompleto = usuario.NomeCompleto,
