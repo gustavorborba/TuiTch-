@@ -18,7 +18,7 @@ namespace TuiTche.Dominio.Services
             this.pontuacaoRepositorio = pontuacao;
         }
 
-        public void CurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
+        public Pontuacao CurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
         {
             const int PontosPorTri = 3;
             Pontuacao pontuacao = pontuacaoRepositorio.BuscarPontos(IdPublicacaoUsuario);
@@ -28,6 +28,7 @@ namespace TuiTche.Dominio.Services
             curtirRepositorio.AdicionarCurtir(curtir);
             pontuacao.PontuacaoTotal += PontosPorTri;
             pontuacaoRepositorio.SomarPontos(pontuacao);
+            return pontuacao;
         }
     }
 }
