@@ -9,8 +9,7 @@ namespace TuiTche.Dominio.Interfaces
     public interface ICompartilharRepositorio
     {
         Compartilhar BuscarPorId(int id);
-        Compartilhar Compartilhar(Compartilhar publicacao);
-        int AdicionarCompartilhamento(Publicacao publicacao);
+        int Compartilhar(Compartilhar publicacao);
 
     }
 }
