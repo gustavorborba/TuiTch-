@@ -19,10 +19,8 @@ namespace TuiTche.Dominio.Services
 
         public IList<Publicacao> GerarTimeLine(int id, int limite)
         {
-            IList<Publicacao> publicacoesPessoais = publicacaoRepositorio.BuscarPublicacoesDeUsuario(id, limite);
             IList<Publicacao> publicacoesSeguidores = publicacaoRepositorio.ListarPublicacoesDeSeguidores(id, limite);
-            IList<Publicacao> PublicacoesTimeLine = publicacoesPessoais.Union(publicacoesSeguidores).ToList();
-            return PublicacoesTimeLine.OrderByDescending(p => p.DataPublicacao).ToList();
+            return publicacoesSeguidores.ToList();
         }
     }
 }
