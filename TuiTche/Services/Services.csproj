@@ -51,8 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CriptografiaService\Criptografia.Service.cs" />
-    <Compile Include="CurtirService.cs" />
-    <Compile Include="PontuacaoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

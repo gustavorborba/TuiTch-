@@ -8,11 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Interfaces;
 using TuiTche.Repositorio.EF.DTO;
 
 namespace TuiTche.Repositorio.EF
 {
-    public class PublicacaoRepositorio
+    public class PublicacaoRepositorio : IPublicacaoRepositorio
     {
         BancoDeDados banco;
 
@@ -56,15 +57,7 @@ namespace TuiTche.Repositorio.EF
             return 0;
         }
 
-
-        public IList<Publicacao> GerarTimeLine(int id, int limite)
-        {
-            IList<Publicacao> PublicacoesPessoais = this.BuscarPublicacoesDeUsuario(id, limite);
-            List<Publicacao> PublicacoesTimeLine = PublicacoesPessoais.Union(ListarPublicacoesDeSeguidores(id, limite)).ToList();
-            return PublicacoesTimeLine.OrderByDescending(p => p.DataPublicacao).ToList();
-        }
-
-        private IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite)
+        public IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite)
         {
             const int quantidade = 2;
             List<Publicacao> listaPublicacoes = new List<Publicacao>();
@@ -102,7 +95,7 @@ namespace TuiTche.Repositorio.EF
                 //banco.Publicacao.SqlQuery("select p.Id, p.Descricao, p.DataPublicacao, p.IdUsuario from Publicacao as p inner join Seguidores as s on p.IdUsuario = s.IdSeguindo where s.IdSeguidor = @param order by p.DataPublicacao desc", new SqlParameter("param", id));
             }
         }
-        private IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite)
+        public IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite)
         {
             const int quantidade = 1;
             using (banco = new BancoDeDados())
