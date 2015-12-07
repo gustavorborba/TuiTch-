@@ -18,12 +18,13 @@ namespace TuiTche.WEB.MVC.Controllers
 {
     public class PublicacaoController : Controller
     {
-        PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
-        HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
-        UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
-        CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
+        PublicacaoRepositorio PublicacaoRepositorio = new PublicacaoRepositorio();
+        HashtagRepositorio HashtagRepositorio = new HashtagRepositorio();
+        UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
+        CurtirRepositorio CurtirRepositorio = new CurtirRepositorio();
         ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
         ComentarioActions comentarioService = new ComentarioActions();
+        ComentarioService ComentarioService = ConstrutorDeServices.ComentarioService;
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
@@ -37,13 +38,13 @@ namespace TuiTche.WEB.MVC.Controllers
             {
                 Descricao = conteudo,
                 DataPublicacao = DateTime.Now,
-                IdUsuario = usuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
+                IdUsuario = UsuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
             };
-            publicacaoRepositorio.Criar(publicacao);
+            PublicacaoRepositorio.Criar(publicacao);
             if (hashtags != null)
             {
                 publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
-                int x = publicacaoRepositorio.PublicacaoTagInsert(publicacao);
+                int x = PublicacaoRepositorio.PublicacaoTagInsert(publicacao);
                 publicacao.Hashtags = null;
             }
             return PartialView("_Publicar");
@@ -53,16 +54,16 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             foreach (var tag in hashtags)
             {
-                var hashtagGauderia = hashtagRepositorio.VerificaSeTagEGauderia(tag);
+                var hashtagGauderia = HashtagRepositorio.VerificaSeTagEGauderia(tag);
                 if (hashtagGauderia != null)
                 {
                     //hashtagGauderia.Publicacoes.Add(publicacao);
-                    int i = hashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
+                    int i = HashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
                     publicacao.Hashtags.Add(hashtagGauderia);
                 }
                 else
                 {
-                    Hashtag hashtag = hashtagRepositorio.Criar(tag);
+                    Hashtag hashtag = HashtagRepositorio.Criar(tag);
                     publicacao.Hashtags.Add(hashtag);
                 }
                 
@@ -75,11 +76,18 @@ namespace TuiTche.WEB.MVC.Controllers
             compartilhar.DataCompartilhamento = DateTime.Now;
             compartilhar.IdPublicacao = Convert.ToInt32(idPublicacao);
             compartilhar.IdUsuario = ControleDeSessao.UsuarioAtual.IdUsuario;
+            Publicacao publicacao = PublicacaoRepositorio.BuscarPorPorId(compartilhar.IdPublicacao);
+            Publicacao publicacaoCompartilhada = new Publicacao()
+            {
+                IdUsuario = compartilhar.IdUsuario,
+                DataPublicacao = compartilhar.DataCompartilhamento,
+                Descricao = publicacao.Descricao
+            };
+            Publicacao afetada = PublicacaoRepositorio.Criar(publicacaoCompartilhada);
+            compartilhar.Publicacao = afetada;
             int linhas = CompartilharRepositorio.Compartilhar(compartilhar);
-            //Publicacao publicacao = compartilhar.Publicacao;
-            //publicacao.Compartilhar.Add(compartilhar);
-            //CompartilharRepositorio.AdicionarCompartilhamento(publicacao);
-            //PublicacaoRepositorio.Criar(compartilhar.Publicacao);
+            
+            
 
             return View("../Publicacao/Index");
         }
@@ -93,7 +101,7 @@ namespace TuiTche.WEB.MVC.Controllers
         }
         public JsonResult UsuarioAutocomplete(string term)
         {
-            var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
+            var usuariosEncontrados = term == null ? UsuarioRepositorio.BuscarTodos() : UsuarioRepositorio.BuscarPorUsernameAutocomplete(term);
             var json = usuariosEncontrados.Select(x => new { label= x.Username });
 
             return Json(json, JsonRequestBehavior.AllowGet);
@@ -101,7 +109,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
         public JsonResult UsuarioAutocompleteArray(string term)
         {
-            var usuariosEncontrados = term == null ? usuarioRepositorio.BuscarTodos() : usuarioRepositorio.BuscarPorUsernameAutocomplete(term);
+            var usuariosEncontrados = term == null ? UsuarioRepositorio.BuscarTodos() : UsuarioRepositorio.BuscarPorUsernameAutocomplete(term);
             string[] json = usuariosEncontrados.Select(x => x.Username).ToArray();
 
             return Json(json, JsonRequestBehavior.AllowGet);
@@ -109,7 +117,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
         public JsonResult HashtagAutocomplete(string term)
         {
-            var tagsEncontradas = term == null ? hashtagRepositorio.BuscarTodos() : hashtagRepositorio.BuscarPorPalavra(term);
+            var tagsEncontradas = term == null ? HashtagRepositorio.BuscarTodos() : HashtagRepositorio.BuscarPorPalavra(term);
             var json = tagsEncontradas.Select(x => new { label = x.Palavra });
 
             return Json(json, JsonRequestBehavior.AllowGet);
@@ -132,7 +140,7 @@ namespace TuiTche.WEB.MVC.Controllers
                 Contador = 0,
                 IdPublicacao = idPublicacao
             };
-            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, null);
+            IList<Comentario> comentarios = ComentarioService.BuscarProximos(idPublicacao, null);
 
             foreach (Comentario comentario in comentarios)
             {
@@ -149,7 +157,11 @@ namespace TuiTche.WEB.MVC.Controllers
                 IdPublicacao = idPublicacao
             };
 
+<<<<<<< Updated upstream
             IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, contador + 2);
+=======
+            IList<Comentario> comentarios = ComentarioService.BuscarProximos(idPublicacao, contador);
+>>>>>>> Stashed changes
 
             foreach (Comentario comentario in comentarios)
             {
@@ -163,7 +175,13 @@ namespace TuiTche.WEB.MVC.Controllers
         public void SalvarComentario(ComentarioModel model)
         {
             model.DataComentario = DateTime.Now;
+<<<<<<< Updated upstream
             comentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+=======
+            ComentarioService.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+
+            return View("Index");
+>>>>>>> Stashed changes
         }
     }
 }

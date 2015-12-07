@@ -34,35 +34,14 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
-        public List<Compartilhar> BuscarCompartilhamentos(Publicacao publicacao,int limite)
+        public Compartilhar BuscarCompartilhamento(int IdPublicacao)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["TUITCHE"].ConnectionString;
-            StringBuilder query = new StringBuilder();
-
-            List<Compartilhar> compartilhamentos = new List<Compartilhar>();
-            query.Append("select * from Compartilhar as c "
-            + " inner join Seguidores s on c.IdUsuario = s.IdSeguindo "
-            + " where c.IdPublicacao = @idPublicacao and c.IdUsuario = @usuario "
-            + " order by c.DataCompartilhamento desc;");
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (banco = new BancoDeDados())
             {
-                IDbCommand comando = connection.CreateCommand();
-                comando.CommandText = query.ToString();
-                comando.AddParameter("idPublicacao", publicacao.Id);
-                comando.AddParameter("usuario", publicacao.IdUsuario);
-
-                connection.Open();
-                IDataReader reader = comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    Compartilhar compartilhar = new Dominio.Compartilhar(Convert.ToInt32(reader["Id"]));
-                    compartilhar.DataCompartilhamento = Convert.ToDateTime(reader["DataCompartilhamento"]);
-                    compartilhar.IdUsuario = Convert.ToInt32(reader["IdUsuario"]);
-                    compartilhar.IdPublicacao = Convert.ToInt32(reader["IdPublicacao"]);
-                    compartilhamentos.Add(compartilhar);
-                }
-                return compartilhamentos;
+                var compartilhamento = banco.Compartilhar.Include("Usuario").Where(c => c.IdPublicacao == IdPublicacao).OrderByDescending(c => c.DataCompartilhamento).FirstOrDefault();
+                return compartilhamento;
             }
+        
         }
     }
 }

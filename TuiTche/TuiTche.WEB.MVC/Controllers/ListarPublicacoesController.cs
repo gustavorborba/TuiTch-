@@ -14,8 +14,9 @@ namespace TuiTche.WEB.MVC.Controllers
 {
     public class ListarPublicacoesController : Controller
     {
-        PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
-        PublicacaoService publicacaoService = new PublicacaoService(new PublicacaoRepositorio());
+        private PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
+        private PublicacaoService publicacaoService = new PublicacaoService(new PublicacaoRepositorio());
+        private CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
         // GET: Listar
         public ActionResult Index()
         {
@@ -31,7 +32,12 @@ namespace TuiTche.WEB.MVC.Controllers
                 var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 0);
                 foreach (var publicacao in listaDePublicacoes)
                 {
-                    model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
+                    PublicacaoModel pub = new PublicacaoModel(publicacao);
+                    if(publicacao.Compartilhar.Count > 0)
+                    {
+                        pub.UsuarioCompartilhou = CompartilharRepositorio.BuscarCompartilhamento(publicacao.Id).Usuario.NomeCompleto;
+                    }
+                    model.ListaPublicacoes.Add(pub);
                 }
             }
             return PartialView("_ListarPublicacoes", model);

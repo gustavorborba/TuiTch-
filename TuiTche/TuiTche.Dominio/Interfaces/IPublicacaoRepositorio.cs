@@ -9,7 +9,7 @@ namespace TuiTche.Dominio.Interfaces
     public interface IPublicacaoRepositorio
     {
         Publicacao BuscarPorPorId(int id);
-        int Criar(Publicacao publicacao);
+        Publicacao Criar(Publicacao publicacao);
         int PublicacaoTagInsert(Publicacao publicacao);
         IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite);
         IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite);

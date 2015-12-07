@@ -21,16 +21,17 @@ namespace TuiTche.Repositorio.EF
         {
             using (banco = new BancoDeDados())
             {
-                 return banco.Publicacao.Find(id);
+                return banco.Publicacao.Include("Hashtags").Where(p => p.Id == id).FirstOrDefault();
             }
         }
 
-        public int Criar(Publicacao publicacao)
+        public Publicacao Criar(Publicacao publicacao)
         {
             using(banco = new BancoDeDados())
             {
-                banco.Publicacao.Add(publicacao);
-                return banco.SaveChanges();
+                var publicacaoPronta = banco.Publicacao.Add(publicacao);
+                banco.SaveChanges();
+                return publicacaoPronta;
             }
         }
 
@@ -97,7 +98,7 @@ namespace TuiTche.Repositorio.EF
         }
         public IList<Publicacao> BuscarPublicacoesDeUsuario(int id, int limite)
         {
-            const int quantidade = 1;
+            const int quantidade = 2;
             using (banco = new BancoDeDados())
            {
                 return banco.Publicacao.Include("Usuario").Include("Compartilhar").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).Skip(limite).Take(quantidade).ToList();

@@ -12,6 +12,7 @@ namespace TuiTche.WEB.MVC.Models
         public string Mensagem { get; set; }
         public string NomeUsuario { get; set; }
         public int IdUsuario { get; set; }
+        public String UsuarioCompartilhou { get; set; }
 
         public PublicacaoModel(Publicacao publicacao)
         {
