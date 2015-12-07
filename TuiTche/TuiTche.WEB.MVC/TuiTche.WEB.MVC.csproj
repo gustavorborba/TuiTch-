@@ -169,6 +169,7 @@
     <Content Include="Views\Publicacao\_Comentar.cshtml" />
     <Content Include="Views\Usuario\perfil.cshtml" />
     <Content Include="Views\Usuario\_Seguir.cshtml" />
+    <Content Include="Views\Publicacao\_Comentarios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

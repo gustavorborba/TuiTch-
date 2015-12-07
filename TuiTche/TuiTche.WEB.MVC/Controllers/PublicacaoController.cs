@@ -142,22 +142,21 @@ namespace TuiTche.WEB.MVC.Controllers
             return PartialView(model);
         }
 
-        public JsonResult CarregarMaisComentarios(int idPublicacao, int? contador)
+        public ActionResult CarregarMaisComentarios(int idPublicacao, int? contador)
         {
-            contador += 2;
             ListaComentarioVisualizarModel model = new ListaComentarioVisualizarModel() {
                 Contador = (int)contador,
                 IdPublicacao = idPublicacao
             };
 
-            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, contador);
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, contador + 2);
 
             foreach (Comentario comentario in comentarios)
             {
                 model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
 
-            return Json(model, JsonRequestBehavior.AllowGet);
+            return PartialView("_Comentarios", model);
         }
 
         [HttpPost]
