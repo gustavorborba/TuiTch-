@@ -14,10 +14,14 @@ namespace TuiTche.DominioTests.Mock
 
         public PontuacaoRepositorioMock()
         {
-            Pontuacao pontuacao = new Pontuacao(1);
+            for(int i = 1; i <= 10; i++)
+            {
+                Pontuacao pontuacao = new Pontuacao(i);
+                pontuacao.PontuacaoTotal = i;
+                listaPontos.Add(pontuacao);
+            }
 
-            pontuacao.PontuacaoTotal = 0;
-            listaPontos.Add(pontuacao);
+         
         }
 
         public void SomarPontos(Pontuacao pontuacao)
@@ -36,7 +40,7 @@ namespace TuiTche.DominioTests.Mock
 
         public int BuscarPontuacaoPorPosicao(int posicaoUsuario)
         {
-            return listaPontos.Skip(posicaoUsuario).FirstOrDefault().PontuacaoTotal;
+            return listaPontos.OrderByDescending(p => p.PontuacaoTotal).Skip(posicaoUsuario).FirstOrDefault().PontuacaoTotal;
         }
     }
 }

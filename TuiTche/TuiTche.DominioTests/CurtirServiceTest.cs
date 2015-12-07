@@ -20,7 +20,8 @@ namespace TuiTche.DominioTests
 
             Pontuacao pontuacao = service.CurtirPublicacao(1, 1, 1);
 
-            Assert.AreEqual(3, pontuacao.PontuacaoTotal);
+            // 1 a mais devido a mock iniciar com 1 ponto
+            Assert.AreEqual(4, pontuacao.PontuacaoTotal);
         }
     }
 }

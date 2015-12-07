@@ -61,6 +61,7 @@
     <Compile Include="CurtirServiceTest.cs" />
     <Compile Include="Mock\CurtirRepositorioMock.cs" />
     <Compile Include="Mock\PontuacaoRepositorioMock.cs" />
+    <Compile Include="PontuacaoServiceTest.cs" />
     <Compile Include="UsuarioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
