@@ -37,20 +37,5 @@ namespace TuiTche.WEB.MVC.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Compartilhar(int IdPublicacao)
-        {
-            Compartilhar compartilhar = new Compartilhar();
-            compartilhar.Publicacao = PublicacaoRepositorio.BuscarPorPorId(IdPublicacao);
-            compartilhar.Usuario = UsuarioRepositorio.BuscarPorId(ControleDeSessao.UsuarioAtual.IdUsuario);
-            compartilhar.DataCompartilhamento = DateTime.Now;
-            CompartilharRepositorio.Compartilhar(compartilhar);
-            Publicacao publicacao = compartilhar.Publicacao;
-            publicacao.Compartilhar.Add(compartilhar);
-            CompartilharRepositorio.AdicionarCompartilhamento(publicacao);
-            //PublicacaoRepositorio.Criar(compartilhar.Publicacao);
-
-            return View("../Publicacao/Index");
-        }
-
     }
 }

@@ -17,12 +17,17 @@ namespace TuiTche.WEB.MVC.Controllers
     {
         UsuarioRepositorio repositorio = new UsuarioRepositorio();
         UsuarioService usuarioService = new UsuarioService();
+        CriptografiaService criptografia = new CriptografiaService();
         // GET: Usuario
         public ActionResult index()
         {
-            return View("CadastrarUsuario");
+            return View();
         }
 
+        public ActionResult Cadastrar()
+        {
+            return View("CadastrarUsuario");
+        }
         [HttpGet]
         public ActionResult perfil(string username)
         {
@@ -33,29 +38,37 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult CadastrarUsuario(UsuarioModel model)
         {
             bool usuarioRepetido = repositorio.VerificarEmailEUsernameRepetido(model.Email, model.Username);
-            
-            if(usuarioRepetido)
+
+            if (!usuarioRepetido)
             {
                 TempData["Mensagem"] = "Usuário e/ou Email já se encontram na base de dados";
+                return View("CadastrarUsuario", model);
+            }
+
+            bool senhasCoincidem = criptografia.SenhasIdenticas(model.Senha, model.ConfirmarSenha);
+            bool senhasEmBranco = model.Senha != null && model.ConfirmarSenha != null;
+            if (!senhasCoincidem && senhasEmBranco)
+            {
+                TempData["Mensagem"] = "Senhas não coincidem";
                 return View("CadastrarUsuario", model);
             }
 
             if (ModelState.IsValid)
             {
                 string file = Path.GetFileName(model.FotoPerfil.FileName);
-                string local = Path.Combine(Server.MapPath("~/Content/img-upload/"), file);
+                string local = Path.Combine(Server.MapPath("~/Content/img-upload/"), model.Username + file);
                 model.FotoPerfil.SaveAs(local);
-                CriptografiaService cripografia = new CriptografiaService();
                 Usuario usuario = new Usuario(model.Username)
                 {
                     NomeCompleto = model.NomeCompleto,
-                    Senha = cripografia.Criptografar(model.Senha),
+                    Senha = criptografia.Criptografar(model.Senha),
                     Email = model.Email,
                     SexoUsuario = model.Sexo,
                     Foto = local
                 };
+
                 repositorio.CadastrarUsuario(usuario);
-                TempData["Mensagem"] = "Jogo Criado com Sucesso!";
+                TempData["Mensagem"] = "Usuario Cadastrado com Sucesso!";
                 return RedirectToAction("Index", "Login");
             }
             TempData["Mensagem"] = "Ocorreu os seguintes erros: ";

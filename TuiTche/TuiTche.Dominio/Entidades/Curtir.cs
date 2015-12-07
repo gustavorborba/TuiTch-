@@ -15,5 +15,14 @@ namespace TuiTche.Dominio
         public Publicacao Publicacao{ get; set; }
         public Usuario Usuario { get; set; }
 
+        public Curtir()
+        {
+
+        }
+
+        public Curtir(int id)
+        {
+            this.Id = 1;
+        }
     }
 }

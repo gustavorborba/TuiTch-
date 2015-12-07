@@ -49,20 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comentario.cs" />
-    <Compile Include="Compartilhar.cs" />
-    <Compile Include="Curtir.cs" />
-    <Compile Include="EntidadeBase.cs" />
-    <Compile Include="Hashtag.cs" />
+    <Compile Include="Entidades\Comentario.cs" />
+    <Compile Include="Entidades\Compartilhar.cs" />
+    <Compile Include="Entidades\Curtir.cs" />
+    <Compile Include="Entidades\EntidadeBase.cs" />
+    <Compile Include="Entidades\Hashtag.cs" />
     <Compile Include="Interfaces\IComentarioRepositorio.cs" />
+    <Compile Include="Interfaces\ICompartilharRepositorio.cs" />
+    <Compile Include="Interfaces\ICurtirRepositorio.cs" />
+    <Compile Include="Interfaces\IPontuacaoRepositorio.cs" />
+    <Compile Include="Interfaces\IPublicacaoRepositorio.cs" />
     <Compile Include="Interfaces\IUsuarioRepositorio.cs" />
-    <Compile Include="PalavraGauderia.cs" />
-    <Compile Include="Pontuacao.cs" />
-    <Compile Include="Publicacao.cs" />
-    <Compile Include="Ranking.cs" />
+    <Compile Include="Entidades\PalavraGauderia.cs" />
+    <Compile Include="Entidades\Pontuacao.cs" />
+    <Compile Include="Entidades\Publicacao.cs" />
+    <Compile Include="Entidades\Ranking.cs" />
     <Compile Include="Services\Criptografia\AutenticarUsuario.cs" />
-    <Compile Include="Services\IServicoCriptografia.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Services\Criptografia\IServicoCriptografia.cs" />
+    <Compile Include="Services\RegrasDeNegocio\CurtirService.cs" />
+    <Compile Include="Services\RegrasDeNegocio\PontuacaoService.cs" />
+    <Compile Include="Services\RegrasDeNegocio\PublicacaoService.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

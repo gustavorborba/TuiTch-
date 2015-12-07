@@ -145,7 +145,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\ControleDeSessao.cs" />
     <Compile Include="Services\ComentarioService.cs" />
-    <Compile Include="Services\PublicacaoService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>

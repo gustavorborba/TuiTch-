@@ -29,5 +29,10 @@ namespace Services.CriptografiaService
 
             return sb.ToString();
         }
+
+        public bool SenhasIdenticas(string primeiraSenha, string segundaSenha)
+        {
+            return Criptografar(primeiraSenha) == Criptografar(segundaSenha);        
+        }
     }
 }

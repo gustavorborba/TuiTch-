@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TuiTche.Dominio.Services;
 using TuiTche.Repositorio.EF;
 using TuiTche.WEB.MVC.Models;
 using TuiTche.WEB.MVC.Seguranca;
@@ -13,6 +15,7 @@ namespace TuiTche.WEB.MVC.Controllers
     public class ListarPublicacoesController : Controller
     {
         PublicacaoRepositorio publicacaoRepositorio = new PublicacaoRepositorio();
+        PublicacaoService publicacaoService = new PublicacaoService(new PublicacaoRepositorio());
         // GET: Listar
         public ActionResult Index()
         {
@@ -25,7 +28,7 @@ namespace TuiTche.WEB.MVC.Controllers
             if (model.ListaPublicacoes.Count == 0)
             {
                 int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-                var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual, 0);
+                var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, 0);
                 foreach (var publicacao in listaDePublicacoes)
                 {
                     model.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
@@ -38,7 +41,7 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult getData(int next)
         {
             int usuarioAtual = ControleDeSessao.UsuarioAtual.IdUsuario;
-            var listaDePublicacoes = publicacaoRepositorio.GerarTimeLine(usuarioAtual, next);
+            var listaDePublicacoes = publicacaoService.GerarTimeLine(usuarioAtual, next);
             var model = new ListaDePublicacaoModel();
             foreach (var publicacao in listaDePublicacoes)
             {
@@ -55,7 +58,7 @@ namespace TuiTche.WEB.MVC.Controllers
             if (string.IsNullOrEmpty(viewName))
 
                 viewName = ControllerContext.RouteData.GetRequiredString("action");
-            ViewData.Model = model;
+                ViewData.Model = model;
             using (StringWriter sw = new StringWriter())
             {
                 ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);

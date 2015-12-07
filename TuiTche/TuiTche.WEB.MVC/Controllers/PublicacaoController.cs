@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 using TuiTche.Dominio;
+using TuiTche.Dominio.Services;
 using TuiTche.Repositorio.EF;
 using TuiTche.Repositorio.EF.Repositorios;
 using TuiTche.WEB.MVC.Mapper;
@@ -20,6 +23,7 @@ namespace TuiTche.WEB.MVC.Controllers
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio curtirRepositorio = new CurtirRepositorio();
         ComentarioService comentarioService = new ComentarioService();
+        CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
         public ActionResult Index()
@@ -64,10 +68,25 @@ namespace TuiTche.WEB.MVC.Controllers
             }
             return publicacao;
         }
+        public ActionResult Compartilhar(String idPublicacao)
+        {
+            Compartilhar compartilhar = new Compartilhar();
+            compartilhar.DataCompartilhamento = DateTime.Now;
+            compartilhar.IdPublicacao = Convert.ToInt32(idPublicacao);
+            compartilhar.IdUsuario = ControleDeSessao.UsuarioAtual.IdUsuario;
+            int linhas = CompartilharRepositorio.Compartilhar(compartilhar);
+            //Publicacao publicacao = compartilhar.Publicacao;
+            //publicacao.Compartilhar.Add(compartilhar);
+            //CompartilharRepositorio.AdicionarCompartilhamento(publicacao);
+            //PublicacaoRepositorio.Criar(compartilhar.Publicacao);
+
+            return View("../Publicacao/Index");
+        }
 
         private ActionResult CurtirPublicacao(int idPublicacao,int idUsuarioPublicacao)
         {
-            curtirRepositorio.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
+            CurtirService service = new CurtirService(new CurtirRepositorio(),new PontuacaoRepositorio());
+            service.CurtirPublicacao(idPublicacao, idUsuarioPublicacao , ControleDeSessao.UsuarioAtual.IdUsuario);
 
             return PartialView();
         }
