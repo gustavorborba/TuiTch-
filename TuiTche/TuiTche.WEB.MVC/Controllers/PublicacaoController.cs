@@ -24,7 +24,6 @@ namespace TuiTche.WEB.MVC.Controllers
         CurtirRepositorio CurtirRepositorio = new CurtirRepositorio();
         ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
         ComentarioActions comentarioService = new ComentarioActions();
-        //ComentarioService ComentarioService = ConstrutorDeServices.ComentarioService;
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
 
         // GET: Publicacao
@@ -140,12 +139,12 @@ namespace TuiTche.WEB.MVC.Controllers
                 Contador = 0,
                 IdPublicacao = idPublicacao
             };
-           // IList<Comentario> comentarios = ComentarioService.BuscarProximos(idPublicacao, null);
+            IList<Comentario> comentarios = comentarioService.BuscarProximos(idPublicacao, null);
 
-            //foreach (Comentario comentario in comentarios)
-            //{
-            //    model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
-            //}
+            foreach (Comentario comentario in comentarios)
+            {
+                model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
+            }
             
             return PartialView(model);
         }
