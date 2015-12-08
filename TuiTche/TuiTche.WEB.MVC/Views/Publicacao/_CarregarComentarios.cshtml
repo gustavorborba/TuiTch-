@@ -10,7 +10,7 @@
         HttpMethod = "POST",
         UpdateTargetId = "comentarios"+@Model.IdPublicacao,
         InsertionMode = InsertionMode.InsertAfter,
-        OnSuccess = "verificarTemMaisComentarios(data, this); this.Contador.value += 2;"
+        OnSuccess = "verificarTemMaisComentarios(data, this); this.Contador.value = parseInt(this.Contador.value) + 2;"
     }))
     {
         @Html.AntiForgeryToken()
