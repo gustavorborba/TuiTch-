@@ -35,7 +35,7 @@ namespace TuiTche.Dominio.Services
             const double SEGUNDORANKING = 0.2;
             const double TERCEIRORANKING = 0.4;
             const double QUARTORANKING = 0.8;
-            const int correcaoPosicaoInicial = 1;
+            const int correcaoPosicaoInicial = 0;
             var totalUsuarios = repositorioPontuacao.NumeroPontuacoesUsuarios();
             int primeiraPosicaoRanking = 0;
             if(totalUsuarios == 1)
