@@ -1,0 +1,38 @@
+﻿@model TuiTche.WEB.MVC.Models.InformacoesUsuarioModel
+
+
+<div>
+    <p style="margin-left:95px; margin-bottom:-15px;">@Model.NomeCompleto</p>
+    @if(Model.FotoPerfil == null){
+       <img class="table-bordered" src="~/Content/img-upload/default.jpg" width="80" height="65" />
+    }
+    else
+    {
+        <img class="table-bordered" src="@Url.Content(Model.FotoPerfil)" width="80" height="65" />
+    }
+        @if (Model.RankingUsuario == "PATRAO")
+        {
+            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="60" height="50" />
+        }
+
+        @if (Model.RankingUsuario == "GALO_VEIO")
+        {
+            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-galo-veio.jpg" width="60" height="50" />
+        }
+
+        @if (Model.RankingUsuario == "XIRU")
+        {
+            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-xiru.jpg" width="60" height="50" />
+        }
+
+        @if (Model.RankingUsuario == "GAUDERIO")
+        {
+            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-gauderio.jpg" width="60" height="50" />
+        }
+
+        @if (Model.RankingUsuario == "PIA")
+        {
+            <img style="margin-top:15px; margin-left:10px;" class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="60" height="50" />
+        }
+        <p>Peleia Atual: @Model.RankingUsuario</p>
+</div>

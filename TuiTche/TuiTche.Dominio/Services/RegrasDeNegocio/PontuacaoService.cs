@@ -19,6 +19,13 @@ namespace TuiTche.Dominio.Services
         public Ranking BuscarRankingUsuario(int idUsuario)
         {
             var usuario = repositorioPontuacao.BuscarPontos(idUsuario);
+            if(usuario == null)
+            {
+                Pontuacao pontuacao = new Pontuacao();
+                pontuacao.PontuacaoTotal = 0;
+                pontuacao.Usuario = new Usuario(idUsuario);
+                usuario = repositorioPontuacao.AdicionarPontuacao(pontuacao);
+            }
             return VerificarRanking(usuario);
         }
 

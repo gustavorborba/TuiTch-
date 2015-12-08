@@ -75,7 +75,7 @@ namespace TuiTche.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Usuario.Include("Seguidores").Include("Seguindo").FirstOrDefault(u => u.Id == id);
+                return db.Usuario.Find(id);
             }
         }
 

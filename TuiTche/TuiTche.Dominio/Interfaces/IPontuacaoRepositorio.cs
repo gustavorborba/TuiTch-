@@ -10,7 +10,8 @@ namespace TuiTche.Dominio.Interfaces
     {
         Pontuacao BuscarPontos(int idUsuario);
         void SomarPontos(Pontuacao pontuacao);
-         int NumeroPontuacoesUsuarios();
+        int NumeroPontuacoesUsuarios();
         int BuscarPontuacaoPorPosicao(int posicaoUsuario);
+        Pontuacao AdicionarPontuacao(Pontuacao pontuacao);
     }
 }

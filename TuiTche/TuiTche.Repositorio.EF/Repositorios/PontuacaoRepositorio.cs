@@ -21,6 +21,13 @@ namespace TuiTche.Repositorio.EF.Repositorios
             }
         }
 
+        public Pontuacao AdicionarPontuacao(Pontuacao pontuacao)
+        {
+            using (banco = new BancoDeDados())
+            {
+                return banco.Pontuacao.Add(pontuacao);
+            }
+        }
         public void SomarPontos(Pontuacao pontuacao)
         {
             using (banco = new BancoDeDados())

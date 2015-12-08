@@ -24,6 +24,11 @@ namespace TuiTche.DominioTests.Mock
          
         }
 
+        public Pontuacao AdicionarPontuacao(Pontuacao pontuacao)
+        {
+            return null;
+        }
+
         public void SomarPontos(Pontuacao pontuacao)
         {
             

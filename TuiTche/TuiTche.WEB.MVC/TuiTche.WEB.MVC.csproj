@@ -103,7 +103,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img-upload\default.jpg" />
     <Content Include="Content\jquery-textcomplete\jquery.textcomplete.min.js" />
+    <Content Include="Content\RankingUsuarios\ranking-galo-veio.jpg" />
+    <Content Include="Content\RankingUsuarios\ranking-gauderio.jpg" />
+    <Content Include="Content\RankingUsuarios\ranking-patrao.jpg" />
+    <Content Include="Content\RankingUsuarios\ranking-pia.jpg" />
+    <Content Include="Content\RankingUsuarios\ranking-xiru.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Timeline.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -137,6 +143,7 @@
     <Compile Include="Mapper\ComentarioVisualizarMapper.cs" />
     <Compile Include="Mapper\PerfilMapper.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
+    <Compile Include="Models\InformacoesUsuarioModel.cs" />
     <Compile Include="Models\ListaComentarioVisualizarModel.cs" />
     <Compile Include="Models\ComentarioVisualizarModel.cs" />
     <Compile Include="Models\ListaDePublicacaoModel.cs" />
@@ -172,6 +179,7 @@
     <Content Include="Views\Usuario\_Seguir.cshtml" />
     <Content Include="Views\Publicacao\_Comentarios.cshtml" />
     <Content Include="Views\Publicacao\BuscarMensagem.cshtml" />
+    <Content Include="Views\Usuario\BaseInformacoesUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,7 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img-upload\" />
     <Folder Include="Content\themes\" />
     <Folder Include="Views\Timeline\" />
   </ItemGroup>

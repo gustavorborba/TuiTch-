@@ -35,6 +35,10 @@ namespace TuiTche.Dominio
             Seguindo = new List<Usuario>();
             Seguidores = new List<Usuario>();
         }
+        public Usuario(int id)
+        {
+            this.Id = Id;
+        }
 
         public Usuario(string username, int id = 0) : this()
         {
