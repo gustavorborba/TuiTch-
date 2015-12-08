@@ -15,7 +15,10 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <h2>Index</h2>
+    <h3 style="color: red;">
+        @TempData["Mensagem"]
+    </h3>
+    <h2>Login</h2>
     <div >
         @using (Html.BeginForm("LoginUsuario", "Login", FormMethod.Post, new { @class = "form" }))
         {

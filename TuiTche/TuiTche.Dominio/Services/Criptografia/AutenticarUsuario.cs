@@ -21,16 +21,19 @@ namespace TuiTche.Dominio.Services.Criptografia
         public Usuario validarUsuario(string username, string senha)
         {
             var usuario = usuarioRepositorio.BuscarPorUsername(username);
-            bool usuarioNaoEncontrado = usuario == null;
-            senha = servicoCriptografia.Criptografar(senha);
-            bool senhaCorrespondem = usuario.Senha == senha;
-            if(usuarioNaoEncontrado)
+            if(usuario != null)
             {
-                return null;
-            }
-            if (senhaCorrespondem)
-            {
-                return usuario;
+                bool usuarioNaoEncontrado = usuario == null;
+                senha = servicoCriptografia.Criptografar(senha);
+                bool senhaCorrespondem = usuario.Senha == senha;
+                if (usuarioNaoEncontrado)
+                {
+                    return null;
+                }
+                if (senhaCorrespondem)
+                {
+                    return usuario;
+                }
             }
             return null;
         }
