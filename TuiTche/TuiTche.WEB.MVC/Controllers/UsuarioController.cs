@@ -22,7 +22,7 @@ namespace TuiTche.WEB.MVC.Controllers
     {
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
         UsuarioActions usuarioActions = new UsuarioActions();
-        UsuarioService usuarioService = new UsuarioService(new UsuarioRepositorio());
+        UsuarioService usuarioService = new UsuarioService(new UsuarioRepositorio(), new PontuacaoRepositorio());
         CriptografiaService criptografia = new CriptografiaService();
         PontuacaoService pontuacaoService = new PontuacaoService(new PontuacaoRepositorio());
         // GET: Usuario

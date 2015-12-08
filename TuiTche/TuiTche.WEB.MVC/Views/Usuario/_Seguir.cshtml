@@ -4,10 +4,7 @@
 {
     if (Model.Seguindo)
     { 
-        using (Ajax.BeginForm("PararDeSeguir", "Usuario", new AjaxOptions
-        {
-            HttpMethod = "POST"
-        }))
+        using (Html.BeginForm("PararDeSeguir", "Usuario"))
         {
             <input type="hidden" id="idSeguidor" name="idSeguidor" value="@TuiTche.WEB.MVC.Seguranca.ControleDeSessao.UsuarioAtual.IdUsuario" />
             <input type="hidden" id="idSeguindo" name="idSeguindo" value="@Model.IdPerfil" />
@@ -18,10 +15,7 @@
     }
     else
     {
-        using (Ajax.BeginForm("Seguir", "Usuario", new AjaxOptions
-            {
-                HttpMethod = "POST"
-            }))
+        using (Html.BeginForm("Seguir", "Usuario"))
         {
             <input type="hidden" id="idSeguidor" name="idSeguidor" value="@TuiTche.WEB.MVC.Seguranca.ControleDeSessao.UsuarioAtual.IdUsuario" />
             <input type="hidden" id="idSeguindo" name="idSeguindo" value="@Model.IdPerfil" />
