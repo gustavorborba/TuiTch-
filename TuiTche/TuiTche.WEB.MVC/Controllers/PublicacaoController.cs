@@ -196,7 +196,9 @@ namespace TuiTche.WEB.MVC.Controllers
         public ActionResult SalvarComentario(ComentarioModel model)
         {
             model.DataComentario = DateTime.Now;
-            comentarioActions.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+            if (model.Texto != null && model.Texto.Length > 0) {
+                comentarioActions.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+            }
             return RedirectToAction("CarregarMaisComentarios", new { idPublicacao = model.IdPublicacao, contador = 0 });
         }
     }
