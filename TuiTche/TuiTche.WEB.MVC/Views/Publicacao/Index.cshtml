@@ -3,7 +3,7 @@
 }
 
 <body>
-    <div class="pull-left">
+    <div class="pull-left" style="margin-top: 20px;">
         <span>Seguidores:</span>
         <span id="seguidores"> </span>
         <div style="margin-top: 20px;">
@@ -12,9 +12,16 @@
         </div>
     </div>
     <h2 class="text-center">Linha do Tempo</h2>
-    <div class="pull-left" id="mais-usadas">
-        <h3>Top 10 Tags Gauderias</h3>
-
+    <div style="position:fixed;">
+        <h3>Top 10 tags gaudérias</h3>
+        <table class="table table-responsive table-bordered table-hover pull-left" style="width:300px; border-radius:3px;">
+            <tr>
+                <th>Ranking</th>
+                <th>Hashtag</th>
+            </tr>
+            <tbody id="mais-usadas">
+            </tbody>
+        </table>
     </div>
 <div class="text-center">
     @Html.Partial("_Publicar")
@@ -60,7 +67,7 @@
                 var cont = 1;
                 maisUsadas.forEach(function (val) {
                     valTeste = val;
-                    $("#mais-usadas").append("<p>"+cont+" - #" + val.label + "</p>");
+                    $("#mais-usadas").append("<tr><td>"+cont+"</td>" +" <td>#"+ val.label + "</td></tr>");
                     cont++;
                 });
             })

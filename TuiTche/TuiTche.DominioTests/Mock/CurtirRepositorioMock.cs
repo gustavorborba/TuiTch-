@@ -32,5 +32,20 @@ namespace TuiTche.DominioTests.Mock
             listaTris.Add(curtir);
             return 1;
         }
+
+        public Curtir FindByIdUsuarioAdndIdPublicacao(int idUsuario, int idPublicacao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Remover(Curtir curtir)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Curtir> ListarUsuariosCurtiramAPublicacao(int idPublicacao)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
