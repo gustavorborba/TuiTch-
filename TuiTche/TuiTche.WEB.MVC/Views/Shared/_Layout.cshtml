@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - TwiTchê</title>
-    <link href="~/Content/Timeline.css" rel="stylesheet" />
+    <title>@ViewBag.Title - TuiTchê</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
 </head>
@@ -50,11 +50,6 @@
             <p>&copy; @DateTime.Now.Year - TuiTchê Alguns direitos reservados.</p>
         </div>
     </footer>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.textcomplete.min.js"></script>
-    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
     <script>
 
         var usuarios;
