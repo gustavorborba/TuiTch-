@@ -129,3 +129,9 @@ textarea {
     height:auto;
     margin-left:97px;
 }
+
+.dropdown-style{
+    height:30px;
+    width:auto; 
+    margin-top:5px;
+}

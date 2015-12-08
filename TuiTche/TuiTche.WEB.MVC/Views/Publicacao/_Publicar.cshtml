@@ -6,7 +6,6 @@
         var text;
         var textoTag;
         var textoUsuario;
-        var tags = [];
         var usuarios = [];
         var matchesTags;
         var matchesUsers;
@@ -62,11 +61,11 @@
             })
             if (matchesUsers) matchesUsers.forEach(function (match) {
                 textoUsuario = match.slice(1);
-                console.log(textoUsuario);
             });
 
         });
         $("#btnPublicar").click(function () {
+            var tags = [];
             if (matchesTags != null) {
                 matchesTags.forEach(function (value) {
                     tags.push(value.slice(1));
