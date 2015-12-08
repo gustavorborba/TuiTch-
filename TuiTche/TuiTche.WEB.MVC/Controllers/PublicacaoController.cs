@@ -16,6 +16,7 @@ using TuiTche.WEB.MVC.Seguranca;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
+    [Authorize]
     public class PublicacaoController : Controller
     {
         PublicacaoRepositorio PublicacaoRepositorio = new PublicacaoRepositorio();
