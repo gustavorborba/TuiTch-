@@ -19,6 +19,7 @@ textarea {
 .meuHeader {
     min-width: 760px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  background-color:white;
 }
 
 .marginTop {
@@ -75,8 +76,8 @@ textarea {
 
 .sky-background {
     background: -moz-linear-gradient(top,  #ffffff 0%, #f2fdff 52%, #ffffff 100%); 
-    background: -webkit-linear-gradient(top,  #ffffff 0%,#f2fdff 52%,#ffffff 100%); 
-    background: linear-gradient(to bottom,  #ffffff 0%,#f2fdff 52%,#ffffff 100%); 
+    background: -webkit-linear-gradient(top,  #ffffff 0%, #f2fdff 52%,#ffffff 100%); 
+    background: linear-gradient(to bottom,  #ffffff 0%, #f2fdff 52%,#ffffff 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 
@@ -87,8 +88,12 @@ textarea {
 }
 
 .meuFooter {
-    background-color: rgba(0, 202, 202, 0.2);
-    box-shadow: 0px -3px 5px rgba(0, 202, 202, 0.4);
+    /*background-color: rgba(0, 202, 202, 0.2);
+    box-shadow: 0px -3px 5px rgba(0, 202, 202, 0.4);*/
+
+    background-color: #a0c19f;
+    box-shadow: 0px -3px 5px #3b3939;
+    height:50px;
 }
 
 .esconder {

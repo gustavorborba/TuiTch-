@@ -54,14 +54,17 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             IList<Publicacao> publicacoes = PublicacaoRepositorio.BuscarPublicacoes(hashtag);
             var publicacoesModel = new ListaDePublicacaoModel();
-            foreach (var publicacao in publicacoes)
+            if (publicacoes == null)
             {
-                publicacao.Usuario = UsuarioRepositorio.BuscarPorId(publicacao.IdUsuario);
-                publicacoesModel.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
+                ViewBag.ListaVazia = "Não há publicações com esta hashtag!";
             }
-            if(publicacoesModel.ListaPublicacoes == null)
+            else
             {
-                ViewBag["ListaVazia"] = "Não há publicações com esta hashtag!";
+                foreach (var publicacao in publicacoes)
+                {
+                    publicacao.Usuario = UsuarioRepositorio.BuscarPorId(publicacao.IdUsuario);
+                    publicacoesModel.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
+                }
             }
             return View("BuscarMensagem", publicacoesModel);
         }
