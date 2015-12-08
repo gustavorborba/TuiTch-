@@ -25,12 +25,13 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
-        public int Compartilhar(Compartilhar compartilhar)
+        public Compartilhar Compartilhar(Compartilhar compartilhar)
         {
             using (banco = new BancoDeDados())
             {
-                banco.Compartilhar.Add(compartilhar);
-                return banco.SaveChanges();
+                var compartilhamento = banco.Compartilhar.Add(compartilhar);
+                banco.SaveChanges();
+                return compartilhamento;
             }
         }
 

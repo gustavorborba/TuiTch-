@@ -24,27 +24,6 @@
                 var e = document.getElementById("compartilhar");
                 e.id = "compartilhar"+@publicacao.IdPublicacao;
             })();
-            function notifyMe() {
-                if (!("Notification" in window)) {
-                    alert("Este navegador não suporte notificações desktop");
-                }
-
-                else if (Notification.permission === "granted") {
-                    var notification = new Notification("Mensagem Compartilhada!");
-                }
-
-                else if (Notification.permission !== 'denied') {
-                    Notification.requestPermission(function (permission) {
-
-                        if (!('permission' in Notification)) {
-                            Notification.permission = permission;
-                        }
-                        if (permission === "granted") {
-                            var notification = new Notification("Mensagem Compartilhada!");
-                        }
-                    });
-                }
-            }
         </script>
 }
 </div>
@@ -61,4 +40,25 @@
                 data: JSON.stringify(dataObject)
             })
     };
+    function notifyMe() {
+        if (!("Notification" in window)) {
+            alert("Este navegador não suporte notificações desktop");
+        }
+
+        else if (Notification.permission === "granted") {
+            var notification = new Notification("Mensagem Compartilhada!");
+        }
+
+        else if (Notification.permission !== 'denied') {
+            Notification.requestPermission(function (permission) {
+
+                if (!('permission' in Notification)) {
+                    Notification.permission = permission;
+                }
+                if (permission === "granted") {
+                    var notification = new Notification("Mensagem Compartilhada!");
+                }
+            });
+        }
+    }
 </script>
