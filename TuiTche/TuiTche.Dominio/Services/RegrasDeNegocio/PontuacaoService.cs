@@ -38,15 +38,17 @@ namespace TuiTche.Dominio.Services
             const int correcaoPosicaoInicial = 1;
             var totalUsuarios = repositorioPontuacao.NumeroPontuacoesUsuarios();
             int primeiraPosicaoRanking = 0;
-            if(totalUsuarios == 1)
+            //valor de correcao causado por List iniciarem em posicao 0, fazendo com que a primeira posicao seja sempre um valor abaixo
+
+            bool totalUsuarioEBaixoNaoPrecisaCompensar = primeiraPosicaoRanking < 10;
+            if (totalUsuarioEBaixoNaoPrecisaCompensar)
             {
-                 primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING);
+                primeiraPosicaoRanking = 0;
             }
             else
             {
-                 primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING) - correcaoPosicaoInicial;
-            }
-
+                primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING) - correcaoPosicaoInicial;
+            }    
 
             bool isPatrao = validarRanking(usuario.PontuacaoTotal, primeiraPosicaoRanking);
             if (isPatrao)
