@@ -13,6 +13,7 @@ using TuiTche.WEB.MVC.Seguranca;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
+    [Authorize]
     public class CurtirController : Controller
     {
         ICurtirRepositorio curtirRepositorio = new CurtirRepositorio();

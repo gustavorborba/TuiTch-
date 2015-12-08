@@ -9,6 +9,7 @@ using TuiTche.WEB.MVC.Seguranca;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
+    [Authorize]
     public class TimelineController : Controller
     {
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();

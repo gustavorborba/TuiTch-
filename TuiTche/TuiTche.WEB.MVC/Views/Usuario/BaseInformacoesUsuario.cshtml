@@ -1,50 +1,50 @@
 ﻿@model TuiTche.WEB.MVC.Models.InformacoesUsuarioModel
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 
 <div style="height:58px;">
-    @if(Model.FotoPerfil == null){
-       <img class="" src="~/Content/img-upload/default.jpg" width="65" height="50" />
+    @if (Model.FotoPerfil == null)
+    {
+        <img class="" src="~/Content/img-upload/default.jpg" width="65" height="50" />
     }
     else
     {
         <img class="nome-usuario" src="@Url.Content(Model.FotoPerfil)" width="90" height="70" />
         <span>@Model.NomeCompleto</span>
     }
-        @if (Model.RankingUsuario == "PATRAO")
-        {
-            //ajustar alt.
-            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"/>
-        }
+    @if (Model.RankingUsuario == "PATRAO")
+    {
+        //ajustar alt.
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario" />
+    }
 
-        @if (Model.RankingUsuario == "GALO_VEIO")
-        {
-            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-galo-veio.jpg" width="60" height="50" />
-        }
+    @if (Model.RankingUsuario == "GALO_VEIO")
+    {
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-galo-veio.jpg" width="60" height="50" />
+    }
 
-        @if (Model.RankingUsuario == "XIRU")
-        {
-            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-xiru.jpg" width="60" height="50" />
-        }
+    @if (Model.RankingUsuario == "XIRU")
+    {
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-xiru.jpg" width="60" height="50" />
+    }
 
-        @if (Model.RankingUsuario == "GAUDERIO")
-        {
-            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-gauderio.jpg" width="60" height="50" />
-        }
+    @if (Model.RankingUsuario == "GAUDERIO")
+    {
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-gauderio.jpg" width="60" height="50" />
+    }
 
-        @if (Model.RankingUsuario == "PIA")
-        {
-            <img style="margin-top:15px; margin-left:10px;" class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="60" height="50" />
-        }
+    @if (Model.RankingUsuario == "PIA")
+    {
+        <img style="margin-top:15px; margin-left:10px;" class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="60" height="50" />
+    }
     <div>
-        <div class="dropdown dropdown-style">
-            <button class="dropdown-toggle btn btn-default" type="button" data-toggle="dropdown">
-                <span style="margin-top:10px;">@Model.NomeCompleto</span>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="~/Usuario/Encerrar">Desologar</a></li>
-            </ul>
-        </div>
+        <div class="dropdown-style dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                @Model.NomeCompleto<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="~/Login/Encerrar">Sair</a></li>
+        </ul>
     </div>
-        
+</div>
 </div>

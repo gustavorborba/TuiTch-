@@ -18,6 +18,7 @@ using TuiTche.WEB.MVC.Seguranca;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
+    [Authorize]
     public class UsuarioController : Controller
     {
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
