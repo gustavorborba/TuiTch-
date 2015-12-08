@@ -5,61 +5,69 @@
 }
 
 <h2>perfil</h2>
+@if(Model == null)
+{
+   <h3 class="alert alert-warning text-center" style="width:500px;"> Usuário não Encontrado</h3>
+}
+else
+{
+    <div>
+        <h4>Perfil de @Model.NomeCompleto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
 
-<div>
-    <h4>Perfil de @Model.NomeCompleto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NomeCompleto)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeCompleto)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NomeCompleto)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeCompleto)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Foto)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Foto)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroSeguidores)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroSeguidores)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumeroSeguidores)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumeroSeguidores)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroSeguindo)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroSeguindo)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumeroSeguindo)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumeroSeguindo)
-        </dd>
+        </dl>
+        @Html.Partial("_Seguir", @Model)
+    </div>
+}
 
-    </dl>
-    @Html.Partial("_Seguir", @Model)
-</div>
+
 
 

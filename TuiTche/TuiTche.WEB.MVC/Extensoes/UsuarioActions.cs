@@ -22,6 +22,10 @@ namespace TuiTche.WEB.MVC.Extensoes
         internal PerfilModel BuscarPorUsername(string username)
         {
             Usuario usuario = repositorio.BuscarPorUsername(username);
+            if(usuario == null)
+            {
+                return null;
+            }
             PerfilModel perfil = PerfilMapper.toModel(usuario);
             perfil.NumeroSeguidores = usuario.Seguidores.Count();
             perfil.NumeroSeguindo = usuario.Seguindo.Count();
