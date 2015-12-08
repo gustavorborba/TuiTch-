@@ -116,7 +116,7 @@ namespace TuiTche.WEB.MVC.Controllers
             }
             informacoes.NomeCompleto = usuarioInformacoes.NomeCompleto;
             informacoes.RankingUsuario = pontuacaoService.BuscarRankingUsuario(usuarioInformacoes.Id).ToString();
-            return View("BaseInformacoesUsuario", informacoes);
+            return PartialView("BaseInformacoesUsuario", informacoes);
         }
     }
 }

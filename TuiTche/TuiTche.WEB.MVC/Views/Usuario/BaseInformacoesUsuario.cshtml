@@ -1,18 +1,19 @@
 ﻿@model TuiTche.WEB.MVC.Models.InformacoesUsuarioModel
 
 
-<div>
-    <p style="margin-left:95px; margin-bottom:-15px;">@Model.NomeCompleto</p>
+<div style="height:58px;">
     @if(Model.FotoPerfil == null){
-       <img class="table-bordered" src="~/Content/img-upload/default.jpg" width="80" height="65" />
+       <img class="" src="~/Content/img-upload/default.jpg" width="65" height="50" />
     }
     else
     {
-        <img class="table-bordered" src="@Url.Content(Model.FotoPerfil)" width="80" height="65" />
+        <img class="nome-usuario" src="@Url.Content(Model.FotoPerfil)" width="90" height="70" />
+        <span>@Model.NomeCompleto</span>
     }
         @if (Model.RankingUsuario == "PATRAO")
         {
-            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="60" height="50" />
+            //ajustar alt.
+            <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"/>
         }
 
         @if (Model.RankingUsuario == "GALO_VEIO")
@@ -34,5 +35,16 @@
         {
             <img style="margin-top:15px; margin-left:10px;" class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="60" height="50" />
         }
-        <p>Peleia Atual: @Model.RankingUsuario</p>
+    <div>
+        <div class="dropdown dropdown-style">
+            <button class="dropdown-toggle btn btn-default" type="button" data-toggle="dropdown">
+                <span style="margin-top:10px;">@Model.NomeCompleto</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="~/Usuario/Encerrar">Desologar</a></li>
+            </ul>
+        </div>
+    </div>
+        
 </div>

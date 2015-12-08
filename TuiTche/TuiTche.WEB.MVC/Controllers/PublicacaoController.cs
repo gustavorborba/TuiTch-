@@ -22,6 +22,7 @@ namespace TuiTche.WEB.MVC.Controllers
         HashtagRepositorio HashtagRepositorio = new HashtagRepositorio();
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
         CurtirRepositorio CurtirRepositorio = new CurtirRepositorio();
+        PontuacaoRepositorio PontuacaoRepositorio = new PontuacaoRepositorio();
         ComentarioVisualizarMapper mapper = new ComentarioVisualizarMapper();
         ComentarioActions comentarioActions = new ComentarioActions();
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
@@ -33,18 +34,24 @@ namespace TuiTche.WEB.MVC.Controllers
         }
         public ActionResult Publicar(String[] hashtags, String[] users, String conteudo)
         {
-            Publicacao publicacao = new Publicacao()
+            if (conteudo != null)
             {
-                Descricao = conteudo,
-                DataPublicacao = DateTime.Now,
-                IdUsuario = UsuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
-            };
-            PublicacaoRepositorio.Criar(publicacao);
-            if (hashtags != null)
-            {
-                publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
-                int x = PublicacaoRepositorio.PublicacaoTagInsert(publicacao);
-                publicacao.Hashtags = null;
+                Publicacao publicacao = new Publicacao()
+                {
+                    Descricao = conteudo,
+                    DataPublicacao = DateTime.Now,
+                    IdUsuario = UsuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username).Id
+                };
+                PublicacaoRepositorio.Criar(publicacao);
+                Pontuacao pontuacao = PontuacaoRepositorio.BuscarPontos(publicacao.IdUsuario);
+                pontuacao.PontuacaoTotal += 15;
+                PontuacaoRepositorio.SomarPontos(pontuacao);
+                if (hashtags != null)
+                {
+                    publicacao = UpdateNasUtilizacoesDasTagsGauderias(hashtags, publicacao);
+                    int x = PublicacaoRepositorio.PublicacaoTagInsert(publicacao);
+                    publicacao.Hashtags = null;
+                }
             }
             return PartialView("_Publicar");
         }
@@ -74,9 +81,12 @@ namespace TuiTche.WEB.MVC.Controllers
             foreach (var tag in hashtags)
             {
                 var hashtagGauderia = HashtagRepositorio.VerificaSeTagEGauderia(tag);
+                
                 if (hashtagGauderia != null)
                 {
-                    //hashtagGauderia.Publicacoes.Add(publicacao);
+                    Pontuacao pontuacao = PontuacaoRepositorio.BuscarPontos(publicacao.IdUsuario);
+                    pontuacao.PontuacaoTotal += 10;
+                    PontuacaoRepositorio.SomarPontos(pontuacao);
                     int i = HashtagRepositorio.UpdatePontuacao(hashtagGauderia.Id);
                     publicacao.Hashtags.Add(hashtagGauderia);
                 }
@@ -95,6 +105,9 @@ namespace TuiTche.WEB.MVC.Controllers
             compartilhar.DataCompartilhamento = DateTime.Now;
             compartilhar.IdPublicacao = Convert.ToInt32(idPublicacao);
             compartilhar.IdUsuario = ControleDeSessao.UsuarioAtual.IdUsuario;
+            Pontuacao pontuacao = PontuacaoRepositorio.BuscarPontos(compartilhar.IdUsuario);
+            pontuacao.PontuacaoTotal += 20;
+            PontuacaoRepositorio.SomarPontos(pontuacao);
             Publicacao publicacao = PublicacaoRepositorio.BuscarPorPorId(compartilhar.IdPublicacao);
             Publicacao publicacaoCompartilhada = new Publicacao()
             {

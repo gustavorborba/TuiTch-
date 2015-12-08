@@ -37,8 +37,16 @@ namespace TuiTche.Dominio.Services
             const double QUARTORANKING = 0.8;
             const int correcaoPosicaoInicial = 1;
             var totalUsuarios = repositorioPontuacao.NumeroPontuacoesUsuarios();
+            int primeiraPosicaoRanking = 0;
+            if(totalUsuarios == 1)
+            {
+                 primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING);
+            }
+            else
+            {
+                 primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING) - correcaoPosicaoInicial;
+            }
 
-            int primeiraPosicaoRanking = Convert.ToInt32(totalUsuarios * PRIMEIRORANKING) - correcaoPosicaoInicial;
 
             bool isPatrao = validarRanking(usuario.PontuacaoTotal, primeiraPosicaoRanking);
             if (isPatrao)

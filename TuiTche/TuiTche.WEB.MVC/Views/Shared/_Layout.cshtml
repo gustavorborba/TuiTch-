@@ -28,11 +28,9 @@
             }
 
             <div id="usuario-info" class="pull-right">
-                <img src="~/Content/img/logo.png" class="foto-perfil" />
+                @{Html.RenderAction("BuscarInformacoesUsuario", "Usuario");}
                 <div class="pull-left info-usuario">
                     <ul style="list-style-type:none">
-                        <li class="nome-usuario">Usuario</li>
-                        <li class="classiicacao">Ranking</li>
                     </ul>
                 </div>
             </div>
