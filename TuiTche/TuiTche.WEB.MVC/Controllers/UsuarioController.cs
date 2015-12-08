@@ -18,7 +18,6 @@ using TuiTche.WEB.MVC.Seguranca;
 
 namespace TuiTche.WEB.MVC.Controllers
 {
-    [Authorize]
     public class UsuarioController : Controller
     {
         UsuarioRepositorio UsuarioRepositorio = new UsuarioRepositorio();
@@ -37,6 +36,7 @@ namespace TuiTche.WEB.MVC.Controllers
             return View("CadastrarUsuario");
         }
         [HttpGet]
+        [Authorize]
         public ActionResult perfil(string username)
         {
             PerfilModel model = usuarioActions.BuscarPorUsername(username);
@@ -90,7 +90,7 @@ namespace TuiTche.WEB.MVC.Controllers
             TempData["Mensagem"] = "Ocorreu os seguintes erros: ";
             return View("CadastrarUsuario", model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Seguir(int idSeguidor, int idSeguindo, string username)
         {
@@ -106,7 +106,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
             return RedirectToAction("perfil", new { username = username });
         }
-
+        [Authorize]
         public ActionResult BuscarInformacoesUsuario()
         {
             Usuario usuarioInformacoes = UsuarioRepositorio.BuscarPorId(ControleDeSessao.UsuarioAtual.IdUsuario);
