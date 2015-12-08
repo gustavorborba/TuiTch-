@@ -3,7 +3,7 @@
 <div id="pubs">
     @foreach (var publicacao in Model.ListaPublicacoes)
     {
-        <div class=" mensagem">
+        <div class="mensagem">
             @if (publicacao.UsuarioCompartilhou != null)
             {
                 <h4>Compartilhado por: @publicacao.UsuarioCompartilhou</h4>
