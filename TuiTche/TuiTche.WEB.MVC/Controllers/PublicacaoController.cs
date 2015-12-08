@@ -78,13 +78,16 @@ namespace TuiTche.WEB.MVC.Controllers
             Publicacao publicacao = PublicacaoRepositorio.BuscarPorPorId(compartilhar.IdPublicacao);
             Publicacao publicacaoCompartilhada = new Publicacao()
             {
-                IdUsuario = compartilhar.IdUsuario,
+                IdUsuario = publicacao.IdUsuario,
                 DataPublicacao = compartilhar.DataCompartilhamento,
                 Descricao = publicacao.Descricao
             };
             Publicacao afetada = PublicacaoRepositorio.Criar(publicacaoCompartilhada);
-            compartilhar.Publicacao = afetada;
-            int linhas = CompartilharRepositorio.Compartilhar(compartilhar);
+            compartilhar.IdPublicacao = afetada.Id;
+            Compartilhar compartilhamento = CompartilharRepositorio.Compartilhar(compartilhar);
+            afetada.Compartilhar = new List<Compartilhar>();
+            afetada.Compartilhar.Add(compartilhar);
+            int linhas = PublicacaoRepositorio.AdicionarCompartilhamento(afetada);
             
             
 

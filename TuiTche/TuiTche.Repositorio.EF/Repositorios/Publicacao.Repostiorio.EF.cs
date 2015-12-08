@@ -58,6 +58,15 @@ namespace TuiTche.Repositorio.EF
             return 0;
         }
 
+        public int AdicionarCompartilhamento(Publicacao publicacao)
+        {
+            using(banco = new BancoDeDados())
+            {
+                banco.Entry(publicacao).State = EntityState.Modified;
+                return banco.SaveChanges();
+            }
+        }
+
         public IList<Publicacao> ListarPublicacoesDeSeguidores(int id, int limite)
         {
             const int quantidade = 2;
