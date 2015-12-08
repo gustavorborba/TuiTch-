@@ -33,7 +33,7 @@ namespace TuiTche.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).ToList();
+                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderByDescending(c => c.DataComentario).ToList();
             } 
         }
 
@@ -42,7 +42,7 @@ namespace TuiTche.Repositorio.EF
             if (contador == null) { contador = 0; }
             using (var db = new BancoDeDados())
             {
-                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderBy(c => c.DataComentario).Skip((int)contador).Take(2).ToList();
+                return db.Comentario.Include("Usuario").Where(c => c.IdPublicacao == idPublicacao).OrderByDescending(c => c.DataComentario).Skip((int)contador).Take(2).ToList();
             } 
         }
     }

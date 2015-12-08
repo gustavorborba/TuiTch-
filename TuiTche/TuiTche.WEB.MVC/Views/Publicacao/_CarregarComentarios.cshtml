@@ -1,34 +1,31 @@
 ﻿@model ListaComentarioVisualizarModel
-
-<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
-
+<div id="comentarios@(Model.IdPublicacao)">
+    @Html.Partial("_Comentarios", Model)
+</div>
 @if (Model.Comentarios.Count > 0)
 {
-    <div id="comentarios">
-        @Html.Partial("_Comentarios", Model)
-    </div>
-
-
     using (Ajax.BeginForm("CarregarMaisComentarios", new AjaxOptions
     {
         Url = @Url.Action("CarregarMaisComentarios", "Publicacao"),
         HttpMethod = "POST",
-        UpdateTargetId = "comentarios",
+        UpdateTargetId = "comentarios"+@Model.IdPublicacao,
         InsertionMode = InsertionMode.InsertAfter,
-        OnSuccess = "verificarTemMaisComentarios(data); $('#Contador').val(parseInt($('#Contador').val())+2);"
+        OnSuccess = "verificarTemMaisComentarios(data, this); this.Contador.value += 2;"
     }))
     {
         @Html.AntiForgeryToken()
         <input type="submit" value="Carregar mais" id="Carregar" />
         <input type="hidden" id="IdPublicacao" name="IdPublicacao" value="@Model.IdPublicacao" />
-        <input type="hidden" id="Contador" name="Contador" value="@Model.Contador" />
+        <input type="hidden" id="Contador" name="Contador" value="2" />
     }
 }
+<div style="position: relative; bottom: 5px;">
+    @{Html.RenderAction("_Comentar", "Publicacao", new { idPublicacao = @Model.IdPublicacao});}
+</div>
 <script>
-    var verificarTemMaisComentarios = function (data) {
-        console.log(data)
+    var verificarTemMaisComentarios = function (data, form) {
         if (data.length < 2) {
-            $('#Carregar').hide();
+            form.Carregar.style.display = "none";
         }
     };
 </script>

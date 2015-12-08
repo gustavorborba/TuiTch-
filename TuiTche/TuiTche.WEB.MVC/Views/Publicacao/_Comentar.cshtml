@@ -5,10 +5,10 @@
 
 @using (Ajax.BeginForm("SalvarComentario", new {}, new AjaxOptions()
 {
-    InsertionMode = InsertionMode.InsertBefore,
-    UpdateTargetId = "form" + @Model.IdPublicacao,
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "comentarios"+@Model.IdPublicacao,
     HttpMethod = "post",
-    OnSuccess = "$('#texto').val('');"
+    OnSuccess = "this.reset(); console.log(data);"
 }, new { id = "form" + @Model.IdPublicacao }))
 {
     @Html.AntiForgeryToken()

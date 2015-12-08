@@ -146,7 +146,7 @@ namespace TuiTche.WEB.MVC.Controllers
             {
                 model.Comentarios.Add(ComentarioVisualizarMapper.EntityToModel(comentario));
             }
-            
+
             return PartialView(model);
         }
 
@@ -158,7 +158,7 @@ namespace TuiTche.WEB.MVC.Controllers
             };
 
 
-            IList<Comentario> comentarios = comentarioActions.BuscarProximos(idPublicacao, contador + 2);
+            IList<Comentario> comentarios = comentarioActions.BuscarProximos(idPublicacao, contador);
 
 
             foreach (Comentario comentario in comentarios)
@@ -170,10 +170,11 @@ namespace TuiTche.WEB.MVC.Controllers
         }
 
         [HttpPost]
-        public void SalvarComentario(ComentarioModel model)
+        public ActionResult SalvarComentario(ComentarioModel model)
         {
             model.DataComentario = DateTime.Now;
             comentarioActions.SalvarComentario(ComentarioMapper.ModelToEntity(model));
+            return RedirectToAction("CarregarMaisComentarios", new { idPublicacao = model.IdPublicacao, contador = 0 });
         }
     }
 }

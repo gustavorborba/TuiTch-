@@ -11,9 +11,6 @@
             <p>Publicado por: @publicacao.NomeUsuario</p>
             <p>@publicacao.Mensagem</p>
             @{Html.RenderAction("_CarregarComentarios", "Publicacao" , new {idPublicacao = @publicacao.IdPublicacao });}
-            <div style="position: relative; bottom: 5px;">
-                @{Html.RenderAction("_Comentar", "Publicacao" ,new { idPublicacao = @publicacao.IdPublicacao });}
-            </div>
             <div class="text-center">
                 <button id="compartilhar" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
             </div>
