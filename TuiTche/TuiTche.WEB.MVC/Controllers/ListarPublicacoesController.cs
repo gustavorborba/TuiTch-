@@ -33,7 +33,7 @@ namespace TuiTche.WEB.MVC.Controllers
                 foreach (var publicacao in listaDePublicacoes)
                 {
                     PublicacaoModel pub = new PublicacaoModel(publicacao);
-                    if(publicacao.Compartilhar != null)
+                    if (publicacao.Compartilhar != null && publicacao.Compartilhar.Count() > 0)
                     {
                         pub.UsuarioCompartilhou = CompartilharRepositorio.BuscarCompartilhamento(publicacao.Id).Usuario.NomeCompleto;
                     }
