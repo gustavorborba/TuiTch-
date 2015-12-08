@@ -13,7 +13,10 @@ namespace Tuitche.Web.MVC.App_Start
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui-{version}.js"));
+                        "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/jquery.textcomplete.min.js",
+                        "~/Scripts/jqeury.unobtrusive-ajax.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
@@ -21,11 +24,10 @@ namespace Tuitche.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css",
-                        "~/Content/site.css"));
-            //TODO: Remover o min.js
-            //BundleTable.EnableOptimizations = true;
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
+                        "~/Content/bootstrap.js",
+                        "~/Content/bootstrap.min.cs",
+                        "~/Content/Site.css"));
         }
     }
 
