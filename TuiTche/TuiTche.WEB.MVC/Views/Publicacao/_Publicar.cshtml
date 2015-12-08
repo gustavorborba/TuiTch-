@@ -99,6 +99,9 @@
 
                     else if (Notification.permission === "granted") {
                         var notification = new Notification("Publicação postada!");
+                        setTimeout(function () {
+                            notification.close();
+                        }, 8000);
                     }
 
                     else if (Notification.permission !== 'denied') {
@@ -109,6 +112,9 @@
                             }
                             if (permission === "granted") {
                                 var notification = new Notification("Publicação postada!");
+                                setTimeout(function () {
+                                    notification.close();
+                                }, 8000);
                             }
                         });
                     }

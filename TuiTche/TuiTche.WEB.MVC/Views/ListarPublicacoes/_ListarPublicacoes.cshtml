@@ -21,12 +21,12 @@
                 HttpMethod = "POST"
             }))
             {
-                <div id="curtir@(publicacao.IdPublicacao)">
+                <div id="curtir@(publicacao.IdPublicacao)" class="tri" style="width:50px;">
                     @{Html.RenderAction("CarregarCurtir", "Curtir", new { idPublicacao = @publicacao.IdPublicacao });}
                 </div>
             }
-            <div class="text-center">
-                <button id="compartilhar" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
+            <div >
+                <button id="compartilhar" class="btn btn-default" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
             </div>
         </div>
         <script>
@@ -58,6 +58,9 @@
 
         else if (Notification.permission === "granted") {
             var notification = new Notification("Mensagem Compartilhada!");
+            setTimeout(function(){
+                notification.close();
+            },8000);
         }
 
         else if (Notification.permission !== 'denied') {
@@ -68,6 +71,9 @@
                 }
                 if (permission === "granted") {
                     var notification = new Notification("Mensagem Compartilhada!");
+                    setTimeout(function(){
+                        notification.close();
+                    },8000);
                 }
             });
         }

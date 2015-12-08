@@ -135,3 +135,11 @@ textarea {
     width:auto; 
     margin-top:5px;
 }
+
+.tri {
+    background-color: transparent;
+    width:40px;
+    height:30px;
+    margin-left:50px;
+
+}
