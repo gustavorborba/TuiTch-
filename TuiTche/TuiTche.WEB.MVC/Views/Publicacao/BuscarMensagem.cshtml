@@ -1,0 +1,15 @@
+﻿@model ListaDePublicacaoModel
+@{
+    ViewBag.Title = "BuscarMensagem";
+}
+
+<h2>Publicações</h2>
+
+<h3 class="alert alert-warning" style="width:300px;">@ViewBag["ListaVazia"]</h3>
+@foreach (var publicacao in Model.ListaPublicacoes)
+{
+    <div class="text-center mensagem">
+        <h3 class="">Publicado por: @publicacao.NomeUsuario</h3>
+        <p class="">@publicacao.Mensagem</p>
+    </div>
+}

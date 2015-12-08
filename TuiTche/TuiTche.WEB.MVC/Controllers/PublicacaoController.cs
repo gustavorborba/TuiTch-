@@ -49,6 +49,23 @@ namespace TuiTche.WEB.MVC.Controllers
             return PartialView("_Publicar");
         }
 
+
+        public ActionResult BuscarMensagemPorTag(String hashtag)
+        {
+            IList<Publicacao> publicacoes = PublicacaoRepositorio.BuscarPublicacoes(hashtag);
+            var publicacoesModel = new ListaDePublicacaoModel();
+            foreach (var publicacao in publicacoes)
+            {
+                publicacao.Usuario = UsuarioRepositorio.BuscarPorId(publicacao.IdUsuario);
+                publicacoesModel.ListaPublicacoes.Add(new PublicacaoModel(publicacao));
+            }
+            if(publicacoesModel.ListaPublicacoes == null)
+            {
+                ViewBag["ListaVazia"] = "Não há publicações com esta hashtag!";
+            }
+            return View("BuscarMensagem", publicacoesModel);
+        }
+
         private Publicacao UpdateNasUtilizacoesDasTagsGauderias(String[] hashtags, Publicacao publicacao)
         {
             foreach (var tag in hashtags)
@@ -117,9 +134,9 @@ namespace TuiTche.WEB.MVC.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult HashtagAutocomplete(string term)
+        public JsonResult HashtagAutocomplete()
         {
-            var tagsEncontradas = term == null ? HashtagRepositorio.BuscarTodos() : HashtagRepositorio.BuscarPorPalavra(term);
+            var tagsEncontradas = HashtagRepositorio.BuscarTodos();
             var json = tagsEncontradas.Select(x => new { label = x.Palavra });
 
             return Json(json, JsonRequestBehavior.AllowGet);

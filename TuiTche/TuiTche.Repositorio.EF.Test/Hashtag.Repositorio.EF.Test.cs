@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using TuiTche.Dominio;
 
 namespace TuiTche.Repositorio.EF.Test
 {
@@ -9,7 +11,11 @@ namespace TuiTche.Repositorio.EF.Test
         public void VerificaSeTagGauderiaRetorna()
         {
             HashtagRepositorio rep = new HashtagRepositorio();
-           // Assert.AreEqual(true, rep.VerificaSeTagEGauderia("Patrão"));
+            // Assert.AreEqual(true, rep.VerificaSeTagEGauderia("Patrão"));
+            PublicacaoRepositorio prep = new PublicacaoRepositorio();
+            //IList<Publicacao> publicacao = prep.BuscarPublicacoes("Tche");
+            //Assert.IsNotNull(publicacao);
+
         }
     }
 }

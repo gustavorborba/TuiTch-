@@ -1,24 +1,24 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<div class="pull-left">
-    <span>Seguidores:</span>
-    <span id="seguidores"> </span>
 
-    <div style="margin-top: 20px;">
-        <span>Seguindo: </span>
-        <span id="seguindo"></span>
-    </div>
-</div>
-<h2 class="text-center">Linha do Tempo</h2>
-<div class="pull-left" id="mais-usadas">
-    <h3>Top 10 Tags Gauderias</h3>
-
-</div>
 <body>
-        <div class="text-center">
-            @Html.Partial("_Publicar")
+    <div class="pull-left">
+        <span>Seguidores:</span>
+        <span id="seguidores"> </span>
+        <div style="margin-top: 20px;">
+            <span>Seguindo: </span>
+            <span id="seguindo"></span>
         </div>
+    </div>
+    <h2 class="text-center">Linha do Tempo</h2>
+    <div class="pull-left" id="mais-usadas">
+        <h3>Top 10 Tags Gauderias</h3>
+
+    </div>
+<div class="text-center">
+    @Html.Partial("_Publicar")
+</div>
     <div id="lista" class="text-center" style="margin-left:400px;">
         @{Html.RenderAction("_ListarPublicacoes", "ListarPublicacoes");}
     </div>

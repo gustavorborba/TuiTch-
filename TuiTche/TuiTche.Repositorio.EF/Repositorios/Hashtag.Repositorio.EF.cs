@@ -82,11 +82,11 @@ namespace TuiTche.Repositorio.EF
             }
         }
 
-        public IList<Hashtag> BuscarPorPalavra(string term)
+        public Hashtag BuscarPorPalavra(string term)
         {
             using (var db = new BancoDeDados())
             {
-                return db.Hashtag.Where(t => t.Palavra.Contains(term)).ToList();
+                return db.Hashtag.FirstOrDefault(t => t.Palavra == term);
             }
         }
     }

@@ -3,12 +3,12 @@
 <div id="pubs">
     @foreach (var publicacao in Model.ListaPublicacoes)
     {
-        <div class="form-control" style="height:300px;width:350px">
+        <div class=" mensagem">
             @if (publicacao.UsuarioCompartilhou != null)
             {
-                <p>Compartilhado por: @publicacao.UsuarioCompartilhou</p>
+                <h4>Compartilhado por: @publicacao.UsuarioCompartilhou</h4>
             }
-            <p>Publicado por: @publicacao.NomeUsuario</p>
+            <h4>Publicado por: @publicacao.NomeUsuario</h4>
             <p>@publicacao.Mensagem</p>
             @{Html.RenderAction("_CarregarComentarios", "Publicacao" , new {idPublicacao = @publicacao.IdPublicacao });}
             <div class="text-center">

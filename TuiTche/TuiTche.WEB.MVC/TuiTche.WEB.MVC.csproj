@@ -105,6 +105,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery-textcomplete\jquery.textcomplete.min.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Timeline.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -170,6 +171,7 @@
     <Content Include="Views\Usuario\perfil.cshtml" />
     <Content Include="Views\Usuario\_Seguir.cshtml" />
     <Content Include="Views\Publicacao\_Comentarios.cshtml" />
+    <Content Include="Views\Publicacao\BuscarMensagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

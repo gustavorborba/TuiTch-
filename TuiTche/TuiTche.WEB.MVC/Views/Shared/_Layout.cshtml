@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - TwiTchê</title>
+    <link href="~/Content/Timeline.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -20,6 +21,10 @@
 
             @using (Html.BeginForm("perfil","Usuario",FormMethod.Get)) {
                 <input type="text" id="username" name="username" class="campo-busca-usuario pull-left" placeholder="Buscar Conterrâneo..." />
+            }
+            @using (Html.BeginForm("BuscarMensagemPorTag", "Publicacao", FormMethod.Get))
+            {
+                <input type="text" id="hashtag" name="hashtag" class="campo-busca-usuario pull-left" placeholder="Buscar Prosa" />
             }
 
             <div id="usuario-info" class="pull-right">
@@ -54,6 +59,31 @@
     <script>
 
         var usuarios;
+        var tags;
+        $.get('Publicacao/HashtagAutocomplete', function (data) {
+            tags = $.map(dataObject, function (el) { return el.label });
+        });
+        $('#hashtag').textcomplete([
+            { // mention strategy
+                match: /(^|\s)#(\w*)$/,
+                search: function (term, callback) {
+                    callback($.map(tagsTextComplete, function (mention) {
+                        return mention.indexOf(term) === 0 ? mention : null;
+                    }))
+                },
+                replace: function (value) {
+                    return value + ' ';
+                }
+            }], { maxCount: 10, debounce: 500 },
+            {
+                onKeydown: function (e, commands) {
+                    if (e.ctrlKey && e.keyCode === 74) { // CTRL-J
+                        return commands.KEY_ENTER;
+                    }
+                }
+            });
+
+
 
         $.get("Publicacao/UsuarioAutocompleteArray")
         .done(function (data) {

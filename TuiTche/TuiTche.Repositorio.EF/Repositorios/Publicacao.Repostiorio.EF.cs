@@ -113,5 +113,21 @@ namespace TuiTche.Repositorio.EF
                 return banco.Publicacao.Include("Usuario").Include("Compartilhar").Where(p => p.IdUsuario == id).OrderByDescending(p => p.DataPublicacao).Skip(limite).Take(quantidade).ToList();
             }
         }
+
+        public IList<Publicacao> BuscarPublicacoes(String hashtag)
+        {
+            HashtagRepositorio hashtagRepositorio = new HashtagRepositorio();
+            Hashtag tag = hashtagRepositorio.BuscarPorPalavra(hashtag);
+            if(tag != null) { 
+                using(banco = new BancoDeDados())
+                {
+                    var lista = banco.Publicacao.SqlQuery("select * from Publicacao p "
+                                    + " inner join PublicacaoHashtags ph on ph.IdHashtag =@idHashtag "
+                                    + " where p.Id = ph.IdPublicacao", new SqlParameter("idHashtag", tag.Id)).ToList();
+                    return lista;
+                }
+            }
+            return null;
+        }
     }
 }
