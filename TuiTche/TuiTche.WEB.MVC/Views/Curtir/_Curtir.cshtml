@@ -1,0 +1,15 @@
+﻿@model CurtirModel
+
+@if (Model.Curtido)
+{
+    <button class="tri" type="submit"><img id="curtir@(Model.IdPublicacao)" src="~/Content/img/TriSelecionado.png" class="tri" /></button>
+}
+else
+{
+    <button class="tri" type="submit"><img id="curtir@(Model.IdPublicacao)" src="~/Content/img/Tri.png" class="tri" /></button>
+}
+@if (Model.Curtidas > 0)
+{
+    <a class="tri-contador">@Model.Curtidas</a>
+}
+<input type="hidden" id="idPublicacao" name="idPublicacao" value="@Model.IdPublicacao" />

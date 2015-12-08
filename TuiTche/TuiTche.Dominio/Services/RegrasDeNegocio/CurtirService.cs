@@ -30,5 +30,16 @@ namespace TuiTche.Dominio.Services
             pontuacaoRepositorio.SomarPontos(pontuacao);
             return pontuacao;
         }
+
+        public Pontuacao DescurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
+        {
+            const int PontosPorTri = -3;
+            Pontuacao pontuacao = pontuacaoRepositorio.BuscarPontos(IdPublicacaoUsuario);
+            Curtir curtir = curtirRepositorio.FindByIdUsuarioAdndIdPublicacao(idUsuario, idPublicacao);
+            curtirRepositorio.Remover(curtir);
+            pontuacao.PontuacaoTotal += PontosPorTri;
+            pontuacaoRepositorio.SomarPontos(pontuacao);
+            return pontuacao;
+        }
     }
 }

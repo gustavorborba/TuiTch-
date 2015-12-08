@@ -10,9 +10,21 @@
             }
             <h4>Publicado por: @publicacao.NomeUsuario</h4>
             <p>@publicacao.Mensagem</p>
+            
             <div class="text-center">
                 @{Html.RenderAction("_CarregarComentarios", "Publicacao", new { idPublicacao = @publicacao.IdPublicacao });}
             </div>
+            @using (Ajax.BeginForm("Curtir", "Curtir", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "curtir" + publicacao.IdPublicacao,
+                HttpMethod = "POST"
+            }))
+            {
+                <div id="curtir@(publicacao.IdPublicacao)">
+                    @{Html.RenderAction("CarregarCurtir", "Curtir", new { idPublicacao = @publicacao.IdPublicacao });}
+                </div>
+            }
             <div class="text-center">
                 <button id="compartilhar" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
             </div>

@@ -104,6 +104,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img-upload\default.jpg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\quero-quero.png" />
+    <Content Include="Content\img\Tri.png" />
+    <Content Include="Content\img\TriSelecionado.png" />
     <Content Include="Content\jquery-textcomplete\jquery.textcomplete.min.js" />
     <Content Include="Content\RankingUsuarios\ranking-galo-veio.jpg" />
     <Content Include="Content\RankingUsuarios\ranking-gauderio.jpg" />
@@ -129,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CurtirController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListarPublicacoesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -143,6 +148,7 @@
     <Compile Include="Mapper\ComentarioVisualizarMapper.cs" />
     <Compile Include="Mapper\PerfilMapper.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
+    <Compile Include="Models\CurtirModel.cs" />
     <Compile Include="Models\InformacoesUsuarioModel.cs" />
     <Compile Include="Models\ListaComentarioVisualizarModel.cs" />
     <Compile Include="Models\ComentarioVisualizarModel.cs" />
@@ -180,6 +186,7 @@
     <Content Include="Views\Publicacao\_Comentarios.cshtml" />
     <Content Include="Views\Publicacao\BuscarMensagem.cshtml" />
     <Content Include="Views\Usuario\BaseInformacoesUsuario.cshtml" />
+    <Content Include="Views\Curtir\_Curtir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,6 +197,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\" />
+    <Folder Include="Views\Curit\" />
     <Folder Include="Views\Timeline\" />
   </ItemGroup>
   <ItemGroup>

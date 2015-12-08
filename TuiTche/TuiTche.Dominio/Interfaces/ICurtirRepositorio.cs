@@ -9,6 +9,9 @@ namespace TuiTche.Dominio.Interfaces
     public interface ICurtirRepositorio
     {
         Curtir FindById(int id);
+        Curtir FindByIdUsuarioAdndIdPublicacao(int idUsuario, int idPublicacao);
         int AdicionarCurtir(Curtir curtir);
+        int Remover(Curtir curtir);
+        IList<Curtir> ListarUsuariosCurtiramAPublicacao(int idPublicacao);
     }
 }
