@@ -78,7 +78,10 @@ namespace TuiTche.WEB.MVC.Controllers
                      model.FotoPerfil.SaveAs(local);
                      usuario.Foto = "~/Content/img-upload/" + usuario.Username;
                 }
-
+                usuario.Pontuacao = new Pontuacao()
+                {
+                    PontuacaoTotal = 0
+                };
                 UsuarioRepositorio.CadastrarUsuario(usuario);
                 TempData["Mensagem"] = "Usuario Cadastrado com Sucesso!";
                 return RedirectToAction("Index", "Login");
