@@ -14,12 +14,13 @@ namespace TuiTche.DominioTests.Mock
 
         public  CurtirRepositorioMock()
         {
-            Curtir curtir1 = new Curtir(1);
-
-            curtir1.IDPublicacao = 1;
-            curtir1.IDUsuario = 1;
-
-            listaTris.Add(curtir1); 
+            for(int i= 1; i <= 10; i++)
+            {
+                Curtir curtir1 = new Curtir(i);
+                curtir1.IDPublicacao = i;
+                curtir1.IDUsuario = i;
+                listaTris.Add(curtir1);
+            }
         }
 
         public Curtir FindById(int id)
@@ -35,12 +36,12 @@ namespace TuiTche.DominioTests.Mock
 
         public Curtir FindByIdUsuarioAdndIdPublicacao(int idUsuario, int idPublicacao)
         {
-            throw new NotImplementedException();
+            return listaTris.Where(c => c.IDUsuario == idUsuario && c.IDPublicacao == idPublicacao).FirstOrDefault();
         }
 
         public int Remover(Curtir curtir)
         {
-            throw new NotImplementedException();
+            return 1;
         }
 
         public IList<Curtir> ListarUsuariosCurtiramAPublicacao(int idPublicacao)
