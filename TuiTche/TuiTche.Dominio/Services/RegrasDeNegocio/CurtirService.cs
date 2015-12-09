@@ -10,6 +10,7 @@ namespace TuiTche.Dominio.Services
 {
     public class CurtirService
     {
+        private const int PONTOS_POR_TRI = 3;
         ICurtirRepositorio curtirRepositorio;
         IPontuacaoRepositorio pontuacaoRepositorio;
         public CurtirService(ICurtirRepositorio tri, IPontuacaoRepositorio pontuacao)
@@ -20,24 +21,22 @@ namespace TuiTche.Dominio.Services
 
         public Pontuacao CurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
         {
-            const int PontosPorTri = 3;
             Pontuacao pontuacao = pontuacaoRepositorio.BuscarPontos(IdPublicacaoUsuario);
             Curtir curtir = new Curtir();
             curtir.IDPublicacao = idPublicacao;
             curtir.IDUsuario = idUsuario;
             curtirRepositorio.AdicionarCurtir(curtir);
-            pontuacao.PontuacaoTotal += PontosPorTri;
+            pontuacao.PontuacaoTotal += PONTOS_POR_TRI;
             pontuacaoRepositorio.SomarPontos(pontuacao);
             return pontuacao;
         }
 
         public Pontuacao DescurtirPublicacao(int idPublicacao, int IdPublicacaoUsuario, int idUsuario)
         {
-            const int PontosPorTri = -3;
             Pontuacao pontuacao = pontuacaoRepositorio.BuscarPontos(IdPublicacaoUsuario);
             Curtir curtir = curtirRepositorio.FindByIdUsuarioAdndIdPublicacao(idUsuario, idPublicacao);
             curtirRepositorio.Remover(curtir);
-            pontuacao.PontuacaoTotal += PontosPorTri;
+            pontuacao.PontuacaoTotal -= PONTOS_POR_TRI;
             pontuacaoRepositorio.SomarPontos(pontuacao);
             return pontuacao;
         }
