@@ -27,6 +27,10 @@ namespace TuiTche.WEB.MVC.Extensoes
                 return null;
             }
             PerfilModel perfil = PerfilMapper.toModel(usuario);
+            if(perfil.Foto != null)
+            {
+                perfil.Foto=perfil.Foto.Replace('\\', '/') + ".jpg";
+            }
             perfil.NumeroSeguidores = usuario.Seguidores.Count();
             perfil.NumeroSeguindo = usuario.Seguindo.Count();
             perfil.Seguindo = usuario.Seguidores.Where(c => c.Id == ControleDeSessao.UsuarioAtual.IdUsuario).FirstOrDefault() == null ? false : true;
