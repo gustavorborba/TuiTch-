@@ -9,32 +9,38 @@
     }
     else
     {
-        <img  src="@Url.Content(Model.FotoPerfil)" width="65" height="50" />
+        <img class="nome-usuario" src="@Url.Content(Model.FotoPerfil)" width="90" height="70" />
+        <span>@Model.NomeCompleto</span>
     }
     @if (Model.RankingUsuario == "PATRAO")
     {
         //ajustar alt.
-        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario" />
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-patrao.jpg"width="70" height="50" style="margin-left:35px" ; alt="@Model.RankingUsuario" />
+        <b>PATRÃO</b>
     }
 
     @if (Model.RankingUsuario == "GALO_VEIO")
     {
-        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-galo-veio.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"  />
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-galo-veio.jpg" width="70" height="50" style="margin-left:35px" ; alt="@Model.RankingUsuario"  />
+        <b>Galo Véio</b>
     }
 
     @if (Model.RankingUsuario == "XIRU")
     {
-        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-xiru.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"  />
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-xiru.jpg" width="70" height="50" style="margin-left:35px" ; alt="@Model.RankingUsuario"  />
+        <b>Xirú</b>
     }
 
     @if (Model.RankingUsuario == "GAUDERIO")
     {
-        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-gauderio.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"  />
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-gauderio.jpg" width="70" height="50" style="margin-left:35px" ;  alt="@Model.RankingUsuario"  />
+        <b>Gaudério</b>
     }
 
     @if (Model.RankingUsuario == "PIA")
     {
-        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="50" height="35" style="margin-top:15px;" alt="@Model.RankingUsuario"  />
+        <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="70" height="50" style="margin-left:35px" ; alt="@Model.RankingUsuario"  />
+        <b>Piazinho</b>
     }
     <div>
         <div class="dropdown-style dropdown">
