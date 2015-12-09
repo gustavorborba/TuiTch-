@@ -1,5 +1,5 @@
 ﻿@model ListaComentarioVisualizarModel
-<div id="comentarios@(Model.IdPublicacao)">
+<div id="comentarios@(Model.IdPublicacao)" >
     @Html.Partial("_Comentarios", Model)
 </div>
 @if (Model.Comentarios.Count > 0)
@@ -14,12 +14,12 @@
     }))
     {
         @Html.AntiForgeryToken()
-        <input type="submit" value="Carregar mais" id="Carregar" />
+        <input type="submit" value="Carregar mais" id="Carregar" class="pull-left carregar-mais-botao" />
         <input type="hidden" id="IdPublicacao" name="IdPublicacao" value="@Model.IdPublicacao" />
         <input type="hidden" id="Contador" name="Contador" value="2" />
     }
 }
-<div style="position: relative; bottom: 5px;">
+<div>
     @{Html.RenderAction("_Comentar", "Publicacao", new { idPublicacao = @Model.IdPublicacao});}
 </div>
 <script>

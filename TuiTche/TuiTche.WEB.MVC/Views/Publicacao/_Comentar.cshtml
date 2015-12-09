@@ -10,8 +10,8 @@
 }, new { id = "form" + @Model.IdPublicacao }))
 {
     @Html.AntiForgeryToken()
-    <input id="texto" name="texto" />
-    <input type="submit" value="Comentar" id="Enviar" />
+    <input type="submit" value="Comentar" id="Enviar" class="pull-right" style="margin-right: 30px" />
+    <input id="texto" name="texto" class="pull-right" style="margin-right: 10px; width: 215px;" />
     <input type="hidden" id="IdPublicacao" name="IdPublicacao" value="@Model.IdPublicacao" />
     <input type="hidden" id="IdUsuario" name="IdUsuario" value="@Model.IdUsuario" />
 }

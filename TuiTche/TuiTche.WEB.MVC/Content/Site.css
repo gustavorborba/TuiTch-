@@ -23,7 +23,7 @@ textarea {
 }
 
 .marginTop {
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .foto-logo {
@@ -91,8 +91,8 @@ textarea {
     /*background-color: rgba(0, 202, 202, 0.2);
     box-shadow: 0px -3px 5px rgba(0, 202, 202, 0.4);*/
 
-    background-color: #a0c19f;
-    box-shadow: 0px -3px 5px #3b3939;
+    background-color: #d3fefb;
+    box-shadow: 0px -3px 5px white;
     height:35px;
 }
 
@@ -107,12 +107,12 @@ textarea {
 }
 
 .mensagem{
-    background-color:#d5d1d1;
-    border:2px solid black;
-    border-radius:10px;
+    background-color: white;
+    border: 1px solid rgba(127, 182, 177, 0.57);
+    border-radius:5px;
     width:500px;
     height:auto;
-    margin-top:20px;
+    margin-top:12px;
 }
 
 .publicar{
@@ -123,11 +123,8 @@ textarea {
 
 .comentario{
     background-color:#ffffff;
-    border: 1px solid black;
-    border-radius:5px;
-    width:300px;
     height:auto;
-    margin-left:97px;
+    padding: 0 0 5px 40px;
 }
 
 .dropdown-style{
@@ -140,6 +137,42 @@ textarea {
     background-color: transparent;
     width:40px;
     height:30px;
-    margin-left:50px;
+}
 
+.tri-contador {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 8px 0 -6px 0;
+}
+
+.usuario-publicacao {
+    margin-left: 20px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(127, 182, 177, 0.57);
+}
+
+.text-justify {
+    text-align: justify;
+    margin: 10px 20px;
+}
+
+.carregar-mais-botao {
+    background-color: rgba(0, 0, 0, 0.00);
+    border: none;
+    color: blue;
+    padding-left: 40px;
+}
+
+.texto-comentario {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: -7px;
+}
+
+.texto-16 {
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 6px;
 }

@@ -1,8 +1,8 @@
 ﻿@model ListaComentarioVisualizarModel
 @foreach (var comentario in Model.Comentarios)
 {
-    <div id="comentario" class="comentario text-center">
-        <p>Comentario de: @comentario.Username - @comentario.DataComentario</p>
-        <p>@comentario.Texto</p>
+    <div id="comentario" class="comentario text-justify border-bottom">
+        <p class="texto-comentario">Comentario de: @comentario.Username - @comentario.DataComentario<br />
+        @comentario.Texto</p>
     </div>
 }

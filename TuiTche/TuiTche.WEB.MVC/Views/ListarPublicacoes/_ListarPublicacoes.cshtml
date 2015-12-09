@@ -8,25 +8,30 @@
             {
                 <h4>Compartilhado por: @publicacao.UsuarioCompartilhou</h4>
             }
-            <h4>Publicado por: @publicacao.NomeUsuario</h4>
-            <p>@publicacao.Mensagem</p>
+            <div id="postador" class="text-left border-bottom">
+                <h4 class="usuario-publicacao">@publicacao.NomeUsuario :</h4>
+            </div>
+            <p class="text-justify texto-16 border-bottom">@publicacao.Mensagem</p>            
             
-            <div class="text-center">
+            <div class="text-center clearfix">
                 @{Html.RenderAction("_CarregarComentarios", "Publicacao", new { idPublicacao = @publicacao.IdPublicacao });}
             </div>
-            @using (Ajax.BeginForm("Curtir", "Curtir", new AjaxOptions
-            {
-                InsertionMode = InsertionMode.Replace,
-                UpdateTargetId = "curtir" + publicacao.IdPublicacao,
-                HttpMethod = "POST"
-            }))
-            {
-                <div id="curtir@(publicacao.IdPublicacao)" class="tri" style="width:50px;">
-                    @{Html.RenderAction("CarregarCurtir", "Curtir", new { idPublicacao = @publicacao.IdPublicacao });}
+
+            <div class="footer-mensagem clearfix">
+                @using (Ajax.BeginForm("Curtir", "Curtir", new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "curtir" + publicacao.IdPublicacao,
+                    HttpMethod = "POST"
+                }))
+                {
+                    <div id="curtir@(publicacao.IdPublicacao)" class="pull-right" style="margin: 12px 130px 12px 0">
+                        @{Html.RenderAction("CarregarCurtir", "Curtir", new { idPublicacao = @publicacao.IdPublicacao });}
+                    </div>
+                }
+                <div>
+                    <button id="compartilhar" style="margin: 12px 0 12px 115px" class="btn btn-default pull-left" onclick="compartilhar(this); notifyMe();">Compartilhar</button>
                 </div>
-            }
-            <div >
-                <button id="compartilhar" class="btn btn-default" onclick="compartilhar(this); notifyMe();" >Compartilhar</button>
             </div>
         </div>
         <script>
