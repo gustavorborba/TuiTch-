@@ -9,8 +9,7 @@
     }
     else
     {
-        <img class="nome-usuario" src="@Url.Content(Model.FotoPerfil)" width="90" height="70" />
-        <span>@Model.NomeCompleto</span>
+        <img class="nome-usuario" src="@Url.Content(Model.FotoPerfil)" width="65" height="50" />
     }
     @if (Model.RankingUsuario == "PATRAO")
     {
@@ -40,7 +39,7 @@
     @if (Model.RankingUsuario == "PIA")
     {
         <img class="table-bordered" src="~/Content/RankingUsuarios/ranking-pia.jpg" width="70" height="50" style="margin-left:35px" ; alt="@Model.RankingUsuario"  />
-        <b>Piazinho</b>
+        <b>Piá</b>
     }
     <div>
         <div class="dropdown-style dropdown">
