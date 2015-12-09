@@ -15,36 +15,66 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
-    <h3 style="color: red;">
-        @TempData["Mensagem"]
-    </h3>
-    <h2>Login</h2>
-    <div >
-        @using (Html.BeginForm("LoginUsuario", "Login", FormMethod.Post, new { @class = "form" }))
-        {
-            @Html.ValidationSummary(true);
-            @Html.AntiForgeryToken();
-            <div class="form-group">
-                @Html.LabelFor(p => p.Username, new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Username)
+<body class="sky-background">
+    @if(TempData["Mensagem"] != null)
+    {
+        <h3 class="alert alert-success" style="margin-top:50px;">
+            @TempData["Mensagem"]
+        </h3>
+    }
+    @if (TempData["Login"] != null)
+    {
+        <h3 class="alert alert-danger" style="margin-top:50px;">
+            @TempData["Login"]
+        </h3>
+    }
+    
+    <div>
+        <header class="navbar-fixed-top meuHeader">
+                <div style="position: fixed; top: 0; right: 0">
                 </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Senha, new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.PasswordFor(p => p.Senha, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Senha)
+                <div class="container clearfix pull-left">
+                    <img src="~/Content/img/logo.png" class="foto-logo" />
+                    <p class="texto-logo">TuiTche</p>
                 </div>
-            </div>
+            </header>
+        </div>
+    <div class="login text-center">
+        <h2>Login</h2>
+        <div class="form-horizontal">
+            @using (Html.BeginForm("LoginUsuario", "Login", FormMethod.Post, new { @class = "form" }))
+            {
+                @Html.AntiForgeryToken()
 
-            <input class="btn btn-primary btn-md" style="margin-left: 25px; margin-top:10px;" type="submit" name="enviar" value="Login" />
-        }
-    </div>
-    <p>Não possui Conta?</p>
-    <input type="button" value="Cadastrar" class=" btn btn-primary btn-md" onclick="location.href='@Url.Action("Cadastrar","Usuario")'" />
-</body>
+                @Html.ValidationSummary(true);
+                <div style="margin-top:10px;" class="form-group">
+                    @Html.LabelFor(p => p.Username, new { @class = "col-sm-3 control-label" })
+                    <div class="">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Username)
+                    </div>
+                </div>
+
+                <div style="margin-left:10px;" class="form-group">
+                    @Html.LabelFor(m => m.Senha, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.PasswordFor(p => p.Senha, new { @class = " form-control" })
+                        @Html.ValidationMessageFor(m => m.Senha)
+                    </div>
+                </div>
+
+                <input class="btn btn-default" style="margin-top:10px;" type="submit" name="enviar" value="Login" />
+            }
+        </div>
+        <div >
+            <p class="marginTop" >Te aprochega vivente</p>
+            <input type="button" value="Cadastra-te" class=" btn btn-primary btn-md" onclick="location.href='@Url.Action("Cadastrar","Usuario")'" />
+        </div>
+        </div>
+    <footer class="navbar-fixed-bottom">
+        <div class="meuFooter text-center">
+            <p>&copy; @DateTime.Now.Year - TuiTchê Alguns direitos reservados.</p>
+        </div>
+    </footer>
+    </body>
 </html>

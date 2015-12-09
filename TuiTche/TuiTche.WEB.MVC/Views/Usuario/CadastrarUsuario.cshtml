@@ -16,68 +16,85 @@
     <title>CadastrarUsuario</title>
 </head>
 <body>
+    <div>
+        <header class="navbar-fixed-top meuHeader">
+            <div style="position: fixed; top: 0; right: 0">
+            </div>
+            <div class="container clearfix pull-left">
+                <img src="~/Content/img/logo.png" class="foto-logo" />
+                <p class="texto-logo">TuiTche</p>
+            </div>
+        </header>
+    </div>
     <h4>
         @TempData["Mensagem"]
     </h4>
-    <div> 
+    <div class="cadastro" style="margin-top:80px;"> 
+        <h3 class="text-center">Cadastro de Usuario</h3>
         @using (Html.BeginForm("CadastrarUsuario", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken();
             @Html.ValidationSummary(true)
-            <div class="form-group">
-                @Html.LabelFor(m => m.NomeCompleto, new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.NomeCompleto, new { @class = "form-control" })
+            <div class="form-group form-inline">
+                @Html.LabelFor(m => m.NomeCompleto, new { @class = "col-sm-4 control-label" })
+                <div class="">
+                    @Html.TextBoxFor(m => m.NomeCompleto, new { @class = " form-control" })
                     @Html.ValidationMessageFor(m => m.NomeCompleto)
                 </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Username, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
+                <div class="form-group ">
+                    @Html.LabelFor(m => m.Username, new { @class = "col-sm-4 control-label" })
+                    <div class="">
                         @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Username)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Senha, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
+                    @Html.LabelFor(m => m.Senha, new { @class = "col-sm-4 control-label" })
+                    <div class="">
                         @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Senha)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.ConfirmarSenha, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
+                    @Html.LabelFor(m => m.ConfirmarSenha, new { @class = "col-sm-4 control-label" })
+                    <div class="">
                         @Html.PasswordFor(m => m.ConfirmarSenha, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.ConfirmarSenha)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-sm-4 control-label" })
+                    <div class="">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Sexo, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
+                    @Html.LabelFor(m => m.Sexo, new { @class = "col-sm-4 control-label" })
+                    <div class="">
                         @Html.EnumDropDownListFor(m => m.Sexo, "Sexo", new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Sexo)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.FotoPerfil, new { @class = "col-sm-2, control-label" })
-                    <div class="col-sm-10 pull-right">
-                        @Html.TextBoxFor(m => m.FotoPerfil, new { type = "file" })
+                    @Html.LabelFor(m => m.FotoPerfil, new { @class = "col-sm-4 control-label" })
+                    <div class="">
+                        @Html.TextBoxFor(m => m.FotoPerfil, new { type = "file", @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <a class="btn btn-warning" href="~/login">Voltar</a>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
                 }
             </div>
+    <footer class="navbar-fixed-bottom">
+        <div class="meuFooter text-center">
+            <p>&copy; @DateTime.Now.Year - TuiTchê Alguns direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>

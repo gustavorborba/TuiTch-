@@ -176,3 +176,25 @@ textarea {
     line-height: 20px;
     padding-bottom: 6px;
 }
+
+.input-login{
+    width:100px;
+}
+
+.login{
+    margin-left:500px;
+    margin-top:80px;
+    border: 1px solid #ccc;
+    border-radius:4px;
+    width:400px;
+    height:350px;
+}
+
+.cadastro{
+    margin-left:500px;
+    margin-top:80px;
+    border: 1px solid #ccc;
+    border-radius:4px;
+    width:470px;
+    height:450px;
+}
