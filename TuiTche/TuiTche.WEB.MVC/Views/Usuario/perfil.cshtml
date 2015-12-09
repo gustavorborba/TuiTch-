@@ -3,67 +3,61 @@
 @{
     ViewBag.Title = "perfil";
 }
-
-<h2>perfil</h2>
 @if(Model == null)
 {
    <h3 class="alert alert-warning text-center" style="width:500px;"> Usuário não Encontrado</h3>
 }
 else
 {
+    <br />
     <div>
-        <h4>Perfil de @Model.NomeCompleto</h4>
+        <h3>Perfil de @Model.NomeCompleto</h3>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Username)
-            </dt>
+        @if (Model.Foto == null)
+        {
+            <img  class="table-bordered" src="~/Content/img-upload/default.jpg" width="125" height="100" />
+        }
+        else
+        {
+            <img class="table-bordered" src="@Url.Content(Model.Foto)" width="125" height="100" />
+        }
+        <div style="margin-left: 65px; margin-top: -95px;">
+            <dl class="dl-horizontal">
 
-            <dd>
-                @Html.DisplayFor(model => model.Username)
-            </dd>
+                <dt>
+                    Nome
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.NomeCompleto)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NomeCompleto)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.NomeCompleto)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+                <dt>
+                    Seguidores
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Foto)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumeroSeguidores)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Foto)
-            </dd>
+                <dt>
+                    Seguindo
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.NumeroSeguidores)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumeroSeguindo)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.NumeroSeguidores)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.NumeroSeguindo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.NumeroSeguindo)
-            </dd>
-
-        </dl>
+            </dl>
+        </div>
         @Html.Partial("_Seguir", @Model)
     </div>
 }
