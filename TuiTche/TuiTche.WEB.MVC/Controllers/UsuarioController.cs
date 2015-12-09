@@ -87,7 +87,6 @@ namespace TuiTche.WEB.MVC.Controllers
                 TempData["Mensagem"] = "Usuario Cadastrado com Sucesso!";
                 return RedirectToAction("Index", "Login");
             }
-            TempData["Mensagem"] = "Ocorreu os seguintes erros: ";
             return View("CadastrarUsuario", model);
         }
         [Authorize]
