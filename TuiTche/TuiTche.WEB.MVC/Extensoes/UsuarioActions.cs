@@ -33,7 +33,7 @@ namespace TuiTche.WEB.MVC.Extensoes
             }
             perfil.NumeroSeguidores = usuario.Seguidores.Count();
             perfil.NumeroSeguindo = usuario.Seguindo.Count();
-            perfil.Seguindo = usuario.Seguidores.Where(c => c.Id == ControleDeSessao.UsuarioAtual.IdUsuario).FirstOrDefault() == null ? false : true;
+            perfil.Seguindo = usuario.Seguidores.Where(c => c.Id == ControleDeSessao.UsuarioAtual.IdUsuario).FirstOrDefault() != null;
 
             return perfil;
         }        
