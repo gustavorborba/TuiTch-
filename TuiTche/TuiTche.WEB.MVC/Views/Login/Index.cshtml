@@ -18,13 +18,13 @@
 <body class="sky-background">
     @if(TempData["Mensagem"] != null)
     {
-        <h3 class="alert alert-success" style="margin-top:50px;">
+        <h3 class="alert alert-success pull-left mensagem-tela-login">
             @TempData["Mensagem"]
         </h3>
     }
     @if (TempData["Login"] != null)
     {
-        <h3 class="alert alert-danger" style="margin-top:50px;">
+        <h3 class="alert alert-danger pull-left mensagem-tela-login">
             @TempData["Login"]
         </h3>
     }
