@@ -32,7 +32,7 @@ namespace TuiTche.WEB.MVC.Controllers
                     return RedirectToAction("Index", "Publicacao");
                 }
             }
-            TempData["Mensagem"] = "Usuário ou senha inválidos";
+            TempData["Login"] = "Usuário ou senha inválidos";
             return View("Index", usuario);
         }
 

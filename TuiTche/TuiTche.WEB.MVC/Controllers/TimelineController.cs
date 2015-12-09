@@ -17,7 +17,6 @@ namespace TuiTche.WEB.MVC.Controllers
         CompartilharRepositorio CompartilharRepositorio = new CompartilharRepositorio();
         PublicacaoRepositorio PublicacaoRepositorio = new PublicacaoRepositorio();
 
-
         public int NumeroDeSeguidores()
         {
             Usuario usuario = UsuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
@@ -29,7 +28,8 @@ namespace TuiTche.WEB.MVC.Controllers
             Usuario usuario = UsuarioRepositorio.BuscarPorUsername(ControleDeSessao.UsuarioAtual.Username);
             return usuario.Seguindo.Count;
         }
-        public JsonResult PalavrasMaisUtilizadas()
+
+       public JsonResult PalavrasMaisUtilizadas()
         {
             var palavras = HashtagRepositorio.PalavrasMaisUsadas();
 

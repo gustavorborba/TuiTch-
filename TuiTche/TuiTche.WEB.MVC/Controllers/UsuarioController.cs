@@ -98,7 +98,7 @@ namespace TuiTche.WEB.MVC.Controllers
 
             return RedirectToAction("perfil", new { username = username });
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult PararDeSeguir(int idSeguidor, int idSeguindo, string username)
         {

@@ -60,7 +60,7 @@ namespace TuiTche.WEB.MVC.Controllers
         {
             int idUsuario = ControleDeSessao.UsuarioAtual.IdUsuario;
             int idUsuarioPublicacao = publicacaoRepositorio.BuscarPorPorId(idPublicacao).IdUsuario;
-            bool curtido = curtirRepositorio.FindByIdUsuarioAdndIdPublicacao(idUsuario, idPublicacao) == null ? false : true;
+            bool curtido = curtirRepositorio.FindByIdUsuarioAdndIdPublicacao(idUsuario, idPublicacao) != null;
 
             CurtirModel model = new CurtirModel()
             {
