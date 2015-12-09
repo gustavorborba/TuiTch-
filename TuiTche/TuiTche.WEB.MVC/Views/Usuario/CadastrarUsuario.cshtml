@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Cadastro - TuiTche</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -26,10 +26,10 @@
             </div>
         </header>
     </div>
-    <h4>
+    <h4 class="pull-left" style="margin-top:100px;">
         @TempData["Mensagem"]
     </h4>
-    <div class="cadastro" style="margin-top:80px;"> 
+    <div class="cadastro"> 
         <h3 class="text-center">Cadastro de Usuario</h3>
         @using (Html.BeginForm("CadastrarUsuario", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -85,16 +85,11 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-10">
-                        <a class="btn btn-warning" href="~/login">Voltar</a>
+                        <a class="btn btn-warning" style="position:relative;" href="~/login">Voltar</a>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
                 }
             </div>
-    <footer class="navbar-fixed-bottom">
-        <div class="meuFooter text-center">
-            <p>&copy; @DateTime.Now.Year - TuiTchê Alguns direitos reservados.</p>
-        </div>
-    </footer>
 </body>
 </html>

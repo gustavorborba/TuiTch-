@@ -183,18 +183,18 @@ textarea {
 
 .login{
     margin-left:500px;
-    margin-top:80px;
+    margin-top:58px;
     border: 1px solid #ccc;
     border-radius:4px;
     width:400px;
-    height:350px;
+    height:380px;
 }
 
 .cadastro{
     margin-left:500px;
-    margin-top:80px;
+    margin-top:50px;
     border: 1px solid #ccc;
     border-radius:4px;
-    width:470px;
-    height:450px;
+    width:490px;
+    height:530px;
 }
